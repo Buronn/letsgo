@@ -11,7 +11,7 @@ def comparar(lista, cadena, tamaño):
         elif int(cadena[i]) in lista:
             toque = toque+1
             print("un toque")
-        if fama = tamaño:
+        if fama == tamaño:
             print("OMEDETO")
         else:
             print("obtuviste "+str(toque)+" toques y "+str(fama)+" fama.")
