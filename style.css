@@ -1,0 +1,151 @@
+@font-face {
+    font-family: minecraft;
+    src: url(../VSImgs/Minecraft.ttf);
+}
+
+#principio {
+
+    background-image: url(../VSImgs/minecraft_theme4.png);
+    font-family: minecraft;
+    background-attachment: fixed;
+    height: 140vh;
+    background-size: cover;
+    max-width: 100%;
+    padding-top: 15%;
+    justify-content: center;
+
+}
+
+#imgsangre {
+    background-image: url(https://lh3.googleusercontent.com/qZjCPDvLPjdvPDgBbRpVgOtPVXRMQSNPOUTFaPI7uXZ2cLvZ6LlZZ_cmXlITPSj2HENcUt6dXinJbCSVvaWQnw=s400);
+    color: rgb(255, 255, 255);
+    opacity: 80%;
+    width: 50%;
+    height: 43vh;
+    justify-content: center;
+    padding-top: 15%;
+}
+
+
+#principio2 {
+    background-image: url(../VSImgs/minecraft_theme4.png);
+    font-family: minecraft;
+    background-attachment: fixed;
+    height: 140vh;
+    background-size: cover;
+    max-width: 100%;
+    padding-top: 1%;
+    justify-content: center;
+
+}
+
+.titulo {
+    margin-left: 37%;
+    margin-right: 10%;
+}
+
+.titulo2 {
+    margin-left: 5%;
+}
+
+.logo {
+    width: 50%;
+    height: 50%;
+}
+
+.logo2 {
+    width: 10%;
+    height: 10%;
+}
+
+.invisible {
+    color: rgba(245, 245, 220, 0);
+}
+
+.consultas {
+    margin-left: 15%;
+    color: white;
+    background-color: rgba(44, 41, 15, 0.425);
+    border-radius: 30px;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    margin-bottom: auto;
+    margin-right: 15%;
+
+}
+
+.tiny {
+    font-size: 1px;
+}
+.imgmid{
+    width: 32px;
+}
+
+.cafe {
+
+    color: #c9b76f !important;
+}
+
+.tcenter {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.imgtiny {
+    width: 30%;
+    height: 30%;
+}
+
+.resultados {
+    margin-left: 20%;
+    color: white;
+    background-color: rgba(44, 41, 15, 0.425);
+    border-radius: 30px;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    margin-bottom: auto;
+    margin-right: 15%;
+    font-size: 150%;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.btn {
+    color: white;
+    background-color: rgba(70, 54, 4, 0.308);
+
+    text-decoration: none;
+}
+
+.btn-right {
+    margin-left: 90%;
+}
+
+.enlace {
+    color: white;
+
+}
+
+.enlace:hover {
+    color: rgba(128, 199, 23, 0.726);
+    text-decoration: none;
+}
+
+.form-control {
+    filter: opacity(40%);
+}
+
+.bs1 {
+    background-color: rgba(245, 247, 244, 0.178);
+    border-radius: 30px;
+    color: rgb(235, 219, 83);
+}

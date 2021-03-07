@@ -1,5 +1,92 @@
 <!DOCTYPE html>
-<html lang=es>
-poder
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Merquen</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="shortcut icon" href="" />
+    <audio src="" autoplay="true"></audio>
+</head>
+
+<body>
+    <header id="principio">
+        <div class="contenedor">
+            <div class="titulo">
+                <img class="logo" src="VSImgs/logo.png" alt="">
+            </div>
+
+        </div>
+        <br>
+
+        <section class="consultas">
+            <h3>Ingrese una consulta</h3>
+            <select onmousedown="bleep5.play()" name="options" id="colors" class="form-control color1">
+
+                <option disabled="" selected>Seleccione una opcion</option>
+                <option value="1"> Lista de jugadores con la espada más fuerte</option>
+                <option value="2"> Jugador que más NPCs hostiles y Jefes mato</option>
+                <option value="3"> Jefe mas fuerte.(suma entre vida, daño y armadura)</option>
+                <option value="4"> Promedio nivel de los jugadores</option>
+                <option value="5"> Pocion mas utilizada</option>
+                <option value="6"> Bloque mas guardado por los jugadores</option>
+                <option value="7"> Cantidad de NPC asesinados por un jugador</option>
+                <option value="8"> Promedio de daño y armadura de los jugadores con equipamiento</option>
+
+            </select>
+
+
+            <br>
+
+            <button id="siguiente" class="btn btn-right">
+                <a type="submit" class="enlace" href="maincra.html?key=1"><strong>Continuar</strong></a>
+            </button>
+
+            <h3>Ver tablas</h3>
+            <form action="http://localhost/vsPHP/MostrarTablas.php" method="post">
+                <select onmousedown="bleep5.play()" name="options1" id="colors1" class="form-control color1">
+                    <option disabled="" selected>Seleccione una opcion</option>
+                    <option value="players"> Lista de Jugadores</option>
+                    <option value="npc"> Lista de NPCs</option>
+                    <option value="potions"> Lista de pociones</option>
+                    <option value="kills"> Lista de Kills</option>
+                    <option value="bloque"> Lista de bloques</option>
+                    <option value="armadura"> Lista de armaduras</option>
+                    <option value="weapon"> Lista de armas</option>
+                    <option value="drink"> Lista de pociones utilizadas</option>
+                    <option value="save"> Lista de objetos guardados</option>
+                    <option value="craft"> Lista de crafteos</option>
+                    <option value="forjar"> Lista de objetos forjados</option>
+                    <option value="equip"> Lista de equipo de los jugadores</option>
+                </select>
+                <br>
+                <button class="btn btn-right" class="enlace" type="submit" value="Mostrar Tabla"><strong>Continuar</strong></button>
+            </form>
+        </section>
+
+
+    </header>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="index.js"></script>
+
+
+
+</body>
 
 </html>
