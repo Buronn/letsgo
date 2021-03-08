@@ -8,11 +8,11 @@ $sql = "select Nombre,Password from usuarios where Nombre='" . $usuario . "' and
 
 $resultado = $conexion->query($sql);
 if (mysqli_num_rows($resultado) == 1) {
-    $_SESSION['login'] = "conexion good";
-    header("Location:punto.html");
+
+    header("Location:../routes/punto.html");
 } else {
-    $salida .= "<div class=\"alert alert-warning p-5\" role=\"alert\">
-                A simple warning alert—check it out!
+    $salida .= "<div class=\"alert alert-warning\" role=\"alert\">
+                Clave o usuario incorrectos
                 </div>";
     
 }
