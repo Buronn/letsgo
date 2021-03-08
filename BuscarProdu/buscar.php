@@ -23,6 +23,6 @@ if ($resultado->num_rows > 0) {
                 </tr>";
     }
 } else {
-    $salida .= "f";
+    $salida .= "Error en la búsqueda";
 }
 echo $salida;

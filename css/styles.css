@@ -1,3 +1,4 @@
+
 html{
     font-size: 62.5%;
     box-sizing: border-box;
@@ -7,7 +8,7 @@ html{
 }
 body{
     font-size: 16px;
-    
+    font-family: 'Lobster';
 }
 .fondo{
     background-image: url(../icons/fondo-desenfocado.png);
@@ -21,9 +22,11 @@ body{
 
 .sesion{
     text-align: center;
-    margin: 10rem;
+    max-width: 25rem;
+    margin: auto;
+    margin-top: 2rem;
 }
 .formulario{
     max-width: 25rem;
-    margin: auto;
+    margin:inherit;
 }
