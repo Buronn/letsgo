@@ -16,7 +16,7 @@ function buscar_datos(consulta) {
 }
 
 
-$(document).on('keyup', '#user', '#pass', function () {
+$(document).on('keyup', '#caja_busqueda', function () {
 	var valor = $(this).val();
 	if (valor != "") {
 		buscar_datos(valor);
