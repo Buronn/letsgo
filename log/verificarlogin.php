@@ -1,7 +1,6 @@
 <?php
 require 'conexion.php';
-session_start();
-
+$salida = "";
 $usuario = $_POST['user'];
 $password = $_POST['pass'];
 echo $usuario;
@@ -11,8 +10,11 @@ echo $sql;
 $resultado = $conexion->query($sql);
 if (mysqli_num_rows($resultado) == 1) {
     $_SESSION['login'] = "conexion good";
-    header("Location:home.php");
+    header("Location:punto.html");
 } else {
-    $_SESSION['loginf'] = "El usuario o la contraseña son incorrectos";
-    header("Location:index.html");
+    $salida .= "<div class=\"alert alert-warning\" role=\"alert\">
+                A simple warning alert—check it out!
+                </div>";
+    
 }
+echo $salida;

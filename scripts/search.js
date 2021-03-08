@@ -2,7 +2,7 @@ $(buscar_datos());
 
 function buscar_datos(consulta) {
 	$.ajax({
-		url: 'buscar.php',
+		url: '../log/buscar.php',
 		type: 'POST',
 		dataType: 'html',
 		data: { consulta: consulta },
