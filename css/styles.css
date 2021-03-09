@@ -18,7 +18,7 @@ body{
 }
 .fondo{
     font-family: "Bulletto Killa";
-    background-image: url(../icons/fondo-desenfocado.png);
+    background-image: url(../images/fondo-desenfocado.png);
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
