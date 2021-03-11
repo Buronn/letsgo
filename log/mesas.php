@@ -28,9 +28,9 @@ while ($fila = $result->fetch_assoc()) {
 $salida.="
 <img class='img-fluid mesitas' style='position: fixed;
 left: " . 42 . "%;
-top: " . -20 . "%;
+top: " . -19 . "%;
 width: 10%;
-height: 16%;' href='../routes/punto.html' src='../icons/logo-x.png'>";
+height: 17%;' href='../routes/punto.html' src='../icons/logo-x.png'>";
 /* BACK */
 $salida.="<a href='../routes/punto.html'>
 <img class='img-fluid mesitas' style='position: fixed;
