@@ -4,14 +4,14 @@ function SetLocalStorage(punto) {
     window.location.href = "mapa.html";
 }
 
-function mapa() {
+function mapa(ancho, largo) {
     punto = localStorage.getItem('punto')
     console.log(punto)
     $.ajax({
         url: '../log/mesas.php',
         type: 'POST',
         dataType: 'html',
-        data: { lugar: punto },
+        data: { lugar: punto, largo: largo, ancho: ancho },
 
     })
         .done(function (respuesta) {

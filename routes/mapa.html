@@ -18,9 +18,15 @@
 <body class="fondo">
 
     <script>
-        mapa();
+        const img = new Image();
+        img.onload = function () {
+            mapa(this.width, this.height);
+
+        }
+        img.src = '../images/Fondo/piso.jpg';
+
     </script>
-    <div>
+    <div id="xd">
 
     </div>
 
