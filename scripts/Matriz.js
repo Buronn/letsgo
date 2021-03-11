@@ -4,11 +4,15 @@ function mapa(punto) {
         type: "POST",
         url: "mesas.php",
         data: { lugar: punto },
-        success: function (resultado) {
-            $('#xd').html(resultado);
-        }
+
     }
     )
+        .done(function (respuesta) {
+            $("#xd").html(respuesta);
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
 }
 
 
