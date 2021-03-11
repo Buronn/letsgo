@@ -4,22 +4,19 @@ $salida = "";
 $lugar = $_POST['lugar'];
 $sql = "Select Mesa,x,y from mesas where Punto='" . $lugar . "'";
 $result = $conexion->query($sql);
+$salida .= "<img src='../images/Fondo/piso.jpg' usemap='#image-map'>";
+?>
+<script>
+    const img = new Image();
+    img.onload = function() {
+        console.log(this.width + 'x' + this.height);
+    }
+    img.src = '../images/Fondo/piso.jpg';
+</script>
+<?php
 if ($result->num_rows > 0) {
-    $salida .= "<table>
-            <thead>
-            <tr>
-                <td>mesa</td>
-                <td>x</td>
-                <td>y</td>
-            </tr>
-            </thead>
-            <tbody>";
+
     while ($fila = $result->fetch_assoc()) {
-        $salida .= "<tr>
-                <td class=\"numero\">" . $fila['Mesa'] . "</td>
-                <td class=\"numero\">x=" . $fila['x'] . "</td>
-                <td class=\"numero\">y=" . $fila['y'] . "</td>
-                </tr>";
     }
 }
 echo "$salida";
