@@ -4,7 +4,7 @@ $salida = "";
 $lugar = $_POST['lugar'];
 $sql = "Select Mesa,x,y from mesas where Punto='" . $lugar . "'";
 $result = $conexion->query($sql);
-if ($resultado->num_rows > 0) {
+if ($result->num_rows > 0) {
     $salida .= "<table>
             <thead>
             <tr>
@@ -14,11 +14,11 @@ if ($resultado->num_rows > 0) {
             </tr>
             </thead>
             <tbody>";
-    while ($fila = $resultado->fetch_assoc()) {
+    while ($fila = $result->fetch_assoc()) {
         $salida .= "<tr>
-                <td>" . $fila['Mesa'] . "</td>
-                <td>$" . $fila['x'] . "</td>
-                <td>$" . $fila['y'] . "</td>
+                <td class=\"numero\">" . $fila['Mesa'] . "</td>
+                <td class=\"numero\">x=" . $fila['x'] . "</td>
+                <td class=\"numero\">y=" . $fila['y'] . "</td>
                 </tr>";
     }
 }

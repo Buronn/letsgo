@@ -9,7 +9,6 @@ $sql = "select Nombre,Password from usuarios where Nombre='" . $usuario . "' and
 $resultado = $conexion->query($sql);
 
 if (mysqli_num_rows($resultado) == 1) {
-    usleep(100000);
     echo "
   <div class=\"spinner-grow\" style=\"width: 3rem; height: 3rem;\" role=\"status\">
     <span class=\"visually-hidden\"></span>

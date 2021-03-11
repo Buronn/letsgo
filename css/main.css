@@ -9600,6 +9600,9 @@ button.bg-dark:focus {
   background-color: rgba(0, 0, 0, 0);
 }
 
+.numero{
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 
 .text-justify {
   text-align: justify !important;

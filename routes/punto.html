@@ -8,13 +8,16 @@
     <title>Merquen</title>
 
     <link rel="preload" href="../css/styles.css" as="style">
-    <link rel="preload" href="../css/main.css" as="bs">
+    <link rel="preload" href="../css/main.css" as="style">
     <link href="../css/main.css" rel="stylesheet">
     <link href="../css/styles.css" rel="stylesheet">
 
 </head>
 
 <body class="fondo">
+    <script>
+        localStorage.clear();
+    </script>
     <div class="list-group align-items-center" style="text-align: center;
     max-width: 50%;
     margin: auto;
@@ -22,9 +25,9 @@
         <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
             PUNTOS
         </a>
-        <a class="list-group-item list-group-item-action" onclick="mapa('BAR')">BAR</a>
-        <a class="list-group-item list-group-item-action" onclick="mapa('RESTAURANT')">RESTAURANT</a>
-        <a class="list-group-item list-group-item-action" onclick="mapa('RESTOBAR')">RESTOBAR</a>
+        <a class="list-group-item list-group-item-action" onclick="SetLocalStorage('BAR')">BAR</a>
+        <a class="list-group-item list-group-item-action" onclick="SetLocalStorage('RESTAURANT')">RESTAURANT</a>
+        <a class="list-group-item list-group-item-action" onclick="SetLocalStorage('RESTOBAR')">RESTOBAR</a>
         <a class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">OTRO</a>
     </div>
 </body>
