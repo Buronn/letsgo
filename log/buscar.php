@@ -13,15 +13,15 @@ if ($resultado->num_rows > 0) {
             <tr>
                 <td>Nombre</td>
                 <td>Valor</td>
-                <td>Boton</td>
+                <td></td>
             </tr>
             </thead>
             <tbody>";
     while ($fila = $resultado->fetch_assoc()) {
         $salida .= "<tr>
                 <td>" . $fila['NProducto'] . "</td>
-                <td>$" . $fila['Valor'] . "</td>
-                <td><a class='btn btn-default' onclick='select()'>agregar</a>
+                <td class='numero'>$" . $fila['Valor'] . "</td>
+                <td><a class='btn btn-default titulo' onclick='select()'>+</a>
                 </tr>";
     }
 } else {
