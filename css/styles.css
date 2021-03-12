@@ -20,33 +20,35 @@ body{
     font-family: "Bulletto Killa";
     background-image: url(../images/fondo-desenfocado.png);
     background-position: center;
+    background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 200rem;
     box-shadow: black;
     filter:contrast(100%);
 }
+
 .titulo{
     font-size: 3rem;
 }
 .mapa{
     margin:auto;
-    margin-top: 20%;
+    margin-top: 10%;
     margin-left: 2%;
     margin-right: 2%;
-    max-height: 60%;
-    border: 1px solid rgb(7, 46, 6);
-    display: flex;
-    overflow-y: auto;
+    display:flex;
+
 
 }
 .mapa .image{
     text-align: center;
 }
 .mapa .mesitas{
+    
     margin-left: 3%;
     margin-right: 3%;
     margin-top: 1%;
+    margin-bottom: 10%;
 }
 .sesion{
     font-family: "Bulletto Killa";
