@@ -21,6 +21,7 @@
 <body class="fondo">
 
     <script>
+        localStorage.removeItem('mesa_num')
         const img = new Image();
         img.onload = function () {
             mapa(this.width, this.height);
