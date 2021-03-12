@@ -1,4 +1,5 @@
 <?php
+
 require "conexion.php";
 $salida = "";
 $query = "select * from productos";
@@ -18,12 +19,14 @@ if ($resultado->num_rows > 0) {
             </thead>
             ";
     while ($fila = $resultado->fetch_assoc()) {
+        $a = $fila['NProducto'];
+        $a = str_replace(" ","&nbsp;",$a);
+        $b = $fila['Valor'];
         $salida .= "<tr>
-                <td>" . $fila['NProducto'] . "</td>
+                <td>" . $a . "</td>
                 <td>$" . $fila['Valor'] . "</td>
-                <script>console.log('onclick='select('" . $fila['NProducto'] . "','" . $fila['Valor'] . "')'')
-                </script>
-                <td><button class='btn btn-default' >agregar</button>
+                <script>console.log('".$a."')</script>
+                <td><a onclick=Select(\"".$a."\",'" . $fila['Valor'] . "')>a</td>
                 </tr>";
     }
 } else {

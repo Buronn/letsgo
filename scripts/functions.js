@@ -27,7 +27,7 @@ function mapa(ancho, largo) {
 
 
 
-function select(Nproduct, Valor) {
+function Select(Nproduct, Valor) {
     punto = localStorage.getItem('punto');
     mesa = localStorage.getItem('mesa_num');
     $.ajax({
