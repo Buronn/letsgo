@@ -1,7 +1,9 @@
 
-function SetLocalStorage(punto) {
-    localStorage.setItem('punto', punto);
-    window.location.href = "mapa.html";
+function SetLocalStorage(key,punto) {
+    localStorage.setItem(key, punto);
+}
+function GoTo(url){
+    window.location.href = url;
 }
 
 function mapa(ancho, largo) {
