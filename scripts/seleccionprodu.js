@@ -1,10 +1,13 @@
-function select(mesa) {
+function select() {
+    mesa = localStorage.getItem('mesa_num')
+    punto = localStorage.getItem('punto')
     $.ajax({
         url: '../log/agregarproducto.php',
         type: 'POST',
         dataType: 'html',
         data: {
-            mesa: mesa
+            mesa: mesa,
+            punto: punto
         },
 
     })

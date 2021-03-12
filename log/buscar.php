@@ -21,7 +21,7 @@ if ($resultado->num_rows > 0) {
         $salida .= "<tr>
                 <td>" . $fila['NProducto'] . "</td>
                 <td>$" . $fila['Valor'] . "</td>
-                <td><a class='btn btn-default' onclick='agregarprodu()'>agregar</a>
+                <td><a class='btn btn-default' onclick='select()'>agregar</a>
                 </tr>";
     }
 } else {

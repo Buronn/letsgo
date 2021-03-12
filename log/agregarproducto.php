@@ -2,5 +2,6 @@
 require "conexion.php";
 $salida = "";
 $mesa = $_POST['mesa'];
-$salida .= "<script>console.log('" . $mesa . "')</script>";
+$punto = $_POST['punto'];
+
 echo "$salida";
