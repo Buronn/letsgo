@@ -26,7 +26,7 @@ if ($resultado->num_rows > 0) {
                 <td>" . $a . "</td>
                 <td>$" . $fila['Valor'] . "</td>
                 <script>console.log('".$a."')</script>
-                <td><a onclick=Select(\"".$a."\",'" . $fila['Valor'] . "')>a</td>
+                <td><button class='titulo' onclick=Select(\"".$a."\",'" . $fila['Valor'] . "')>+</td>
                 </tr>";
     }
 } else {
