@@ -13,6 +13,7 @@ if ($resultado->num_rows > 0) {
             <tr>
                 <td>Nombre</td>
                 <td>Valor</td>
+                <td>Boton</td>
             </tr>
             </thead>
             <tbody>";
@@ -20,6 +21,7 @@ if ($resultado->num_rows > 0) {
         $salida .= "<tr>
                 <td>" . $fila['NProducto'] . "</td>
                 <td>$" . $fila['Valor'] . "</td>
+                <td><a class='btn btn-default' onclick='agregarprodu()'>agregar</a>
                 </tr>";
     }
 } else {
