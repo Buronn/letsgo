@@ -8,7 +8,7 @@ function buscar_datos(consulta) {
 		data: { consulta: consulta },
 	})
 		.done(function (respuesta) {
-			$("#datos").html(respuesta);
+			$("#agregados").html(respuesta);
 		})
 		.fail(function () {
 			console.log("error");
