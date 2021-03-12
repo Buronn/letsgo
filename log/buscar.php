@@ -25,7 +25,7 @@ if ($resultado->num_rows > 0) {
         $salida .= "<tr>
                 <td>" . $a . "</td>
                 <td>$" . $fila['Valor'] . "</td>
-                <script>console.log('".$a."')</script>
+                <script>onclick=Select('actualizar','')</script>
                 <td><button class='titulo' onclick=Select(\"".$a."\",'" . $fila['Valor'] . "')>+</td>
                 </tr>";
     }
