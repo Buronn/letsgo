@@ -13,7 +13,7 @@ if ($resultado->num_rows > 0) {
             <tr>
                 <td>Nombre</td>
                 <td>Valor</td>
-                <td>Boton</td>
+                <td></td>
             </tr>
             </thead>
             ";
