@@ -16,7 +16,7 @@ if ($resultado->num_rows > 0) {
     $sql = "insert into orden (NProducto,punto,valor,mesa,cantidad) values('" . $nombre . "','" . $punto . "','" . $valor . "','" . $mesa . "',1)";
     $resultado = $conexion->query($sql);
 }
-$sql = "select NProducto,valor,cantidad from orden where NProducto='" . $nombre . "'and punto='" . $punto . "'and mesa='" . $mesa . "'";
+$sql = "select NProducto,valor,cantidad from orden where punto='" . $punto . "'and mesa='" . $mesa . "'";
 $resultado = $conexion->query($sql);
 $salida .= "<table>
 <thead>
@@ -29,7 +29,7 @@ $salida .= "<table>
 ";
 while ($fila = $resultado->fetch_assoc()) {
     $a = $fila['NProducto'];
-    $a = str_replace(" ","&nbsp;",$a);
+    $a = str_replace(" ", "&nbsp;", $a);
     $salida .= "<tr>
             <td>" . $a . ".</td>
             <td>x" . $fila['cantidad'] . "</td>
