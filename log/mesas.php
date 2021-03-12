@@ -12,13 +12,8 @@ $salida .= "<div class='mapa'><img class='img-fluid' style='border-radius: 5%; m
 $salida .= "<map name=\"workmap\">"; 
 
 while ($fila = $result->fetch_assoc()) {
-<<<<<<< HEAD
-    $salida .= "<area src='../icons/Mesa Redonda 4 Sillas/Mesa Blanco/vacia.gif target='_self' alt='" . $fila['Mesa'] . "' title='" . $fila['Mesa'] . "' href='' coords=\"" . $ancho * ((float)$fila['x'] + 1) . "," . $largo * ((float)$fila['y'] + 1) . ",44\" shape='circle'>";
-    $salida .= "<script>console.log(" . (((float)$fila['x']) * 100) / $ancho . ")</script><a href='../routes/Busqueda.html' onclick='select('" . $fila['Mesa'] . "')'>
-=======
     $salida .= "<area src='../icons/Mesa Redonda 4 Sillas/Mesa Verde/vacia.gif' target='_self' alt='algo' title='algo' href='' coords=\"" . $ancho * ((float)$fila['x']+1) . "," . $largo * ((float)$fila['y']+1) . ",44\" shape='circle'>";
     $salida .= "<script>console.log(" . (((float)$fila['x'])*100)/$ancho . ")</script><a href='../routes/orden.html'>
->>>>>>> 4bb15c281fab8e7e40b5613b7b6cfec55925c430
     <img class='img-fluid mesitas' style='position: fixed;
     left: " . ((((float)$fila['x']) * 100) / $ancho * 6.8) . "%;
     top: " . (((float)$fila['y']) * 110) / $largo * 4.5 . "%;
