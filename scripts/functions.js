@@ -1,3 +1,49 @@
+
+function SetLocalStorage(key,punto) {
+    localStorage.setItem(key, punto);
+}
+function GoTo(url){
+    window.location.href = url;
+}
+
+function mapa(ancho, largo) {
+    punto = localStorage.getItem('punto')
+    console.log(punto)
+    $.ajax({
+        url: '../log/mesas.php',
+        type: 'POST',
+        dataType: 'html',
+        data: { lugar: punto, largo: largo, ancho: ancho },
+
+    })
+        .done(function (respuesta) {
+            $("#xd").html(respuesta);
+
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+}
+
+
+
+function select(mesa) {
+    $.ajax({
+        url: '../log/agregarproducto.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            mesa: mesa
+        },
+
+    })
+        .done(function (respuesta) {
+            $("#poder").html(respuesta);
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+};
 function login() {
     var user = document.getElementById("user").value;
     var pass = document.getElementById("pass").value;
