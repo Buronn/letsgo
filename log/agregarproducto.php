@@ -40,7 +40,7 @@ if ($nombre == 'actualizar') {
         $a = ucwords($a);
         $salida .= "
                 <h3 class='word-adjust'>" . $a . ".</h3>
-                <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . " </h3>
+                <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . "</h3>
                 ";
     }
     echo $salida;

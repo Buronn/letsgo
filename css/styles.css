@@ -49,8 +49,8 @@ body{
     border-radius: 2%;
     overflow:scroll;
     height:auto;
-    min-height: 100vh;
-    max-height:100vh;
+    min-height: 80vh;
+    max-height:80vh;
 
 }
 .word-hidden{
