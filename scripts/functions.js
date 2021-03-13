@@ -7,8 +7,8 @@ function GoTo(url) {
 }
 
 function mapa(ancho, largo) {
-    punto = localStorage.getItem('punto')
-    console.log(punto)
+    punto = localStorage.getItem('punto');
+    console.log(punto);
     $.ajax({
         url: '../log/mesas.php',
         type: 'POST',

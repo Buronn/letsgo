@@ -22,8 +22,10 @@ if ($resultado->num_rows > 0) {
         $a = $fila['NProducto'];
         $a = str_replace(" ","&nbsp;",$a);
         $b = $fila['Valor'];
+        $c = strtolower($a);
+        $c = ucwords($c);
         $salida .= "<tr>
-                <td>" . $a . "</td>
+                <td>" . $c . "</td>
                 <td>$" . $fila['Valor'] . "</td>
                 <script>onclick=Select('actualizar','')</script>
                 <td><button class='titulo' onclick=Select(\"".$a."\",'" . $fila['Valor'] . "')>+</td>

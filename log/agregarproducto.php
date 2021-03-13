@@ -5,32 +5,22 @@ $mesa = $_POST['mesa'];
 $punto = $_POST['punto'];
 $valor = $_POST['Valor'];
 $nombre = $_POST['Nproduct'];
-if ($nombre == 'actualizar'){
+if ($nombre == 'actualizar') {
     $sql = "select NProducto,valor,cantidad from orden where punto='" . $punto . "'and mesa='" . $mesa . "'";
     $resultado = $conexion->query($sql);
-    $salida .= "<table>
-    <thead>
-    <tr>
-        <td>Nombre</td>
-        <td>Cantidad</td>
-        <td>Valor</td>
-    </tr>
-    </thead>
-    ";
     while ($fila = $resultado->fetch_assoc()) {
         $a = $fila['NProducto'];
         $a = str_replace(" ", "&nbsp;", $a);
-        $salida .= "<tr>
-                <td>" . $a . ".</td>
-                <td>x" . $fila['cantidad'] . "</td>
-                <td>$" . $fila['valor'] . "
-                </tr>";
+        $a = strtolower($a);
+        $a = ucwords($a);
+        $salida .= "
+        <h3 class='word-hidden'>" . $a . ".</h3>
+        <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . " </h3>
+        ";
     }
     echo $salida;
-    
-}
-else{
-$sql = "select * from orden where NProducto='" . $nombre . "'and punto='" . $punto . "'and mesa='" . $mesa . "'";
+} else {
+    $sql = "select * from orden where NProducto='" . $nombre . "'and punto='" . $punto . "'and mesa='" . $mesa . "'";
     $resultado = $conexion->query($sql);
     if ($resultado->num_rows > 0) {
         $sql = "update orden
@@ -43,23 +33,15 @@ $sql = "select * from orden where NProducto='" . $nombre . "'and punto='" . $pun
     }
     $sql = "select NProducto,valor,cantidad from orden where punto='" . $punto . "'and mesa='" . $mesa . "'";
     $resultado = $conexion->query($sql);
-    $salida .= "<table>
-    <thead>
-    <tr>
-        <td>Nombre</td>
-        <td>Cantidad</td>
-        <td>Valor</td>
-    </tr>
-    </thead>
-    ";
     while ($fila = $resultado->fetch_assoc()) {
         $a = $fila['NProducto'];
         $a = str_replace(" ", "&nbsp;", $a);
-        $salida .= "<tr>
-                <td>" . $a . ".</td>
-                <td>x" . $fila['cantidad'] . "</td>
-                <td>$" . $fila['valor'] . "
-                </tr>";
+        $a = strtolower($a);
+        $a = ucwords($a);
+        $salida .= "
+                <h3 class='word-adjust'>" . $a . ".</h3>
+                <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . " </h3>
+                ";
     }
     echo $salida;
 }

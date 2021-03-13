@@ -16,32 +16,33 @@
 
 <body class="fondo">
     <section>
-        <div>
-            <form class="sesion">
-                <div>
-                    <img src="icons/mp-01.png" class="img-fluid p-5" alt="Image not found"
-                        style="max-width: 25rem;margin:auto">
+
+        <form class="sesion">
+            <div>
+                <img src="icons/mp-01.png" class="img-fluid p-5" alt="Image not found"
+                    style="max-width: 25rem;margin:auto">
+            </div>
+            <fieldset class="formulario">
+                <legend style="color:rgb(177, 177, 177);" href="css/Bulleto_Killa.ttf" class="titulo">Inicie sesión
+                </legend>
+                <div class="form-floating mb-3 row align-items-center">
+                    <input class="col" type="text" placeholder="Nombre" id="user">
                 </div>
-                <fieldset class="formulario">
-                    <legend style="color:rgb(177, 177, 177);" href="css/Bulleto_Killa.ttf" class="titulo">Inicie sesión</legend>
-                    <div class="form-floating mb-3 row align-items-center">
-                        <input class="col" type="text" placeholder="Nombre" id="user">
-                    </div>
-                    <div class="form-floating mb-3 row align-items-center">
+                <div class="form-floating mb-3 row align-items-center">
 
-                        <input class="col" type="password" placeholder="Contraseña" id="pass">
-                    </div>
+                    <input class="col" type="password" placeholder="Contraseña" id="pass">
+                </div>
 
-                    <button class="btn btn-success btn-lg" style="max-width: 20rem;font-size: 2rem;" type="button"
-                        onclick="login(user,pass)">Continuar</button>
+                <button class="btn btn-success btn-lg" style="max-width: 20rem;font-size: 2rem;" type="button"
+                    onclick="login(user,pass)">Continuar</button>
 
 
-                </fieldset>
+            </fieldset>
 
-                <div id="alerta" class="p-5"></div>
+            <div id="alerta" class="p-5"></div>
 
-            </form>
-        </div>
+        </form>
+
     </section>
 
 </body>
