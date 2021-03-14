@@ -45,7 +45,7 @@
   src:url(/css/Bulletto_Killa.ttf);
 }
 html {
-  font-family: "Bulleto Killa";
+  font-family: "Bulletto Killa";
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -57,7 +57,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: "Bulleto Killa";
+  font-family: "Bulletto Killa";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -2425,8 +2425,8 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #750a0a;
+  border-color: #be0b0b;
 }
 .btn-primary:hover {
   color: #fff;
