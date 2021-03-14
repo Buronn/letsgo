@@ -49,9 +49,9 @@ body{
     border-radius: 2%;
     overflow:scroll;
     height:auto;
+    border-style:solid;
     min-height: 80vh;
     max-height:80vh;
-
 }
 .word-hidden{
     overflow:visible;

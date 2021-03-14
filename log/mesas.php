@@ -8,18 +8,31 @@ $sql = "Select Mesa,x,y from mesas where Punto='" . $lugar . "' and x is not nul
 $result = $conexion->query($sql);
 $ancho = (float)$ancho / 10;
 $largo = (float)$largo / 10;
-$salida .= "<div class='mapa'><img class='img-fluid' style='border-radius: 5%; max-width=100%' usemap='#workmap' src='../images/Fondo/piso2.jpg' >";
+$salida .= "
+<div class='mapa'><img class='img-fluid' style='border-radius: 5%; max-width=100%' usemap='#workmap' src='../images/Fondo/piso2.jpg' >";
 $salida .= "<map name=\"workmap\">";
 
 while ($fila = $result->fetch_assoc()) {
-    $salida .= "<area src='../icons/Mesa Redonda 4 Sillas/Mesa Verde/vacia.gif' target='_self' alt='algo' title='algo' href='' coords=\"" . $ancho * ((float)$fila['x'] + 1) . "," . $largo * ((float)$fila['y'] + 1) . ",44\" shape='circle'>";
-    $salida .= "<script>console.log(" . (((float)$fila['x']) * 100) / $ancho . ")</script><a href='../routes/Busqueda.html' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
-    <img class='img-fluid mesitas' style='position: fixed;
-    left: " . ((((float)$fila['x']) * 100) / $ancho * 6.8) . "%;
-    top: " . (((float)$fila['y']) * 110) / $largo * 4.5 . "%;
-    width: 9.6%;
-    height: 15%;' href='../routes/orden.html' src='../icons/Mesa Redonda 4 Sillas/Mesa Verde/vacia.gif'>
+    $left = ((((float)$fila['x']) * 100) / $ancho * 6.8);
+    $top = (((float)$fila['y']) * 110) / $largo * 4.5;
+    $salida .= "
+
+
+
+
+<div class='contenedor'>
+    <a onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
+        <img class='img-fluid mesitas btn-abrir-popup' id='btn-abrir-popup'
+        style='position: fixed;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
+        src='../icons/Mesa Redonda 4 Sillas/Mesa Verde/vacia.gif'>
     </a>
+    <div class='overlay' id='overlay'>
+    <div class='popup' id='popup'>
+        <a href='#' id='btn-cerrar-popup' class='btn-cerrar-popup'>X<i class='fas fa-times'></i></a>
+    </div>
+</div>
+    </div>
+    <script src='/scripts/popup.js'></script>
     ";
 
     /* coords=\"" . $ancho * ((float)$fila['x']+1) . "," . $largo * ((float)$fila['y']+1) . ",44\" */
@@ -36,7 +49,7 @@ $salida .= "<a href='../routes/punto.html'>
 <img class='img-fluid mesitas' style='position: fixed;
 left: " . 2 . "%;
 top: " . -15 . "%;
-width: 7%;
+width: 6%;
 height: 11%;' href='../routes/punto.html' src='../icons/back-red.png'>
 </a>";
 /* LOGOUT */
