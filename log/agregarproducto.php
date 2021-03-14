@@ -11,11 +11,12 @@ if ($nombre == 'actualizar') {
     while ($fila = $resultado->fetch_assoc()) {
         $a = $fila['NProducto'];
         $a = str_replace(" ", "&nbsp;", $a);
+        $xd = str_replace(" ", "&nbsp;", $fila['NProducto']);
         $a = strtolower($a);
         $a = ucwords($a);
         $salida .= "
         <h3 class='word-hidden'>" . $a . ".</h3>
-        <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . " </h3>
+        <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . " <button onclick=Borrar('$xd')>-</button></h3>
         ";
     }
     echo $salida;
@@ -36,11 +37,12 @@ if ($nombre == 'actualizar') {
     while ($fila = $resultado->fetch_assoc()) {
         $a = $fila['NProducto'];
         $a = str_replace(" ", "&nbsp;", $a);
+        $xd = str_replace(" ", "&nbsp;", $fila['NProducto']);
         $a = strtolower($a);
         $a = ucwords($a);
         $salida .= "
                 <h3 class='word-adjust'>" . $a . ".</h3>
-                <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . "</h3>
+                <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . "<button onclick=Borrar('$xd')>-</button></h3>
                 ";
     }
     echo $salida;
