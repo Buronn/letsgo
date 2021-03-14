@@ -1,7 +1,7 @@
 <?php
 
 require "conexion.php";
-$salida = "";
+$salida = "<script>onclick=Select('actualizar','')</script>";
 $query = "select * from productos";
 if (isset($_POST['consulta'])) {
     $q = $conexion->real_escape_string($_POST['consulta']);
@@ -20,16 +20,16 @@ if ($resultado->num_rows > 0) {
             ";
     while ($fila = $resultado->fetch_assoc()) {
         $a = $fila['NProducto'];
-        $a = str_replace(" ","&nbsp;",$a);
+        $a = str_replace(" ", "&nbsp;", $a);
         $b = $fila['Valor'];
         $c = strtolower($a);
         $c = ucwords($c);
         $salida .= "<tr>
                 <td>" . $c . "</td>
                 <td>$" . $fila['Valor'] . "</td>
-                <script>onclick=Select('actualizar','')</script>
-                <td><button class='titulo' onclick=Select(\"".$a."\",'" . $fila['Valor'] . "')>+</td>
-                </tr>";
+
+        <td><button class='titulo' onclick=Select(\"" . $a . "\",'" . $fila['Valor'] . "')>+</td>
+        </tr>";
     }
 } else {
     $salida .= "Error en la búsqueda";
