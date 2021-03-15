@@ -1,5 +1,4 @@
 <?php
-
 require "conexion.php";
 $salida = "<script>onclick=Select('actualizar','')</script>";
 $query = "select * from productos";
