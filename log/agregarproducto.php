@@ -8,6 +8,7 @@ $nombre = $_POST['Nproduct'];
 if ($nombre == 'actualizar') {
     $sql = "select NProducto,valor,cantidad from orden where punto='" . $punto . "'and mesa='" . $mesa . "'";
     $resultado = $conexion->query($sql);
+    $total = 0;
     while ($fila = $resultado->fetch_assoc()) {
         $a = $fila['NProducto'];
         $a = str_replace(" ", "&nbsp;", $a);
@@ -18,7 +19,9 @@ if ($nombre == 'actualizar') {
         <h3 class='word-hidden'>" . $a . ".</h3>
         <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . " <button onclick=Borrar('$xd')>-</button></h3>
         ";
+        $total = $total + $fila['valor'];
     }
+    $salida .= "<h3>Total='$total'</h3>";
     echo $salida;
 } else {
     $sql = "select * from orden where NProducto='" . $nombre . "'and punto='" . $punto . "'and mesa='" . $mesa . "'";
@@ -34,6 +37,7 @@ if ($nombre == 'actualizar') {
     }
     $sql = "select NProducto,valor,cantidad from orden where punto='" . $punto . "'and mesa='" . $mesa . "'";
     $resultado = $conexion->query($sql);
+    $total = 0;
     while ($fila = $resultado->fetch_assoc()) {
         $a = $fila['NProducto'];
         $a = str_replace(" ", "&nbsp;", $a);
@@ -44,6 +48,8 @@ if ($nombre == 'actualizar') {
                 <h3 class='word-adjust'>" . $a . ".</h3>
                 <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . "<button onclick=Borrar('$xd')>-</button></h3>
                 ";
+        $total = $total + $fila['valor'];
     }
+    $salida .= "<h3>Total='$total'</h3>";
     echo $salida;
 }
