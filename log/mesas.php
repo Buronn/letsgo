@@ -4,7 +4,7 @@ $salida = "";
 $lugar = $_POST['lugar'];
 $ancho = $_POST['ancho'];
 $largo = $_POST['largo'];
-$sql = "Select Mesa,x,y from mesas where Punto='" . $lugar . "' and x is not null and y is not null";
+$sql = "Select * from mesas where Punto='" . $lugar . "' and x is not null and y is not null";
 $result = $conexion->query($sql);
 $ancho = (float)$ancho / 10;
 $largo = (float)$largo / 10;
@@ -25,7 +25,7 @@ while ($fila = $result->fetch_assoc()) {
     <a onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
         <img class='img-fluid mesitas btn-abrir-popup' id='btn-abrir-popup$aux'
         style='position: absolute;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
-        src='../icons/Mesa Redonda 4 Sillas/Mesa Verde/vacia.gif'>
+        src='../mesas_images/" . $fila['forma'] . "_" . $fila['color'] . "_" . $fila['personas'] . ".gif'>
     </a>
     <div class='overlay' id='overlay$aux'>
         
