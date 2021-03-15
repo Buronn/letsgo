@@ -24,7 +24,10 @@ function mapa(ancho, largo) {
             console.log("Error: Not user found")
         });
 }
-
+function timbre(){
+    var audio = new Audio('../sounds/bell.mp3');
+    audio.play();
+}
 
 
 function Select(Nproduct, Valor) {
