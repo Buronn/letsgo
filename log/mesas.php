@@ -16,31 +16,50 @@ while ($fila = $result->fetch_assoc()) {
 
     $left = ((((float)$fila['x']) * 100) / $ancho * 6.8);
     $top = (((float)$fila['y']) * 110) / $largo * 4.5;
+    if($fila['personas']==0)
     $salida .= "
-
-
-
-
-<div class='contenedor'>
-    <a onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
-        <img class='img-fluid mesitas btn-abrir-popup' id='btn-abrir-popup$aux'
-        style='position: absolute;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
-        src='../mesas_images/" . $fila['forma'] . "_" . $fila['color'] . "_" . $fila['personas'] . ".gif'>
-    </a>
-    <div class='overlay' id='overlay$aux'>
-        
-        <div class='popup' id='popup$aux'>
-            <h3>Cubiertos</h3>
-            <form action='./Busqueda.html'>
-                <input type='number' id='quantity' name='quantity' min='1' max='4'>
-                <input class='btn-submit' type='submit' ></input>
-            </form>
-            <h3><label href='#' id='btn-cerrar-popup$aux' class='btn-cerrar-popup'>x</label></h3>
+    <div class='contenedor'>
+        <a onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
+            <img class='img-fluid mesitas btn-abrir-popup' id='btn-abrir-popup$aux'
+            style='position: absolute;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
+            src='../images_mesas/" . $fila['forma'] . "_" . $fila['color'] . "_" . $fila['personas'] . ".gif'>
+        </a>
+        <div class='overlay' id='overlay$aux'>
+            <div class='popup' id='popup$aux'>
+                <h3>Cubiertos</h3>
+                <form action='./Busqueda.html'>
+                    <input type='number' id='quantity' name='quantity' min='1' max='4'>
+                    <input class='btn-submit' type='submit' ></input>
+                </form>
+                <h3><label href='#' id='btn-cerrar-popup$aux' class='btn-cerrar-popup'>x</label></h3>
+            </div>
         </div>
     </div>
-</div>
-<script src='/scripts/popup.js'></script>
+    <script src='/scripts/popup.js'></script>
     ";
+    else{
+        $salida .= "
+    <div class='contenedor'>
+        <a href='./Busqueda.html' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
+            <img class='img-fluid mesitas btn-abrir-popup' id='btn-abrir-popup$aux'
+            style='position: absolute;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
+            src='../images_mesas/" . $fila['forma'] . "_" . $fila['color'] . "_" . $fila['personas'] . ".gif'>
+        </a><script>setTimeout(() => {},2000);</script>
+        
+        <div class='overlay' id='overlay$aux'>
+            <div class='popup' id='popup$aux'>
+                <h3>Cubiertos</h3>
+                <form action='./Busqueda.html'>
+                    <input type='number' id='quantity' name='quantity' min='1' max='4'>
+                    <input class='btn-submit' type='submit' ></input>
+                </form>
+                <h3><label href='#' id='btn-cerrar-popup$aux' class='btn-cerrar-popup'>x</label></h3>
+            </div>
+        </div>
+    </div>
+    <script src='/scripts/popup.js'></script>
+    ";
+    }
 
     /* coords=\"" . $ancho * ((float)$fila['x']+1) . "," . $largo * ((float)$fila['y']+1) . ",44\" */
     $aux = $aux + 1;
