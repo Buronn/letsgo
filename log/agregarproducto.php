@@ -16,12 +16,12 @@ if ($nombre == 'actualizar') {
         $a = strtolower($a);
         $a = ucwords($a);
         $salida .= "
-        <h3 class='word-hidden'>" . $a . ".</h3>
+        <h3 >" . $a . ".</h3>
         <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . " <button onclick=Borrar('$xd')>-</button></h3>
         ";
         $total = $total + $fila['valor'];
     }
-    $salida .= "<h3>Total='$total'</h3>";
+    $salida .= "<h3 class='titulo'>Total=$$total</h3>";
     echo $salida;
 } else {
     $sql = "select * from orden where NProducto='" . $nombre . "'and punto='" . $punto . "'and mesa='" . $mesa . "'";
@@ -50,6 +50,6 @@ if ($nombre == 'actualizar') {
                 ";
         $total = $total + $fila['valor'];
     }
-    $salida .= "<h3>Total='$total'</h3>";
+    $salida .= "<h3 class='titulo'>Total=$$total</h3>";
     echo $salida;
 }

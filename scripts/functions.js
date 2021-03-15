@@ -99,6 +99,28 @@ function toUTF8Array(str) {
     }
     return utf8;
 }
+function ocupado(personas) {
+    punto1 = localStorage.getItem('punto');
+    mesa1 = localStorage.getItem('mesa_num');
+    console.log('poto')
+    $.ajax({
+        url: '../log/buscar.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            mesa2: mesa1,
+            punto1: punto1,
+            personas: personas,
+        },
+
+    })
+        .done(function (respuesta) {
+            $("#prueba").html(respuesta);
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+}
 function Borrar(borrar) {
     punto1 = localStorage.getItem('punto');
     mesa1 = localStorage.getItem('mesa_num');
