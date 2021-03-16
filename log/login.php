@@ -13,10 +13,11 @@ if (mysqli_num_rows($resultado) == 1) {
     <script>
     array = toUTF8Array('" . $usuario . "');
     var a = '';
+    console.log(array);
     array.forEach(element => {
       a = a+element;
     });
-    createCookie('u_lg',a,0.1);
+    createCookie('u_lg',array,0.1);
     function createCookie(cookieName,cookieValue,daysToExpire)
         {
           var date = new Date();

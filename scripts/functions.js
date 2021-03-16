@@ -8,7 +8,6 @@ function GoTo(url) {
 
 function mapa(ancho, largo) {
     punto = localStorage.getItem('punto');
-    console.log(punto);
     $.ajax({
         url: '../log/mesas.php',
         type: 'POST',
@@ -56,7 +55,7 @@ function login() {
     var user = document.getElementById("user").value;
     var pass = document.getElementById("pass").value;
     $.ajax({
-        url: '../log/verificarlogin.php',
+        url: '../log/login.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -72,37 +71,60 @@ function login() {
             console.log("Error: Not user found")
         });
 };
-function toUTF8Array(str) {
-    let utf8 = [];
-    for (let i = 0; i < str.length; i++) {
-        let charcode = str.charCodeAt(i);
-        if (charcode < 0x80) utf8.push(charcode);
-        else if (charcode < 0x800) {
-            utf8.push(0xc0 | (charcode >> 6),
-                0x80 | (charcode & 0x3f));
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
         }
-        else if (charcode < 0xd800 || charcode >= 0xe000) {
-            utf8.push(0xe0 | (charcode >> 12),
-                0x80 | ((charcode >> 6) & 0x3f),
-                0x80 | (charcode & 0x3f));
-        }
-        // surrogate pair
-        else {
-            i++;
-            // UTF-16 encodes 0x10000-0x10FFFF by
-            // subtracting 0x10000 and splitting the
-            // 20 bits of 0x0-0xFFFFF into two halves
-            charcode = 0x10000 + (((charcode & 0x3ff) << 10)
-                | (str.charCodeAt(i) & 0x3ff));
-            utf8.push(0xf0 | (charcode >> 18),
-                0x80 | ((charcode >> 12) & 0x3f),
-                0x80 | ((charcode >> 6) & 0x3f),
-                0x80 | (charcode & 0x3f));
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
         }
     }
-    return utf8;
+    return "";
 }
-function pagar() {
+
+function check_login() {
+    var a;
+    a = getCookie('u_lg');
+    a = a.split(",")
+    var decodedString = "";
+    if (a != 0) {
+        var encodedString = String.fromCharCode.apply(null, a),
+            decodedString = decodeURIComponent(escape(atob(encodedString)));
+    }
+    $.ajax({
+        url: '../log/check_login.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            name: decodedString,
+        },
+
+    })
+        .done(function (respuesta) {
+            if (respuesta == true) {
+                GoTo('../index.html')
+            }
+        })
+        .fail(function () {
+        });
+};
+
+function toUTF8Array(str) {
+    var string = btoa(unescape(encodeURIComponent(str))),
+        charList = string.split(''),
+        uintArray = [];
+    for (var i = 0; i < charList.length; i++) {
+        uintArray.push(charList[i].charCodeAt(0));
+    }
+    return new Uint8Array(uintArray);
+}
+
+function BorrarTodo() {
     punto1 = localStorage.getItem('punto');
     mesa1 = localStorage.getItem('mesa_num');
     $.ajax({
@@ -112,11 +134,12 @@ function pagar() {
         data: {
             mesa1: mesa1,
             punto1: punto1,
-
         },
 
     })
         .done(function (respuesta) {
+            Select('actualizar', '');
+            GoTo('mapa.html')
             $("#nose").html(respuesta);
         })
         .fail(function () {
@@ -128,7 +151,6 @@ function ocupado() {
     mesa = localStorage.getItem('mesa_num');
     cubiertos = localStorage.getItem('cubiertos');
     localStorage.removeItem('cubiertos');
-    console.log('poto')
     $.ajax({
         url: '../log/ocupado.php',
         type: 'POST',
