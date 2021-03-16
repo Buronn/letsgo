@@ -135,7 +135,26 @@ function toUTF8Array(str) {
     return new Uint8Array(uintArray);
 }
 
+function BorrarTodo(borrar) {
+    punto1 = localStorage.getItem('punto');
+    mesa1 = localStorage.getItem('mesa_num');
+    $.ajax({
+        url: '../log/borrartodo.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            mesa1: mesa1,
+            punto1: punto1,
+        },
 
+    })
+        .done(function (respuesta) {
+            $("#nose").html(respuesta);
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+};
 function ocupado() {
     punto = localStorage.getItem('punto');
     mesa = localStorage.getItem('mesa_num');
