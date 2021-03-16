@@ -13,6 +13,7 @@ if (mysqli_num_rows($resultado) == 1) {
     <script>
     array = toUTF8Array('" . $usuario . "');
     var a = '';
+    console.log(array);
     array.forEach(element => {
       a = a+element;
     });

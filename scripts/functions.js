@@ -24,7 +24,7 @@ function mapa(ancho, largo) {
             console.log("Error: Not user found")
         });
 }
-function timbre(){
+function timbre() {
     var audio = new Audio('../sounds/bell.mp3');
     audio.play();
 }
@@ -56,7 +56,7 @@ function login() {
     var user = document.getElementById("user").value;
     var pass = document.getElementById("pass").value;
     $.ajax({
-        url: '../log/verificarlogin.php',
+        url: '../log/login.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -72,36 +72,70 @@ function login() {
             console.log("Error: Not user found")
         });
 };
-function toUTF8Array(str) {
-    let utf8 = [];
-    for (let i = 0; i < str.length; i++) {
-        let charcode = str.charCodeAt(i);
-        if (charcode < 0x80) utf8.push(charcode);
-        else if (charcode < 0x800) {
-            utf8.push(0xc0 | (charcode >> 6),
-                0x80 | (charcode & 0x3f));
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
         }
-        else if (charcode < 0xd800 || charcode >= 0xe000) {
-            utf8.push(0xe0 | (charcode >> 12),
-                0x80 | ((charcode >> 6) & 0x3f),
-                0x80 | (charcode & 0x3f));
-        }
-        // surrogate pair
-        else {
-            i++;
-            // UTF-16 encodes 0x10000-0x10FFFF by
-            // subtracting 0x10000 and splitting the
-            // 20 bits of 0x0-0xFFFFF into two halves
-            charcode = 0x10000 + (((charcode & 0x3ff) << 10)
-                | (str.charCodeAt(i) & 0x3ff));
-            utf8.push(0xf0 | (charcode >> 18),
-                0x80 | ((charcode >> 12) & 0x3f),
-                0x80 | ((charcode >> 6) & 0x3f),
-                0x80 | (charcode & 0x3f));
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
         }
     }
-    return utf8;
+    return "";
 }
+
+function check_login() {
+    var a;
+    a = getCookie('u_lg');
+    console.log('a = ' + a)
+    a = Array.from(a, x => x);
+    var b;
+    b = [a.length / 2];
+    for (let i = 0; i < a.length; i = i + 2) {
+        console.log(i)
+        b[i / 2] = a[i] + a[i + 1]
+    }
+    console.log('b = ' + b)
+    var decodedString = "";
+    if (b != 0) {
+        var encodedString = String.fromCharCode.apply(null, b),
+            decodedString = decodeURIComponent(escape(atob(encodedString)));
+        console.log(decodedString);
+    }
+    $.ajax({
+        url: '../log/check_login.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            name: decodedString,
+        },
+
+    })
+        .done(function (respuesta) {
+            if (respuesta == true) {
+                GoTo('../index.html')
+            }
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+};
+
+function toUTF8Array(str) {
+    var string = btoa(unescape(encodeURIComponent(str))),
+        charList = string.split(''),
+        uintArray = [];
+    for (var i = 0; i < charList.length; i++) {
+        uintArray.push(charList[i].charCodeAt(0));
+    }
+    return new Uint8Array(uintArray);
+}
+
+
 function ocupado() {
     punto = localStorage.getItem('punto');
     mesa = localStorage.getItem('mesa_num');
