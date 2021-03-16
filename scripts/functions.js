@@ -8,7 +8,6 @@ function GoTo(url) {
 
 function mapa(ancho, largo) {
     punto = localStorage.getItem('punto');
-    console.log(punto);
     $.ajax({
         url: '../log/mesas.php',
         type: 'POST',
@@ -91,20 +90,11 @@ function getCookie(cname) {
 function check_login() {
     var a;
     a = getCookie('u_lg');
-    console.log('a = ' + a)
-    a = Array.from(a, x => x);
-    var b;
-    b = [a.length / 2];
-    for (let i = 0; i < a.length; i = i + 2) {
-        console.log(i)
-        b[i / 2] = a[i] + a[i + 1]
-    }
-    console.log('b = ' + b)
+    a = a.split(",")
     var decodedString = "";
-    if (b != 0) {
-        var encodedString = String.fromCharCode.apply(null, b),
+    if (a != 0) {
+        var encodedString = String.fromCharCode.apply(null, a),
             decodedString = decodeURIComponent(escape(atob(encodedString)));
-        console.log(decodedString);
     }
     $.ajax({
         url: '../log/check_login.php',
@@ -121,7 +111,6 @@ function check_login() {
             }
         })
         .fail(function () {
-            console.log("Error: Not user found")
         });
 };
 
@@ -135,7 +124,7 @@ function toUTF8Array(str) {
     return new Uint8Array(uintArray);
 }
 
-function BorrarTodo(borrar) {
+function BorrarTodo() {
     punto1 = localStorage.getItem('punto');
     mesa1 = localStorage.getItem('mesa_num');
     $.ajax({
@@ -149,6 +138,8 @@ function BorrarTodo(borrar) {
 
     })
         .done(function (respuesta) {
+            Select('actualizar','');
+            GoTo('mapa.html')
             $("#nose").html(respuesta);
         })
         .fail(function () {
@@ -160,7 +151,6 @@ function ocupado() {
     mesa = localStorage.getItem('mesa_num');
     cubiertos = localStorage.getItem('cubiertos');
     localStorage.removeItem('cubiertos');
-    console.log('poto')
     $.ajax({
         url: '../log/ocupado.php',
         type: 'POST',

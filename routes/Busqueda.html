@@ -18,8 +18,10 @@
 </head>
 
 <body class="fondo">
-	<script>check_login()</script>
-    <div id="login"></div>
+	<script>
+		check_login()
+	</script>
+	<div id="login"></div>
 	<script>
 		ocupado()
 	</script>
@@ -53,27 +55,35 @@
 
 	</section>
 	<div style="padding: 1%;">
-
-			<a onclick=timbre() style="margin-left: 47%;" )>
-				<img id='btn-abrir-popup0' style="width: 6%;height: 6%;" src="../icons/timbre.png">
-			</a>
-			<div class='overlay' id='overlay0'>
-				<div class='popup' id='popup0'>
-					<h2>Orden enviada</h2>
-					<h3><button href='#' id='btn-cerrar-popup0' class="btn-success">OK</button></h3>
+		<div class="row">
+			<div class="col-5">
+			</div>
+			<div class="col-5">
+				<a onclick=timbre()>
+					<img id='btn-abrir-popup0' style="width: 20%;height: 100%;" src="../icons/timbre.png">
+				</a>
+				<div class='overlay' id='overlay0'>
+					<div class='popup' id='popup0'>
+						<h2>Orden enviada</h2>
+						<h3><button href='#' id='btn-cerrar-popup0' class="btn-success">OK</button></h3>
+					</div>
 				</div>
+
+			</div>
+			<div class="col-2">
+				<button type="button" class="btn btn-success titulo" onclick="BorrarTodo()">Pagar</button>
 			</div>
 
-		<script src='/scripts/popup.js'></script>
+			<script src='/scripts/popup.js'></script>
 
 
 
-	</div>
+		</div>
 
 
 
 
-	<script src="/scripts/popup.js"></script>
+		<script src="/scripts/popup.js"></script>
 </body>
 
 </html>
