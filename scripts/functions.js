@@ -24,7 +24,7 @@ function mapa(ancho, largo) {
             console.log("Error: Not user found")
         });
 }
-function timbre(){
+function timbre() {
     var audio = new Audio('../sounds/bell.mp3');
     audio.play();
 }
@@ -102,16 +102,37 @@ function toUTF8Array(str) {
     }
     return utf8;
 }
+function pagar(personas) {
+    punto1 = localStorage.getItem('punto');
+    mesa1 = localStorage.getItem('mesa_num');
+    $.ajax({
+        url: '../log/borrartodo.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            mesa1: mesa1,
+            punto1: punto1,
+
+        },
+
+    })
+        .done(function (respuesta) {
+            $("#prueba").html(respuesta);
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+}
 function ocupado(personas) {
     punto1 = localStorage.getItem('punto');
     mesa1 = localStorage.getItem('mesa_num');
     console.log('poto')
     $.ajax({
-        url: '../log/buscar.php',
+        url: '../log/ocupado.php',
         type: 'POST',
         dataType: 'html',
         data: {
-            mesa2: mesa1,
+            mesa1: mesa1,
             punto1: punto1,
             personas: personas,
         },

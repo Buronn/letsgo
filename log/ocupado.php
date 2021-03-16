@@ -1,12 +1,12 @@
 <?php
 
 require "conexion.php";
+$personas = $_POST['cubiertos'];
+$punto = $_POST['punto'];
+$mesas = $_POST['mesa2'];
+$sql = "update mesas SET color='ROJO' and personas='$personas' where Punto='$punto' and Mesa='$mesas'";
+$resultado = $conexion->query($sql);
 
-if (isset($_POST['personas'])) {
-    $salida .= "<script>console.log('poder')</script>";
-} else {
-    $salida .= "<script>console.log('f')</script>";
-}
 echo $salida;
 
 
