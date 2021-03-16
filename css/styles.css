@@ -11,10 +11,13 @@ html{
     font-family: "Bulletto Killa";
     src: url(/css/Bulletto_Killa.ttf);
 }
+.animation:hover{filter: contrast(50%);}
 body{
     font-size: 16px;
     font-family: "Bulletto Killa";
 }
+.contenedor:hover .animation {-webkit-transform:scale(1.1);transform:scale(1.1);filter:drop-shadow(0px 0px 10px rgb(251, 251, 251))}
+.contenedor {overflow:hidden;}
 .fondo{
     font-family: "Bulletto Killa";
     background-image: url(../images/fondo-desenfocado.png);

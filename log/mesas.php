@@ -20,9 +20,10 @@ while ($fila = $result->fetch_assoc()) {
         $salida .= "
     <div class='contenedor'>
         <a onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
-            <img class='img-fluid mesitas btn-abrir-popup' id='btn-abrir-popup$aux'
+            <img class='img-fluid mesitas btn-abrir-popup animation' id='btn-abrir-popup$aux'
             style='position:absolute;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
             src='../images_mesas/" . $fila['forma'] . "_" . $fila['color'] . "_" . $fila['personas'] . ".gif'>
+            
         </a>
         <div class='overlay' id='overlay$aux'>
             <div class='popup' id='popup$aux'>
@@ -52,7 +53,7 @@ while ($fila = $result->fetch_assoc()) {
         $salida .= "
     <div class='contenedor'>
         <a href='./Busqueda.html' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
-            <img class='img-fluid mesitas btn-abrir-popup' id='btn-abrir-popup$aux'
+            <img class='img-fluid mesitas btn-abrir-popup animation' id='btn-abrir-popup$aux'
             style='position: absolute;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
             src='../images_mesas/" . $fila['forma'] . "_" . $fila['color'] . "_" . $fila['personas'] . ".gif'>
         </a><script>setTimeout(() => {},2000);</script>
