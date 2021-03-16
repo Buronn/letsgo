@@ -18,6 +18,9 @@
 </head>
 
 <body class="fondo">
+	<script>
+		ocupado()
+	</script>
 	<div id="nose"></div>
 	<div style="margin-left: 4%; padding-top: 2%;">
 		<a href='../routes/mapa.html'>
@@ -48,7 +51,21 @@
 
 	</section>
 	<div style="padding: 1%;">
-		<a onclick=timbre() style="margin-left: 47%;"><img style="width: 6%;height: 6%;" src="../icons/timbre.png"></a>
+
+			<a onclick=timbre() style="margin-left: 47%;" )>
+				<img id='btn-abrir-popup0' style="width: 6%;height: 6%;" src="../icons/timbre.png">
+			</a>
+			<div class='overlay' id='overlay0'>
+				<div class='popup' id='popup0'>
+					<h2>Orden enviada</h2>
+					<h3><button href='#' id='btn-cerrar-popup0' class="btn-success">OK</button></h3>
+				</div>
+			</div>
+
+		<script src='/scripts/popup.js'></script>
+
+
+
 	</div>
 
 

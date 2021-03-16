@@ -102,39 +102,41 @@ function toUTF8Array(str) {
     }
     return utf8;
 }
-function pagar(personas) {
+function Borrar(borrar) {
     punto1 = localStorage.getItem('punto');
     mesa1 = localStorage.getItem('mesa_num');
     $.ajax({
-        url: '../log/borrartodo.php',
+        url: '../log/borrarprodu.php',
         type: 'POST',
         dataType: 'html',
         data: {
             mesa1: mesa1,
             punto1: punto1,
-
+            borrar: borrar
         },
 
     })
         .done(function (respuesta) {
-            $("#prueba").html(respuesta);
+            $("#nose").html(respuesta);
         })
         .fail(function () {
             console.log("Error: Not user found")
         });
-}
-function ocupado(personas) {
-    punto1 = localStorage.getItem('punto');
-    mesa1 = localStorage.getItem('mesa_num');
+};
+function ocupado() {
+    punto = localStorage.getItem('punto');
+    mesa = localStorage.getItem('mesa_num');
+    cubiertos = localStorage.getItem('cubiertos');
+    localStorage.removeItem('cubiertos');
     console.log('poto')
     $.ajax({
         url: '../log/ocupado.php',
         type: 'POST',
         dataType: 'html',
         data: {
-            mesa1: mesa1,
-            punto1: punto1,
-            personas: personas,
+            mesa: mesa,
+            punto: punto,
+            cubiertos: cubiertos,
         },
 
     })
