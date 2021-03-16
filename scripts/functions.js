@@ -102,18 +102,20 @@ function toUTF8Array(str) {
     }
     return utf8;
 }
-function ocupado(personas) {
-    punto1 = localStorage.getItem('punto');
-    mesa1 = localStorage.getItem('mesa_num');
+function ocupado() {
+    punto = localStorage.getItem('punto');
+    mesa = localStorage.getItem('mesa_num');
+    cubiertos = localStorage.getItem('cubiertos');
+    localStorage.removeItem('cubiertos');
     console.log('poto')
     $.ajax({
-        url: '../log/buscar.php',
+        url: '../log/ocupado.php',
         type: 'POST',
         dataType: 'html',
         data: {
-            mesa2: mesa1,
-            punto1: punto1,
-            personas: personas,
+            mesa: mesa,
+            punto: punto,
+            cubiertos: cubiertos,
         },
 
     })

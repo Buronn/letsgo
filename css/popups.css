@@ -87,6 +87,10 @@
 	margin-bottom: 10px;
 	opacity: 0;
 }
+.popup button {
+	margin-bottom: 10px;
+	opacity: 0;
+}
 .popup input {
 	margin-bottom: 10px;
 	opacity: 0;
@@ -137,6 +141,7 @@
 .popup.active {	transform: scale(1); opacity: 1; }
 .popup.active h2 { animation: entradaSubtitulo .8s ease .5s forwards; }
 .popup.active h3 { animation: entradaTitulo .8s ease .5s forwards; }
+.popup.active button { animation: entradaSubtitulo .8s ease .5s forwards; }
 .popup.active h4 { animation: entradaSubtitulo .8s ease .5s forwards; }
 .popup.active input { animation: entradaTitulo .8s ease .5s forwards; }
 .popup.active .contenedor-inputs { animation: entradaInputs 1s linear 1s forwards; }

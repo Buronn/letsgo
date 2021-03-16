@@ -1,13 +1,17 @@
 <?php
 
 require "conexion.php";
-
-if (isset($_POST['personas'])) {
-    $salida .= "<script>console.log('poder')</script>";
-} else {
-    $salida .= "<script>console.log('f')</script>";
+$personas = $_POST['cubiertos'];
+$punto = $_POST['punto'];
+$mesa = $_POST['mesa'];
+$salida = "";
+if($personas != ''){
+    $sql = "update mesas SET color='ROJO', personas='".(int)$personas."' where Punto='$punto' and Mesa='$mesa '";
+    $resultado = $conexion->query($sql);
 }
-echo $salida;
+
+echo "$salida";
+
 
 
 // $sql = "update mesas SET color='ROJO'  WHERE Punto = '$punto1' AND Mesa = '$mesa1'";

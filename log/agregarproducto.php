@@ -17,7 +17,7 @@ if ($nombre == 'actualizar') {
         $a = ucwords($a);
         $salida .= "
         <h3 >" . $a . ".</h3>
-        <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . " <button onclick=Borrar('$xd')>-</button></h3>
+        <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . "&ensp;&ensp;&ensp;&ensp;<button class='btn btn-danger' onclick=Borrar('$xd')>-</button></h3>
         ";
         $total = $total + $fila['valor'];
     }
@@ -46,7 +46,7 @@ if ($nombre == 'actualizar') {
         $a = ucwords($a);
         $salida .= "
                 <h3 class='word-adjust'>" . $a . ".</h3>
-                <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . "<button onclick=Borrar('$xd')>-</button></h3>
+                <h3>x" . $fila['cantidad'] . " _____________________ $" . $fila['valor'] . "&ensp;&ensp;&ensp;&ensp;<button class='btn btn-danger' onclick=Borrar('$xd')>-</button></h3>
                 ";
         $total = $total + $fila['valor'];
     }
