@@ -19,6 +19,7 @@
 <body>
 
     <nav>
+
         <input type="checkbox" id="check" onclick="Select('actualizar','')">
         <label for="check" class="checkbtn" onclick="Select('actualizar','')">
             <i class="fas fa-bars"></i>
@@ -26,23 +27,33 @@
         <label class="logo">DesignX</label>
         <ul>
             <div id="poder">
-                <h3>poder</h3>
             </div>
         </ul>
+
     </nav>
+
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+            <a class="nav-item nav-link active" id="nav-clase-tab" data-toggle="tab" href="#nav-home" role="tab"
                 aria-controls="nav-home" aria-selected="true">Clase</a>
-            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+            <a class="nav-item nav-link" id="nav-grupo-tab" data-toggle="tab" href="#nav-profile" role="tab"
                 aria-controls="nav-profile" aria-selected="false">Grupo</a>
-            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+            <a class="nav-item nav-link" id="nav-producto-tab" data-toggle="tab" href="#nav-contact" role="tab"
                 aria-controls="nav-contact" aria-selected="false">Producto</a>
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">poder</div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">xd</div>
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <script>
+                Clases();
+            </script>
+            <div class="nav nav-tabs" id="clases">
+
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="nav nav-tabs" id="grupos"></div>
+        </div>
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
             <input type="text" name="caja_busqued" id="caja_busqueda"></input>
             <div class="col" id="agregados"></div>

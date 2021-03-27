@@ -5,6 +5,14 @@ function SetLocalStorage(key, punto) {
 function GoTo(url) {
     window.location.href = url;
 }
+function eliminarclase(id, clase) {
+    var xd = document.getElementById(id)
+    xd.classList.remove(clase);
+}
+function agregarclase(id, clase) {
+    var xd = document.getElementById(id)
+    xd.classList.add(clase);
+}
 
 function mapa(ancho, largo) {
     punto = localStorage.getItem('punto');
@@ -27,6 +35,43 @@ function timbre() {
     var audio = new Audio('../sounds/bell.mp3');
     audio.play();
 }
+function Clases() {
+    $.ajax({
+        url: '../log/clases.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+
+        },
+
+    })
+        .done(function (respuesta) {
+            $("#clases").html(respuesta);
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+};
+function Grupo(clase) {
+
+
+    $.ajax({
+        url: '../log/Grupo.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            clase: clase
+
+        },
+
+    })
+        .done(function (respuesta) {
+            $("#grupos").html(respuesta);
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+};
 
 
 function Select(Nproduct, Valor) {
