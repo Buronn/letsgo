@@ -21,7 +21,7 @@
     font-weight: bold;
   }
   nav ul{
-    float: right;
+    float: top;
     margin-right: 20px;
   }
   nav ul li{
@@ -64,7 +64,7 @@
   
     ul{
       position: fixed;
-      width: 100%;
+      width: 50%;
       height: 100vh;
       background: #2c3e50;
       top: 80px;

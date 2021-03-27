@@ -86,7 +86,7 @@ function getCookie(cname) {
     }
     return "";
 }
-
+// ------------------------------------------------------------
 function check_login() {
     var a;
     a = getCookie('u_lg');

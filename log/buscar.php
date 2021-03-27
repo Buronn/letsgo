@@ -8,28 +8,23 @@ if (isset($_POST['consulta'])) {
 }
 $resultado = $conexion->query($query);
 if ($resultado->num_rows > 0) {
-    $salida .= "<table>
-            <thead>
-            <tr>
-                <td>Nombre</td>
-                <td>Valor</td>
-                <td></td>
-            </tr>
-            </thead>
-            ";
+    $salida .= "<div class='card-columns'>";
+
     while ($fila = $resultado->fetch_assoc()) {
         $a = $fila['NProducto'];
         $a = str_replace(" ", "&nbsp;", $a);
         $b = $fila['Valor'];
         $c = strtolower($a);
         $c = ucwords($c);
-        $salida .= "<tr>
-                <td>" . $c . "</td>
-                <td>$" . $fila['Valor'] . "</td>
-
-        <td><button class='titulo' onclick=Select(\"" . $a . "\",'" . $fila['Valor'] . "')>+</td>
-        </tr>";
+        $salida .= " <div class='card'>
+        <img class='card-img-top' src='../images/aatrox.png' alt='Card image cap'>
+        <div class='card-body'>
+          <h5 class='card-title'>$a</h5>
+          <p class='card-text'>poder:$b</p>
+        </div>
+        </div>";
     }
+    $salida .= "</div>";
 } else {
     $salida .= "Error en la búsqueda";
 }
