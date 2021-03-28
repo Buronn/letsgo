@@ -1,10 +1,12 @@
 <?php
 require "conexion.php";
 $salida = "<script>onclick=Select('actualizar','')</script>";
-$query = "select * from productos";
+$grupo = $_POST['grupo'];
+$clase = $_POST['clase'];
+$query = "select * from productos where Grupo=$grupo and Clase=$clase";
 if (isset($_POST['consulta'])) {
     $q = $conexion->real_escape_string($_POST['consulta']);
-    $query = "select NProducto,Valor from productos where NProducto LIKE '%" . $q . "%'";
+    $query = "select NProducto,Valor from productos where Grupo=$grupo and Clase=$clase and NProducto LIKE '%" . $q . "%'";
 }
 $resultado = $conexion->query($query);
 if ($resultado->num_rows > 0) {
@@ -21,6 +23,8 @@ if ($resultado->num_rows > 0) {
         <div class='card-body'>
           <h5 class='card-title'>$a</h5>
           <p class='card-text'>poder:$b</p>
+         
+          <button class='btn btn-primary' onclick=Select(\"" . $a . "\",'" . $fila['Valor'] . "')>agregar</button>
         </div>
         </div>";
     }

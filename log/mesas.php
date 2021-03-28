@@ -16,7 +16,7 @@ while ($fila = $result->fetch_assoc()) {
 
     $left = ((((float)$fila['x']) * 100) / $ancho * 6.8);
     $top = (((float)$fila['y']) * 110) / $largo * 4.5;
-    if ($fila['personas'] == 0){
+    if ($fila['personas'] == 0) {
         $salida .= "
     <div class='contenedor'>
         <a onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
@@ -25,31 +25,32 @@ while ($fila = $result->fetch_assoc()) {
             src='../images_mesas/" . $fila['forma'] . "_" . $fila['color'] . "_" . $fila['personas'] . ".gif'>
             
         </a>
+        
         <div class='overlay' id='overlay$aux'>
             <div class='popup' id='popup$aux'>
                 <h3>Cubiertos</h3>";
-                if($fila['forma']!='REC'){
-                    $salida.="<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),GoTo('Busqueda.html') >1</button>
+        if ($fila['forma'] != 'REC') {
+            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),GoTo('Busqueda.html') >1</button>
                     <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),GoTo('Busqueda.html') >2</button>
                     <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),GoTo('Busqueda.html') >3</button>
                     <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),GoTo('Busqueda.html') >4</button>";
-                }
-                if($fila['forma']=='REC'){
-                    $salida.="<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),GoTo('Busqueda.html') >1</button>
+        }
+        if ($fila['forma'] == 'REC') {
+            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),GoTo('Busqueda.html') >1</button>
                     <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),GoTo('Busqueda.html') >2</button>
                     <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),GoTo('Busqueda.html') >3</button>
                     <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),GoTo('Busqueda.html') >4</button>
                     <button class='btn-submit' onclick=SetLocalStorage('cubiertos','5'),GoTo('Busqueda.html') >5</button>
                     <button class='btn-submit' onclick=SetLocalStorage('cubiertos','6'),GoTo('Busqueda.html') >6</button>";
-                }
-                $salida.="
+        }
+        $salida .= "
                 <h3><label href='#' id='btn-cerrar-popup$aux' class='btn-cerrar-popup'>x</label></h3>
             </div>
         </div>
     </div>
     <script src='/scripts/popup.js'></script>
     ";
-            }else {
+    } else {
         $salida .= "
     <div class='contenedor'>
         <a href='./Busqueda.html' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>

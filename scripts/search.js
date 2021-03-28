@@ -1,11 +1,17 @@
 $(buscar_datos());
 
 function buscar_datos(consulta) {
+    clase = localStorage.getItem('Clase');
+    grupo = localStorage.getItem('Grupo');
     $.ajax({
         url: '../log/buscar.php',
         type: 'POST',
         dataType: 'html',
-        data: { consulta: consulta },
+        data: {
+            consulta: consulta,
+            grupo: grupo,
+            clase: clase
+        },
     })
         .done(function (respuesta) {
             $("#agregados").html(respuesta);
