@@ -30,18 +30,18 @@ while ($fila = $result->fetch_assoc()) {
             <div class='popup' id='popup$aux'>
                 <h3>Cubiertos</h3>";
         if ($fila['forma'] != 'REC') {
-            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),GoTo('Busqueda.html') >1</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),GoTo('Busqueda.html') >2</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),GoTo('Busqueda.html') >3</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),GoTo('Busqueda.html') >4</button>";
+            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),GoTo('probar.html') >1</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),GoTo('probar.html') >2</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),GoTo('probar.html') >3</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),GoTo(probar.html') >4</button>";
         }
         if ($fila['forma'] == 'REC') {
-            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),GoTo('Busqueda.html') >1</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),GoTo('Busqueda.html') >2</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),GoTo('Busqueda.html') >3</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),GoTo('Busqueda.html') >4</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','5'),GoTo('Busqueda.html') >5</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','6'),GoTo('Busqueda.html') >6</button>";
+            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),GoTo('probar.html') >1</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),GoTo('probar.html') >2</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),GoTo('probar.html') >3</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),GoTo('probar.html') >4</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','5'),GoTo('probar.html') >5</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','6'),GoTo('probar.html') >6</button>";
         }
         $salida .= "
                 <h3><label href='#' id='btn-cerrar-popup$aux' class='btn-cerrar-popup'>x</label></h3>
@@ -53,7 +53,7 @@ while ($fila = $result->fetch_assoc()) {
     } else {
         $salida .= "
     <div class='contenedor'>
-        <a href='./Busqueda.html' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
+        <a href='./probar.html' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
             <img class='img-fluid mesitas btn-abrir-popup animation' id='btn-abrir-popup$aux'
             style='position: absolute;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
             src='../images_mesas/" . $fila['forma'] . "_" . $fila['color'] . "_" . $fila['personas'] . ".gif'>
