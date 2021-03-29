@@ -1,0 +1,12 @@
+#note {
+    position: fixed;
+    top: 90%;
+    left: 75%;
+    right: 1%;
+    background: #83f379;
+    text-align: center;
+    line-height: 2.5;
+    line-clamp: 5.5;
+    overflow: hidden; 
+    border-radius: 5%;
+}

@@ -24,7 +24,7 @@ if ($resultado->num_rows > 0) {
           <h5 class='card-title'>$a</h5>
           <p class='card-text'>poder:$b</p>
          
-          <button class='btn btn-primary' onclick=Select(\"" . $a . "\",'" . $fila['Valor'] . "')>agregar</button>
+          <button class='btn btn-primary' onclick=Select(\"" . $a . "\",'" . $fila['Valor'] . "'),notification()>+</button>
         </div>
         </div>";
     }
