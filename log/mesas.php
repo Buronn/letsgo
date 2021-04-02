@@ -11,7 +11,7 @@ $result2 = $conexion->query($table_puntos);
 $ancho = (float)$ancho / 10;
 $largo = (float)$largo / 10;
 $salida .= "
-<div class='mapa'><img class='img-fluid' style='border-radius: 5%; max-width=100%' usemap='#workmap' src='../images/Fondo/piso2.jpg' >";
+<div class='mapa'><img class='img-fluid' style='border-radius: 5%; max-width=100%' usemap='#workmap' src='../images/Fondo/pisoprueba2.png' >";
 $salida .= "<map name=\"workmap\">";
 $aux = 0;
 while ($fila = $result->fetch_assoc()) {
@@ -80,11 +80,9 @@ while ($fila = $result->fetch_assoc()) {
 <div class='content'>
     <a>
         <img class='img-fluid mesitas btn-abrir-popup animation' id='btn-abrir-popup$aux'
-        style='position:absolute;left: " . 42 . "%;
-        top: " . -19 . "%;
-        width: 10%;
-        height: 17%;' 
-        src='../icons/logo-x.png'>
+        style='position:absolute;left: " . 23 . "%;
+        top: " . -19 . "%;' 
+        src='../icons/puntos.text.png'>
     </a>
 
     <div class='overlay' id='overlay$aux'>
@@ -104,45 +102,21 @@ while ($fila = $result->fetch_assoc()) {
 <script src='/scripts/popup.js'></script>
 ";
 
-
-
-/* BACK */
-/* $salida .= "<a href='../routes/punto.html'>
-<img class='img-fluid mesitas' style='position: fixed;
-left: " . 2 . "%;
-top: " . -15 . "%;
-width: 6%;
-height: 11%;' href='../routes/punto.html' src='../icons/back-red.png'>
-</a>"; */
-/* LOGOUT */
-$salida .= "<a href='../index.html' onclick='deleteCookies()'>
+$salida .= 
+"<a href='../index.html' onclick='deleteCookies()'>
 <img class='img-fluid mesitas' style='position: fixed;
 left: " . 85 . "%;
 top: " . -15 . "%;
 width: 7%;
 height: 11%;' href='../index.html' src='../icons/logout-red.png'>
 </a>";
+
+
 /* PUNTO */
-/* $salida .= "
+$salida .= "
 <img class='img-fluid mesitas' style='position: fixed;
-left: " . 27.3 . "%;
-top: " . 86 . "%;
-width: 40%;
-height: 20%;' href='../index.html' src='../icons/" . $lugar . ".text.png'>"; */
+left: " . 23 . "%;
+top: " . 95 . "%;' href='../index.html' src='../icons/" . $lugar . ".text.png'>";
 $salida .= "</map>";
 $salida .= "</div>";
 echo "$salida";
-
-/* <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-
-  
-  <a href="#" class="list-group-item list-group-item-action list-group-item-primary">This is a primary list group item</a>
-  <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">This is a secondary list group item</a>
-  <a href="#" class="list-group-item list-group-item-action list-group-item-success">This is a success list group item</a>
-  <a href="#" class="list-group-item list-group-item-action list-group-item-danger">This is a danger list group item</a>
-  <a href="#" class="list-group-item list-group-item-action list-group-item-warning">This is a warning list group item</a>
-  <a href="#" class="list-group-item list-group-item-action list-group-item-info">This is a info list group item</a>
-  <a href="#" class="list-group-item list-group-item-action list-group-item-light">This is a light list group item</a>
-  <a href="#" class="list-group-item list-group-item-action list-group-item-dark">This is a dark list group item</a>
-</div> */

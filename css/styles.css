@@ -20,7 +20,7 @@ body{
 .contenedor {overflow:hidden;}
 .fondo{
     font-family: "Bulletto Killa";
-    background-image: url(../images/fondo-desenfocado.png);
+    background-image: url(../images/Fondo/fondo-prueba.png);
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
