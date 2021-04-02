@@ -11,6 +11,7 @@
     <link rel="preload" href="../css/main.css" as="style">
     <link href="../css/main.css" rel="stylesheet">
     <link href="../css/styles.css" rel="stylesheet">
+    <Link href="../css/puntos.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/popups.css">
     <link rel="stylesheet" href="/css/pps.css">
 
@@ -23,12 +24,7 @@
     <script>
         check_login()
         localStorage.removeItem('mesa_num')
-        const img = new Image();
-        img.onload = function () {
-            mapa(this.width, this.height);
-
-        }
-        img.src = '../images/Fondo/piso.jpg';
+        mapa(800,600);
     </script>
 
     

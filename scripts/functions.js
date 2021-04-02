@@ -1,23 +1,42 @@
-
+//CREA ALGO EN EL LOCAL STORAGE
 function SetLocalStorage(key, punto) {
     localStorage.setItem(key, punto);
 }
+
+
+//LINK DIRECTO
 function GoTo(url) {
     window.location.href = url;
 }
+
+
+//ELIMINA UNA CLASE
 function eliminarclase(id, clase) {
     var xd = document.getElementById(id)
     xd.classList.remove(clase);
 }
+
+
+
+//AGREGA UNA CLASE
 function agregarclase(id, clase) {
     var xd = document.getElementById(id)
     xd.classList.add(clase);
 }
+
+
+
+//BORRA TODAS LAS COOKIES
 function deleteCookies() {
-    document.cookie.split(";").forEach(function(c) {
-      document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    document.cookie.split(";").forEach(function (c) {
+        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
     });
-  }
+}
+
+
+
+
+//FUNCION QUE LLAMA EL MAPEO DE MESAS
 function mapa(ancho, largo) {
     punto = localStorage.getItem('punto');
     $.ajax({
@@ -35,10 +54,15 @@ function mapa(ancho, largo) {
             console.log("Error: Not user found")
         });
 }
+
+//SONIDO DE TIMBRE
 function timbre() {
     var audio = new Audio('../sounds/bell.mp3');
     audio.play();
 }
+
+
+//CLASES DE LOS PRODUCTOS
 function Clases() {
     $.ajax({
         url: '../log/clases.php',
@@ -56,9 +80,10 @@ function Clases() {
             console.log("Error: Not user found")
         });
 };
+
+
+//GRUPO DE LOS PRODUCTOS
 function Grupo(clase) {
-
-
     $.ajax({
         url: '../log/Grupo.php',
         type: 'POST',
@@ -78,6 +103,7 @@ function Grupo(clase) {
 };
 
 
+//SELECCIONA PRODUCTO PARA AÑADIRLO A LA ORDEN
 function Select(Nproduct, Valor) {
     punto = localStorage.getItem('punto');
     mesa = localStorage.getItem('mesa_num');
@@ -101,6 +127,8 @@ function Select(Nproduct, Valor) {
         });
 };
 
+
+//INICIO DE SESIÓN
 function login() {
     var user = document.getElementById("user").value;
     var pass = document.getElementById("pass").value;
@@ -121,6 +149,9 @@ function login() {
             console.log("Error: Not user found")
         });
 };
+
+
+//OBTENER COOKIES
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -136,7 +167,10 @@ function getCookie(cname) {
     }
     return "";
 }
-// ------------------------------------------------------------
+
+
+
+// CKECK DEL LOGIN
 function check_login() {
     var a;
     a = getCookie('u_lg');
@@ -164,6 +198,8 @@ function check_login() {
         });
 };
 
+
+//CONVERTIDOR DE ARRAY
 function toUTF8Array(str) {
     var string = btoa(unescape(encodeURIComponent(str))),
         charList = string.split(''),
@@ -174,6 +210,8 @@ function toUTF8Array(str) {
     return new Uint8Array(uintArray);
 }
 
+
+//BORRA TODA LA ORDEN
 function BorrarTodo() {
     punto1 = localStorage.getItem('punto');
     mesa1 = localStorage.getItem('mesa_num');
@@ -196,6 +234,10 @@ function BorrarTodo() {
             console.log("Error: Not user found")
         });
 };
+
+
+
+//
 function ocupado() {
     punto = localStorage.getItem('punto');
     mesa = localStorage.getItem('mesa_num');
@@ -218,6 +260,11 @@ function ocupado() {
         .fail(function () {
             console.log("Error: Not user found")
         });
+
+
+
+
+//BORRA UN PRODUCTO
 }
 function Borrar(borrar) {
     punto1 = localStorage.getItem('punto');
