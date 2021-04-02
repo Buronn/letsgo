@@ -162,7 +162,7 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: #7b8a7b;
   text-decoration: none;
   background-color: transparent;
 }
@@ -3885,7 +3885,7 @@ input[type=button].btn-block {
   border: 1px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
-  background-color:#e83e8c;
+  background-color:#0f4d0f;
 
 }
 .noseleccionable{

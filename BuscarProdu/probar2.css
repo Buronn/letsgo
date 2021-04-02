@@ -63,11 +63,12 @@
   }
   
     ul{
+      padding: 1%;
       z-index: 1;
       position: fixed;
       width: 50%;
       height: 100vh;
-      background: #2c3e50;
+      background: #9daab8;
       top: 80px;
       left: -100%;
       text-align: center;

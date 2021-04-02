@@ -21,9 +21,8 @@ while ($fila = $result->fetch_assoc()) {
     <div class='contenedor'>
         <a onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
             <img class='img-fluid mesitas btn-abrir-popup animation' id='btn-abrir-popup$aux'
-            style='position:absolute;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
+            style='position:fixed;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
             src='../images_mesas/" . $fila['forma'] . "_" . $fila['color'] . "_" . $fila['personas'] . ".gif'>
-            
         </a>
         
         <div class='overlay' id='overlay$aux'>
@@ -44,7 +43,7 @@ while ($fila = $result->fetch_assoc()) {
                     <button class='btn-submit' onclick=SetLocalStorage('cubiertos','6'),GoTo('probar.html') >6</button>";
         }
         $salida .= "
-                <h3><label href='#' id='btn-cerrar-popup$aux' class='btn-cerrar-popup'>x</label></h3>
+                <h1><label href='#' id='btn-cerrar-popup$aux' class='btn-cerrar-popup'>x</label></h1>
             </div>
         </div>
     </div>
@@ -74,22 +73,22 @@ while ($fila = $result->fetch_assoc()) {
     $aux = $aux + 1;
 }
 /* LOGO */
-$salida .= "
+/* $salida .= "
 <img class='img-fluid mesitas' style='position: fixed;
 left: " . 42 . "%;
 top: " . -19 . "%;
 width: 10%;
-height: 17%;' href='../routes/punto.html' src='../icons/logo-x.png'>";
+height: 17%;' href='../routes/punto.html' src='../icons/logo-x.png'>"; */
 /* BACK */
-$salida .= "<a href='../routes/punto.html'>
+/* $salida .= "<a href='../routes/punto.html'>
 <img class='img-fluid mesitas' style='position: fixed;
 left: " . 2 . "%;
 top: " . -15 . "%;
 width: 6%;
 height: 11%;' href='../routes/punto.html' src='../icons/back-red.png'>
-</a>";
+</a>"; */
 /* LOGOUT */
-$salida .= "<a href='../index.html'>
+$salida .= "<a href='../index.html' onclick='deleteCookies()'>
 <img class='img-fluid mesitas' style='position: fixed;
 left: " . 85 . "%;
 top: " . -15 . "%;
@@ -97,12 +96,12 @@ width: 7%;
 height: 11%;' href='../index.html' src='../icons/logout-red.png'>
 </a>";
 /* PUNTO */
-$salida .= "
+/* $salida .= "
 <img class='img-fluid mesitas' style='position: fixed;
 left: " . 27.3 . "%;
 top: " . 86 . "%;
 width: 40%;
-height: 20%;' href='../index.html' src='../icons/" . $lugar . ".text.png'>";
+height: 20%;' href='../index.html' src='../icons/" . $lugar . ".text.png'>"; */
 $salida .= "</map>";
 $salida .= "</div>";
 echo "$salida";

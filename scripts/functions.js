@@ -13,7 +13,11 @@ function agregarclase(id, clase) {
     var xd = document.getElementById(id)
     xd.classList.add(clase);
 }
-
+function deleteCookies() {
+    document.cookie.split(";").forEach(function(c) {
+      document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    });
+  }
 function mapa(ancho, largo) {
     punto = localStorage.getItem('punto');
     $.ajax({
@@ -24,7 +28,7 @@ function mapa(ancho, largo) {
 
     })
         .done(function (respuesta) {
-            $("#xd").html(respuesta);
+            $("#mapa").html(respuesta);
 
         })
         .fail(function () {
@@ -96,6 +100,7 @@ function Select(Nproduct, Valor) {
             console.log("Error: Not user found")
         });
 };
+
 function login() {
     var user = document.getElementById("user").value;
     var pass = document.getElementById("pass").value;
