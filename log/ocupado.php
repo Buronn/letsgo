@@ -6,7 +6,7 @@ $punto = $_POST['punto'];
 $mesa = $_POST['mesa'];
 $salida = "";
 if ($personas != '') {
-    $sql = "update mesas SET color='ROJO', personas='" . (int)$personas . "' where Punto='$punto' and Mesa='$mesa '";
+    $sql = "update mesas SET color='VERDE', personas='" . (int)$personas . "' where Punto='$punto' and Mesa='$mesa '";
     $resultado = $conexion->query($sql);
 }
 
