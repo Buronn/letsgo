@@ -4,6 +4,7 @@ function SetLocalStorage(key, punto) {
 }
 
 
+
 //LINK DIRECTO
 function GoTo(url) {
     window.location.href = url;
@@ -38,12 +39,13 @@ function deleteCookies() {
 
 //FUNCION QUE LLAMA EL MAPEO DE MESAS
 function mapa(ancho, largo) {
+    npunto = localStorage.getItem('npunto');
     punto = localStorage.getItem('punto');
     $.ajax({
         url: '../log/mesas.php',
         type: 'POST',
         dataType: 'html',
-        data: { lugar: punto, largo: largo, ancho: ancho },
+        data: { lugar: punto, largo: largo, ancho: ancho , npunto:npunto},
 
     })
         .done(function (respuesta) {

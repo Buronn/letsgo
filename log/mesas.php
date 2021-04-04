@@ -11,6 +11,30 @@ $result2 = $conexion->query($table_puntos);
 $ancho = (float)$ancho / 10;
 $largo = (float)$largo / 10;
 $salida .= "
+
+<nav class='navbar navbar-expand-lg navbar-test navbar-light bg-light' style='z-index:101;position:absolute;left: " . 5 . "%;
+top: " . -10 . "%;' >
+<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+    <span class='navbar-toggler-icon'></span>
+  </button>
+  <div class='collapse navbar-collapse' id='navbarNav'>
+    <ul class='navbar-nav'>";
+while ($fila = $result2->fetch_assoc()) {
+    $salida .= "
+        <li class='nav-item'>
+        <a class='nav-link nav-link-test' style='font-size: 1.6vw;' onclick=SetLocalStorage('punto','" . $fila['Codigo'] . "'),mapa(800,600)>" . $fila['Nombre'] . "</a>";
+}
+
+$salida.="
+  
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
 <div class='mapa'><img class='img-fluid' style='border-radius: 5%; max-width=100%' usemap='#workmap' src='../images/Fondo/pisoprueba2.png' >";
 $salida .= "<map name=\"workmap\">";
 $aux = 0;
@@ -21,10 +45,13 @@ while ($fila = $result->fetch_assoc()) {
     if ($fila['personas'] == 0) {
         $salida .= "
     <div class='contenedor'>
-        <a onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
-            <img class='img-fluid mesitas btn-abrir-popup animation' id='btn-abrir-popup$aux'
-            style='position:fixed;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
+        <a class='btn-abrir-popup' id='btn-abrir-popup$aux'>
+            <img class='animation' style='position:fixed;left: " . $left+3  . "%;top: " . $top+2 . "%;width: 9.6%;height: 15%;' 
             src='../images_mesas/" . $fila['forma'] . "_" . $fila['color'] . "_" . $fila['personas'] . ".gif'>
+
+            <h1 onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "') class='mesitas' style='position: fixed;
+            left: " . $left+3.5 . "%;
+            top: " . $top+5 . "%;font-size:2vw'>".$fila['Mesa']."</h1>
         </a>
         
         <div class='overlay' id='overlay$aux'>
@@ -55,9 +82,12 @@ while ($fila = $result->fetch_assoc()) {
         $salida .= "
     <div class='contenedor'>
         <a href='./probar.html' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
-            <img class='img-fluid mesitas btn-abrir-popup animation' id='btn-abrir-popup$aux'
+            <img class='img-fluid mesitas btn-abrir-popup animation'
             style='position: absolute;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
             src='../images_mesas/" . $fila['forma'] . "_" . $fila['color'] . "_" . $fila['personas'] . ".gif'>
+            <h1 onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "') class='img-fluid mesitas btn-abrir-popup animation' id='btn-abrir-popup$aux' style='position: fixed;
+            left: " . $left+3.5 . "%;
+            top: " . $top+5 . "%;font-size:2vw'>".$fila['Mesa']."</h1>
         </a><script>setTimeout(() => {},2000);</script>
         
         <div class='overlay' style='z-index:-1' id='overlay$aux'>
@@ -76,25 +106,13 @@ while ($fila = $result->fetch_assoc()) {
 }
 /* LOGO */
 
-    $salida.="
-<div class='content'>
-    <a>
-        <img class='img-fluid mesitas btn-abrir-popup animation' id='btn-abrir-popup$aux'
-        style='position:absolute;left: " . 23 . "%;
-        top: " . -19 . "%;' 
-        src='../icons/puntos.text.png'>
-    </a>
 
-    <div class='overlay' id='overlay$aux'>
-        <div class='popup' id='popup$aux'>
-        <h1><label href='#' id='btn-cerrar-popup$aux' class='btn-cerrar-popup'>x</label>Puntos</h1>
-        <div class='list-group'>";
-      
-        while ($fila = $result2->fetch_assoc()) {
-            $salida.="
-        <a class='list-group-item list-group-item-action list-group-item-primary' onclick=SetLocalStorage('punto','".$fila['Codigo']."'),mapa(800,600)>".$fila['Nombre']."</a>";
-        }
-        $salida.="</div>
+
+while ($fila = $result2->fetch_assoc()) {
+    $salida .= "
+        <a class='list-group-item list-group-item-action list-group-item-primary' onclick=SetLocalStorage('punto','" . $fila['Codigo'] . "'),mapa(800,600)>" . $fila['Nombre'] . "</a>";
+}
+$salida .= "</div>
             
         </div>
     </div>
@@ -102,11 +120,11 @@ while ($fila = $result->fetch_assoc()) {
 <script src='/scripts/popup.js'></script>
 ";
 
-$salida .= 
-"<a href='../index.html' onclick='deleteCookies()'>
+$salida .=
+    "<a href='../index.html' onclick='deleteCookies()'>
 <img class='img-fluid mesitas' style='position: fixed;
-left: " . 85 . "%;
-top: " . -15 . "%;
+left: " . 87 . "%;
+top: " . -13 . "%;
 width: 7%;
 height: 11%;' href='../index.html' src='../icons/logout-red.png'>
 </a>";
@@ -115,8 +133,9 @@ height: 11%;' href='../index.html' src='../icons/logout-red.png'>
 /* PUNTO */
 $salida .= "
 <img class='img-fluid mesitas' style='position: fixed;
-left: " . 23 . "%;
-top: " . 95 . "%;' href='../index.html' src='../icons/" . $lugar . ".text.png'>";
+left: " . 26 . "%;
+top: " . 95 . "%;width: 44%;height: 15%;' href='../index.html' src='../icons/" . $lugar . ".text.png'>
+";
 $salida .= "</map>";
 $salida .= "</div>";
 echo "$salida";
