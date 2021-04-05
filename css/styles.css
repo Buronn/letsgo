@@ -14,12 +14,12 @@ html{
 .animation:hover{filter: contrast(50%);}
 body{
     font-size: 16px;
-    font-family: "Bulletto Killa";
+    font-family: "Bungee Regular";
 }
 .contenedor:hover .animation {-webkit-transform:scale(1.1);transform:scale(1.1);filter:drop-shadow(0px 0px 10px rgb(251, 251, 251))}
 .contenedor {overflow:hidden;}
 .fondo{
-    font-family: "Bulletto Killa";
+    font-family: "Verdana";
     background-image: url(../images/Fondo/fondo-prueba.png);
     background-position: center;
     background-size: cover;

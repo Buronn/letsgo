@@ -22,12 +22,14 @@ top: " . -10 . "%;' >
 while ($fila = $result2->fetch_assoc()) {
     $salida .= "
         <li class='nav-item'>
-        <a class='nav-link nav-link-test' style='font-size: 1.6vw;' onclick=SetLocalStorage('punto','" . $fila['Codigo'] . "'),mapa(800,600)>" . $fila['Nombre'] . "</a>";
-}
+        <a class='nav-link nav-link-test' style='font-size: 1.4vw;' onclick=SetLocalStorage('punto','" . $fila['Codigo'] . "'),mapa(800,600)>・" . $fila['Nombre'] . "</a>
+        </li>";
+
+    }
 
 $salida.="
   
-      </li>
+      
     </ul>
   </div>
 </nav>
