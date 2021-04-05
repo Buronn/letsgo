@@ -3,7 +3,15 @@ function SetLocalStorage(key, punto) {
     localStorage.setItem(key, punto);
 }
 
+//BORRAR TODO EL LOCALSTORAGE
+function clearLocalStorage(){
+    localStorage.clear()
+}
 
+
+function FunctionDelay(func,time){
+    setTimeout(() => { func()},time)
+}
 
 //LINK DIRECTO
 function GoTo(url) {
@@ -20,8 +28,9 @@ function eliminarclase(id, clase) {
 
 
 //AGREGA UNA CLASE
-function agregarclase(id, clase) {
-    var xd = document.getElementById(id)
+function AgregarClase(id, clase) {
+    console.log('entra aqui')
+    var xd = document.getElementById(id);
     xd.classList.add(clase);
 }
 
@@ -38,14 +47,14 @@ function deleteCookies() {
 
 
 //FUNCION QUE LLAMA EL MAPEO DE MESAS
-function mapa(ancho, largo) {
+function mapa() {
     npunto = localStorage.getItem('npunto');
     punto = localStorage.getItem('punto');
     $.ajax({
         url: '../log/mesas.php',
         type: 'POST',
         dataType: 'html',
-        data: { lugar: punto, largo: largo, ancho: ancho , npunto:npunto},
+        data: { lugar: punto, npunto:npunto},
 
     })
         .done(function (respuesta) {
