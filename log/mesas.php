@@ -8,8 +8,9 @@ $table_puntos = "select * from puntos";
 $result = $conexion->query($sql);
 $result2 = $conexion->query($table_puntos);
 $result3=$conexion->query($sql2);
-$salida .= "
 
+//-----------------NAVBAR------------------
+$salida .= "
 <nav class='navbar navbar-expand-lg navbar-test navbar-light bg-light' style='z-index:101;position:absolute;left: " . 5 . "%;
 top: " . -10 . "%;' >
 <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
@@ -31,15 +32,13 @@ $salida .= "
     </ul>
   </div>
 </nav>
-
-
-
-
 <div class='mapa'><img class='img-fluid' style='border-radius: 5%; max-width=100%' usemap='#workmap' src='../images/Fondo/pisoprueba2.png' >";
 $salida .= "<map name=\"workmap\">";
 $aux = 0;
 //MESAS
 
+
+//-----------------POSICIONAMENTO MESAS------------------
 while ($fila = $result->fetch_assoc()) {
 
     $left = ((((float)$fila['x']) * 100) / 80 * 6.8);
@@ -62,18 +61,18 @@ while ($fila = $result->fetch_assoc()) {
                 <h3>Cubiertos</h3>";
             
         if ($fila['forma'] != 'REC') {
-            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),tablesxd(),GoTo('Busqueda.html') >1</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),tablesxd(),GoTo('Busqueda.html') >2</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),tablesxd(),GoTo('Busqueda.html') >3</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),tablesxd(),GoTo('Busqueda.html') >4</button>";
+            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),tables(),GoTo('Busqueda.html') >1</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),tables(),GoTo('Busqueda.html') >2</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),tables(),GoTo('Busqueda.html') >3</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),tables(),GoTo('Busqueda.html') >4</button>";
         }
         if ($fila['forma'] == 'REC') {
-            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),tablesxd(),GoTo('Busqueda.html') >1</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),tablesxd(),GoTo('Busqueda.html') >2</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),tablesxd(),GoTo('Busqueda.html') >3</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),tablesxd(),GoTo('Busqueda.html') >4</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','5'),tablesxd(),GoTo('Busqueda.html') >5</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','6'),tablesxd(),GoTo('Busqueda.html') >6</button>";
+            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),tables(),GoTo('Busqueda.html') >1</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),tables(),GoTo('Busqueda.html') >2</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),tables(),GoTo('Busqueda.html') >3</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),tables(),GoTo('Busqueda.html') >4</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','5'),tables(),GoTo('Busqueda.html') >5</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','6'),tables(),GoTo('Busqueda.html') >6</button>";
         }
         $salida .= "
                 <h1><label href='#' id='btn-cerrar-popup$aux' class='btn-cerrar-popup'>x</label></h1>
@@ -82,14 +81,15 @@ while ($fila = $result->fetch_assoc()) {
     </div>
     <script src='/scripts/popup.js'></script>
     ";
-    //MESAS OCUPADAS
-    
     $aux = $aux + 1;
     }
 }
+
 while($fila = $result3->fetch_assoc()){
     $left = ((((float)$fila['x']) * 100) / 80 * 6.8);
     $top = (((float)$fila['y']) * 110) / 60 * 4.5;
+
+    //MESAS OCUPADAS
     if($fila['x']!=null and $fila['y']!=null ){
         $salida .= "
     <div class='contenedor'>
@@ -120,7 +120,10 @@ while($fila = $result3->fetch_assoc()){
     $aux=$aux+1;
         }
 }
-//CERRAR SESION
+
+
+
+//--------------CERRAR SESION--------------
 $salida .=
     "<a href='../index.html' onclick=deleteCookies(),clearLocalStorage()>
 <img class='img-fluid mesitas' style='position: fixed;
@@ -130,7 +133,7 @@ width: 5%;
 height: 8%;' href='../index.html' src='../icons/logout-red.png'>
 </a>";
 
-//ACTUALIZAR
+//--------------ACTUALIZAR--------------
 $salida .=
     "<a onclick=AgregarClase('actualizando','spinner-border'),FunctionDelay(mapa,0)>
 <img class='img-fluid mesitas' style='position: fixed;
@@ -148,7 +151,7 @@ top: " . 94 . "%;width: 2.5vw; height: 2.5vw;' id='actualizando' class='text-lig
 
 
 
-// PUNTO
+//--------------PUNTO--------------
 $sql = "select Nombre from puntos where Codigo='" . $lugar . "'";
 $result = $conexion->query($sql);
 $npunto = '';

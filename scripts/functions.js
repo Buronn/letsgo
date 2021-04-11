@@ -4,13 +4,18 @@ function SetLocalStorage(key, punto) {
 }
 
 //BORRAR TODO EL LOCALSTORAGE
-function clearLocalStorage(){
+function clearLocalStorage() {
     localStorage.clear()
 }
 
+//DELAY
+function FunctionDelay(func, time) {
+    setTimeout(() => { func() }, time)
+}
 
-function FunctionDelay(func,time){
-    setTimeout(() => { func()},time)
+//SLEEP
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 //LINK DIRECTO
@@ -54,7 +59,7 @@ function mapa() {
         url: '../log/mesas.php',
         type: 'POST',
         dataType: 'html',
-        data: { lugar: punto, npunto:npunto},
+        data: { lugar: punto, npunto: npunto },
 
     })
         .done(function (respuesta) {
@@ -65,7 +70,10 @@ function mapa() {
             console.log("Error: Not user found")
         });
 }
-function timezone(){
+
+
+//API TIEMPO
+function timezone() {
     $.ajax({
         url: 'http://worldtimeapi.org/api/timezone/America/Santiago',
         type: 'GET',
@@ -80,30 +88,34 @@ function timezone(){
         });
     return respuesta.datatime
 }
+
+
+
 //AGREGA LA MESA A LA TABLA tables
-function tablesxd() {
+function tables() {
     let punto = localStorage.getItem('punto');
-    let cubiertos=localStorage.getItem('cubiertos');
-    let mesa=localStorage.getItem('mesa_num');
+    let cubiertos = localStorage.getItem('cubiertos');
+    let mesa = localStorage.getItem('mesa_num');
     let hoy = new Date
-    let dia =hoy.getDate();
-    let mes= hoy.getMonth()+1;
-    let year=hoy.getFullYear();
-    let hora=hoy.getHours();
-    let minutos=hoy.getMinutes();
-    console.log(punto,cubiertos,mesa,hoy,dia,mes,year,hora,minutos)
+    let dia = hoy.getDate();
+    let mes = hoy.getMonth() + 1;
+    let year = hoy.getFullYear();
+    let hora = hoy.getHours();
+    let minutos = hoy.getMinutes();
+    console.log(punto, cubiertos, mesa, hoy, dia, mes, year, hora, minutos)
     $.ajax({
         url: '../log/tables.php',
         type: 'POST',
         dataType: 'html',
-        data: { lugar: 5,
+        data: {
+            lugar: 5,
             dia: dia,
             mes: mes,
-            year:year,
-            hora:hora,
-            minutos:minutos,
-            mesa:mesa,
-            cubiertos:cubiertos
+            year: year,
+            hora: hora,
+            minutos: minutos,
+            mesa: mesa,
+            cubiertos: cubiertos
         },
 
     })
@@ -141,10 +153,33 @@ function Clases() {
             console.log("Error: Not user found")
         });
 };
+//GET IMAGE FROM API
+function getImage(id, buscar,time) {
+    setTimeout(function () {
+        const settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://bing-image-search1.p.rapidapi.com/images/search?q=" + buscar + " comida&count=1&mkt=es-CL&offset=10",
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-key": "4f543c0795msh46f19973d533f9ep12cff9jsn7118f7632446",
+                "x-rapidapi-host": "bing-image-search1.p.rapidapi.com"
+            }
+        };
+        $.ajax(settings).done(function (response) {
+            document.getElementById(id).src = response.value[0].contentUrl;
+        });
+    }, time);
+
+
+}
+
+
 
 
 //GRUPO DE LOS PRODUCTOS
 function Grupo(clase) {
+
     $.ajax({
         url: '../log/Grupo.php',
         type: 'POST',
@@ -181,7 +216,7 @@ function Select(Nproduct, Valor) {
 
     })
         .done(function (respuesta) {
-            $("#poder").html(respuesta);
+            $("#addProd").html(respuesta);
         })
         .fail(function () {
             console.log("Error: Not user found")
@@ -325,7 +360,7 @@ function ocupado() {
 
 
 
-//BORRA UN PRODUCTO
+    //BORRA UN PRODUCTO
 }
 function Borrar(borrar) {
     punto1 = localStorage.getItem('punto');

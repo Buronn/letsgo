@@ -9,12 +9,12 @@ while ($fila = $resultado->fetch_assoc()) {
     
     if($contador>0){
         $salida .= "<a class='nav-item nav-link' id='nav-clase-tab' data-toggle='tab' href='#nav-'".$fila['Clase']."'' role='tab'
-        aria-controls='nav-home' aria-selected='true' onclick=Grupo('".$fila['Clase']."')>'".$fila['NClase']."'</a>"
+        aria-controls='nav-home' aria-selected='true' onclick=Grupo('".$fila['Clase']."')>".$fila['NClase']."</a>"
         ;
         
     }else{
         $salida .= "<a class='nav-item nav-link active' id='nav-clase-tab' data-toggle='tab' href='#nav-'".$fila['Clase']."'' role='tab'
-    aria-controls='nav-home' aria-selected='true' onclick=Grupo('".$fila['Clase']."')>'".$fila['NClase']."'</a>
+    aria-controls='nav-home' aria-selected='true' onclick=Grupo('".$fila['Clase']."')>".$fila['NClase']."</a>
     <script>Grupo('".$fila['Clase']."')</script>";
 
     }
