@@ -55,7 +55,7 @@
 	justify-content: center;
 	display: flex;
 	visibility: hidden;
-	z-index: 1;
+	z-index: 101;
 }
 
 .overlay.active {

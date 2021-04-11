@@ -60,11 +60,12 @@ while ($fila = $result->fetch_assoc()) {
         <div class='overlay' id='overlay$aux'>
             <div class='popup' id='popup$aux'>
                 <h3>Cubiertos</h3>";
+            
         if ($fila['forma'] != 'REC') {
             $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),GoTo('probar.html') >1</button>
                     <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),GoTo('probar.html') >2</button>
                     <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),GoTo('probar.html') >3</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),GoTo(probar.html') >4</button>";
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),GoTo('probar.html') >4</button>";
         }
         if ($fila['forma'] == 'REC') {
             $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),GoTo('probar.html') >1</button>
