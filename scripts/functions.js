@@ -65,6 +65,41 @@ function mapa() {
             console.log("Error: Not user found")
         });
 }
+//AGREGA LA MESA A LA TABLA tables
+function tablesxd() {
+    let punto = localStorage.getItem('punto');
+    let cubiertos=localStorage.getItem('cubiertos');
+    let mesa=localStorage.getItem('mesa_num');
+    let hoy = new Date
+    let dia =hoy.getDate();
+    let mes= hoy.getMonth()+1;
+    let year=hoy.getFullYear();
+    let hora=hoy.getHours();
+    let minutos=hoy.getMinutes();
+    console.log(punto,cubiertos,mesa,hoy,dia,mes,year,hora,minutos)
+    $.ajax({
+        url: '../log/tables.php',
+        type: 'POST',
+        dataType: 'html',
+        data: { lugar: 5,
+            dia: dia,
+            mes: mes,
+            year:year,
+            hora:hora,
+            minutos:minutos,
+            mesa:mesa,
+            cubiertos:cubiertos
+        },
+
+    })
+        .done(function (respuesta) {
+            $("#paraningunlado").html(respuesta);
+
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+}
 
 //SONIDO DE TIMBRE
 function timbre() {
