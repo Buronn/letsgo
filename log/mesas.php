@@ -48,11 +48,11 @@ while ($fila = $result->fetch_assoc()) {
     if($fila['x']!=null and $fila['y']!=null ){
         $salida .= "
     <div class='contenedor'>
-        <a class='btn-abrir-popup' id='btn-abrir-popup$aux'>
+        <a class='btn-abrir-popup' id='btn-abrir-popup$aux' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "') >
             <img class='animation' style='position:fixed;left: " . ($left + 3)  . "%;top: " . ($top + 2) . "%;width: 9.6%;height: 15%;' 
             src='../images_mesas/" . $fila['forma'] . "_BLANCO_0.gif'>
 
-            <h1 onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "') class='mesitas' style='position: fixed;
+            <h1 class='mesitas' style='position: fixed;
             left: " . ($left + 3.5) . "%;
             top: " . ($top + 5) . "%;font-size:2vw'>" . $fila['Mesa'] . "</h1>
         </a>
