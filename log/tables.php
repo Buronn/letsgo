@@ -15,4 +15,4 @@ $folio= $max['MAX(Folio)']+1;
 $fecha=$dia."-".$mes."-".$year;
 $hora=$hora.":".$minutos;
 $sql="INSERT INTO `tables` (`Punto`, `Mesa`,`Cubiertos`,`Hora`,`Status`, `Fecha`, `Folio`) VALUES ($punto,$mesa,$cubiertos,$hora,0,$fecha,$folio)";
-
+echo $sql;

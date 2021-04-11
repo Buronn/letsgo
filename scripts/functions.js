@@ -65,6 +65,21 @@ function mapa() {
             console.log("Error: Not user found")
         });
 }
+function timezone(){
+    $.ajax({
+        url: 'http://worldtimeapi.org/api/timezone/America/Santiago',
+        type: 'GET',
+        dataType: 'json',
+    })
+        .done(function (respuesta) {
+            console.log(respuesta.datetime);
+
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+    return respuesta.datatime
+}
 //AGREGA LA MESA A LA TABLA tables
 function tablesxd() {
     let punto = localStorage.getItem('punto');
