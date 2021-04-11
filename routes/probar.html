@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/BuscarProdu/probar2.css">
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/notification.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <script type="text/javascript" src="../scripts/jquery.min.js"></script>
@@ -23,19 +24,24 @@
         check_login()
     </script>
     <nav>
-
+        <ol class="breadcrumb navbar-fixed-top">
+            <li class="breadcrumb-item"><a href="./mapa.html">Mesas</a></li>
+            <li class="breadcrumb-item" id="navClase"><a href="#">Clases</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Registro</li>
+          </ol>
         <input type="checkbox" id="check" onclick="Select('actualizar','')">
         <label for="check" class="checkbtn" onclick="Select('actualizar','')">
-            <i class="fas fa-bars"></i>
+            <i class="fas fa-bars" style="position: fixed;"></i>
         </label>
         <ul>
             <div id="addProd">
             </div>
         </ul>
+            
+    
 
     </nav>
     <script>
-        getImage("sopas y cremas");
         Clases();
     </script>
     <div id='clases'></div>
