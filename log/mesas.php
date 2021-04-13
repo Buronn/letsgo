@@ -61,18 +61,18 @@ while ($fila = $result->fetch_assoc()) {
                 <h3>Cubiertos</h3>";
             
         if ($fila['forma'] != 'REC') {
-            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),tables(),GoTo('Busqueda.html') >1</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),tables(),GoTo('Busqueda.html') >2</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),tables(),GoTo('Busqueda.html') >3</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),tables(),GoTo('Busqueda.html') >4</button>";
+            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),tables(),GoTo('probar.html') >1</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),tables(),GoTo('probar.html') >2</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),tables(),GoTo('probar.html') >3</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),tables(),GoTo('probar.html') >4</button>";
         }
         if ($fila['forma'] == 'REC') {
-            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),tables(),GoTo('Busqueda.html') >1</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),tables(),GoTo('Busqueda.html') >2</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),tables(),GoTo('Busqueda.html') >3</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),tables(),GoTo('Busqueda.html') >4</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','5'),tables(),GoTo('Busqueda.html') >5</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','6'),tables(),GoTo('Busqueda.html') >6</button>";
+            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),tables(),GoTo('probar.html') >1</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),tables(),GoTo('probar.html') >2</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),tables(),GoTo('probar.html') >3</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),tables(),GoTo('probar.html') >4</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','5'),tables(),GoTo('probar.html') >5</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','6'),tables(),GoTo('probar.html') >6</button>";
         }
         $salida .= "
                 <h1><label href='#' id='btn-cerrar-popup$aux' class='btn-cerrar-popup'>x</label></h1>

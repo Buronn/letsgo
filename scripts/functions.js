@@ -173,12 +173,39 @@ function getImage(id, buscar,time) {
 
 
 }
+//MOSTRAR PRODUCTOS
+function showproduct(nombre) {
+    clase = localStorage.getItem('clase');
+    grupo = localStorage.getItem('Grupo');
+    punto = localStorage.getItem('punto');
+    document.getElementById("arribaregistro").innerText=nombre;
 
+    $.ajax({
+        url: '../log/showproduct.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            clase: clase,
+            grupo: grupo,
+            punto: punto
+
+        },
+
+    })
+        .done(function (respuesta) {
+            $("#grupos").html(respuesta);
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+};
 
 
 
 //GRUPO DE LOS PRODUCTOS
-function Grupo(clase) {
+function Grupo(clase,nombre) {
+    document.getElementById("arribaclase").innerText=nombre;
+    document.getElementById("arribaregistro").innerText="";
 
     $.ajax({
         url: '../log/Grupo.php',
