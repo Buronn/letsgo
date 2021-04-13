@@ -12,7 +12,7 @@ while ($fila = $resultado->fetch_assoc()) {
     ".
       /* <img style='min-height: 30vw;max-height: 30vw'id=$n src='../icons/cargando.gif' class='card-img-top' alt='...'> */
       "<div class='card-body col-4'>
-        <a style='min-height:6vw;min-width:25vw;max-width:25vw;max-height:6vw;font-size:1.5vw' href='#' class='btn btn-dark'>" . $fila['NProducto'] . "
+        <a style='min-height:6vw;min-width:25vw;max-width:25vw;max-height:7vw;font-size:1.5vw' href='#' class='btn btn-dark'>" . $fila['NProducto'] . "
         $".$fila['Valor']."</a>
       </div>
    ";

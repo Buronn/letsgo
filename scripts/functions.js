@@ -179,6 +179,7 @@ function showproduct(nombre) {
     grupo = localStorage.getItem('Grupo');
     punto = localStorage.getItem('punto');
     document.getElementById("arribaregistro").innerText=nombre;
+    document.getElementById("arribaclase").style.color="white"
 
     $.ajax({
         url: '../log/showproduct.php',
@@ -207,7 +208,9 @@ function Grupo(clase,nombre) {
     if(clase=='' && nombre==''){
         clase = localStorage.getItem('clase');
         document.getElementById("arribaregistro").innerText="";
+        document.getElementById("arribaclase").style.color="#65eec0"
     }else{
+    document.getElementById("arribaclase").style.color="#65eec0"
     document.getElementById("arribaclase").innerText=nombre;
     document.getElementById("arribaregistro").innerText="";
     }
@@ -392,8 +395,9 @@ function ocupado() {
 
 
 
-    //BORRA UN PRODUCTO
+   
 }
+//BORRA UN PRODUCTO
 function Borrar(borrar) {
     punto1 = localStorage.getItem('punto');
     mesa1 = localStorage.getItem('mesa_num');

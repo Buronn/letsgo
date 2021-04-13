@@ -25,12 +25,14 @@
     <script>
         check_login()
     </script>
+    <ol class="breadcrumb navbar-fixed-top">
+        <li class="breadcrumb-item"><a style="color: white;font-size: 2.5vw;" href="./mapa.html">Mesas</a></li>
+        <li class="breadcrumb-item" id="navClase"><a style="color: white;font-size: 2.5vw;" href="#" id="arribaclase" onclick="Grupo('','')">Clases</a></li>
+        <li class="breadcrumb-item active" style="color: rgb(102, 238, 192);font-size: 2.5vw;" aria-current="page" id="arribaregistro"></li>
+    </ol>
+
     <nav>
-        <ol class="breadcrumb navbar-fixed-top">
-            <li class="breadcrumb-item"><a href="./mapa.html">Mesas</a></li>
-            <li class="breadcrumb-item" id="navClase"><a href="#" id="arribaclase" onclick="Grupo('','')">Clases</a></li>
-            <li class="breadcrumb-item active" aria-current="page" id="arribaregistro"></li>
-        </ol>
+        
         <input type="checkbox" id="check" onclick="Select('actualizar','')">
         <label for="check" class="checkbtn" onclick="Select('actualizar','')">
             <i class="fas fa-bars" style="position: fixed;"></i>
