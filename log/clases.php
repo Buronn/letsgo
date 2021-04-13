@@ -32,17 +32,16 @@ $contador=0;
 while($fila = $resultado->fetch_assoc()){
     if($contador==0){
         $salida.="<div class='tab-pane fade show active' id='nav-'".$fila['Clase']."'' role='tabpanel' aria-labelledby='nav-'".$fila['Clase']."'-tab'>
-    <div class='nav nav-tabs' id='grupos'></div>
+    
     </div>";
 
     }else{
         $salida.="<div class='tab-pane fade' id='nav-'".$fila['Clase']."'' role='tabpanel' aria-labelledby='nav-'".$fila['Clase']."'-tab'>
-        <div class='nav nav-tabs' id='grupos'></div>
         </div>"
         ;
     }
     
 }
-$salida.="</div>";
+$salida.="<div class='nav nav-tabs' style='min-height:76.6vh' id='grupos'></div></div>";
 
 echo $salida;
