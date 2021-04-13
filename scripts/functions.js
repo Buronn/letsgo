@@ -232,6 +232,17 @@ function Grupo(clase,nombre) {
             console.log("Error: Not user found")
         });
 };
+//ELIMINAR DIVS DE LA CUENTA
+function ocultardivs() {
+    if(document.getElementById('barra0')==null){
+        $("#ocultar").remove();
+        document.getElementById('barra1').id='barra0'
+
+    }else{
+        Select('actualizar','')
+        document.getElementById('barra0').id='barra1'
+    }
+}
 
 
 //SELECCIONA PRODUCTO PARA AÑADIRLO A LA ORDEN

@@ -9,7 +9,7 @@ if ($nombre == 'actualizar') {
     $sql = "select NProducto,valor,cantidad from orden where punto='" . $punto . "'and mesa='" . $mesa . "'";
     $resultado = $conexion->query($sql);
     $total = 0;
-    $salida .= "<div style='background-color:#454545;padding:2vh;border-radius:2vw'>";
+    $salida .= "<div id='ocultar' style='background-color:#454545;padding:2vh;border-radius:2vw'>";
     while ($fila = $resultado->fetch_assoc()) {
         $a = $fila['NProducto'];
         $a = str_replace(" ", "&nbsp;", $a);
@@ -50,7 +50,7 @@ if ($nombre == 'actualizar') {
         $xd = str_replace(" ", "&nbsp;", $fila['NProducto']);
         $a = strtolower($a);
         $a = ucwords($a);
-        $salida .= "<div style='background-color:#454545;padding:2vh;border-radius:2vw'>";
+        $salida .= "<div id='ocultar' style='background-color:#454545;padding:2vh;border-radius:2vw'>";
         $salida .= "<p class='input-group mb-3'>
         <span class='btn btn-primary btn-lg' onclick=Borrar('$xd'),Select('actualizar','')>x" . $fila['cantidad'] . "</span>
         <a type='text' style='font-size:2vw' class='form-control'>" . $a . "</a>
