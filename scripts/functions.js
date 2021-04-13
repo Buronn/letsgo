@@ -204,8 +204,13 @@ function showproduct(nombre) {
 
 //GRUPO DE LOS PRODUCTOS
 function Grupo(clase,nombre) {
+    if(clase=='' && nombre==''){
+        clase = localStorage.getItem('clase');
+        document.getElementById("arribaregistro").innerText="";
+    }else{
     document.getElementById("arribaclase").innerText=nombre;
     document.getElementById("arribaregistro").innerText="";
+    }
 
     $.ajax({
         url: '../log/Grupo.php',
