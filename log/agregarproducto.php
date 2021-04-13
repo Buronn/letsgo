@@ -9,7 +9,7 @@ if ($nombre == 'actualizar') {
     $sql = "select NProducto,valor,cantidad from orden where punto='" . $punto . "'and mesa='" . $mesa . "'";
     $resultado = $conexion->query($sql);
     $total = 0;
-    $salida .= "<div>";
+    $salida .= "<div style='background-color:#454545;padding:2vh;border-radius:2vw'>";
     while ($fila = $resultado->fetch_assoc()) {
         $a = $fila['NProducto'];
         $a = str_replace(" ", "&nbsp;", $a);
@@ -17,17 +17,17 @@ if ($nombre == 'actualizar') {
         $a = strtolower($a);
         $a = ucwords($a);
         $salida .= "<p class='input-group mb-3'>
-        <span class='btn btn-primary' onclick=Borrar('$xd'),Select('actualizar','')>x" . $fila['cantidad'] . "</span>
-        <a type='text' class='form-control btn-lg'>" . $a . "</a>
-        <span class='btn btn-success' onclick=Borrar('$xd'),Select('actualizar','')>$" . $fila['valor'] . "</span>
-        <span class='btn btn-danger' onclick=Borrar('$xd'),Select('actualizar','')>-</span>
-        <span class='btn btn-danger' onclick=Borrar('$xd'),Select('actualizar','')>Delete</span>
-        <span class='btn btn-danger' onclick=Borrar('$xd'),Select('actualizar','')>note</span>
+        <span class='btn btn-primary btn-lg' onclick=Borrar('$xd'),Select('actualizar','')>x" . $fila['cantidad'] . "</span>
+        <a type='text' style='font-size:2vw' class='form-control'>" . $a . "</a>
+        <span class='btn btn-success btn-lg' onclick=Borrar('$xd'),Select('actualizar','')>$" . $fila['valor'] . "</span>
+        <span class='btn btn-danger btn-lg' onclick=Borrar('$xd'),Select('actualizar','')>-1</span>
+        <span class='btn btn-danger btn-lg' onclick=Borrar('$xd'),Select('actualizar','')>Delete</span>
+        <span class='btn btn-info btn-lg'>note</span>
         </p>";
         $total = $total + $fila['valor'];
     }
+    $salida .= "<span style='font-size:3vw' class='btn btn-info btn-lg'>Total=$$total</span>";
     $salida .= "</div>";
-    $salida .= "<h3 class='titulo'>Total=$$total</h3>";
     echo $salida;
 } else {
     $sql = "select * from orden where NProducto='" . $nombre . "'and punto='" . $punto . "'and mesa='" . $mesa . "'";
@@ -50,13 +50,19 @@ if ($nombre == 'actualizar') {
         $xd = str_replace(" ", "&nbsp;", $fila['NProducto']);
         $a = strtolower($a);
         $a = ucwords($a);
+        $salida .= "<div style='background-color:#454545;padding:2vh;border-radius:2vw'>";
         $salida .= "<p class='input-group mb-3'>
-        <a type='text' class='form-control'>" . $a . ".x" . $fila['cantidad'] . "$" . $fila['valor'] . ";</a>
-        <span class='btn btn-danger' onclick=Borrar('$xd'),Select('actualizar','')>-</span>
-        <span class='btn btn-danger' onclick=Borrar('$xd'),Select('actualizar','')>Delete</span>
+        <span class='btn btn-primary btn-lg' onclick=Borrar('$xd'),Select('actualizar','')>x" . $fila['cantidad'] . "</span>
+        <a type='text' style='font-size:2vw' class='form-control'>" . $a . "</a>
+        <span class='btn btn-success btn-lg' onclick=Borrar('$xd'),Select('actualizar','')>$" . $fila['valor'] . "</span>
+        <span class='btn btn-danger btn-lg' onclick=Borrar('$xd'),Select('actualizar','')>-1</span>
+        <span class='btn btn-danger btn-lg' onclick=Borrar('$xd'),Select('actualizar','')>Delete</span>
+        <span class='btn btn-info btn-lg'>note</span>
         </p>";
         $total = $total + $fila['valor'];
     }
-    $salida .= "<h3 class='titulo'>Total=$$total</h3>";
+    $salida .= "<span style='font-size:3vw' class='btn btn-info btn-lg'>Total=$$total</span>";
+    $salida .= "</div>";
+
     echo $salida;
 }
