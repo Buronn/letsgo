@@ -11,83 +11,108 @@
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/notification.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
     <script type="text/javascript" src="../scripts/jquery.min.js"></script>
     <script type="text/javascript" src="/scripts/functions.js"></script>
     <script type="text/javascript" src="/scripts/search.js"></script>
     <script type="text/javascript" src="/scripts/bootstrap.js"></script>
     <script type="text/javascript" src="/scripts/notification.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
+
 
 </head>
-<style>
 
-</style>
 <body class="fondo">
+
     <script>
         check_login()
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        })
     </script>
+
     <ol class="breadcrumb navbar-fixed-top">
         <li class="breadcrumb-item"><a style="color: white;font-size: 2.5vw;" href="./mapa.html">Mesas</a></li>
-        <li class="breadcrumb-item" id="navClase"><a style="color: white;font-size: 2.5vw;" href="#" id="arribaclase" onclick="Grupo('','')">Clases</a></li>
-        <li class="breadcrumb-item active" style="color: rgb(102, 238, 192);font-size: 2.5vw;" aria-current="page" id="arribaregistro"></li>
-    </ol>
+        <li class="breadcrumb-item" id="navClase">
+            <a style="color: white;font-size: 2.5vw;" href="#" id="arribaclase"
+                onclick="Grupo('',''),CambiarClase('sum','enabled','disabled'),CambiarClase('mult','enabled','disabled')">
+                Clases
+            </a>
+        </li>
+        <li class="breadcrumb-item active" style="color: rgb(102, 238, 192);font-size: 2.5vw;" aria-current="page"
+            id="arribaregistro"></li>
 
+    </ol>
     <nav>
-        
-        <input type="checkbox" id="check" >
-        <label for="check" class="checkbtn" onclick="ocultardivs()" >
+
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn" onclick="ocultardivs()">
             <i id="barra0" class="fas fa-bars" style="position: fixed;"></i>
         </label>
 
         <ul>
+
             <div id="addProd">
+
+
             </div>
         </ul>
 
     </nav>
-    
     <script>
         Clases();
     </script>
+    <div style="z-index:5;position:absolute;left:65vw;top:2vw">
+        <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">
+                <h3><i style="font-size: 2vw;color:green;" class="far fa-check-circle"></i> Producto añadido
+                    correctamente</h3>
+            </div>
+        </div>
+    </div>
     <div id='clases'></div>
 
-    <!--  <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-clase-tab" data-toggle="tab" href="#nav-home" role="tab"
-                aria-controls="nav-home" aria-selected="true">Clase</a>
-            <a class="nav-item nav-link" id="nav-grupo-tab" data-toggle="tab" href="#nav-profile" role="tab"
-                aria-controls="nav-profile" aria-selected="false">Grupo</a>
-            <a class="nav-item nav-link" id="nav-producto-tab" data-toggle="tab" href="#nav-contact" role="tab"
-                aria-controls="nav-contact" aria-selected="false">Producto</a>
-        </div>
-    </nav> -->
-    <!-- <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <script>
-                Clases();
-            </script>
-            <div class="nav nav-tabs" id="clases">
+    <div id="note" style="z-index: -1;"></div>
+
+    <div class='navbotones' style="color: #f2f2f2;">
+
+        <p id='produabajo' style="color: #65eec0;font-weight: bolder; text-align: center;padding-top: 1vw;"></p>
+        <a class="col-3 disabled" id="sum" onclick="Select('','5'),AlertaAñadido()"><i class="fas fa-plus"></i></a>
+        <a class="col-3 disabled" id="mult" data-toggle='modal' data-target='#multiplicador'><i
+                class="fas fa-times"></i></a>
+        <a class="col-3 enabled"><i class="far fa-file-alt"></i></a>
+        <a class="col-3 enabled"><i class="far fa-credit-card"></i></a>
+
+    </div>
+    <div class='modal fade' style='padding-top:20vw;padding-left:35vw;max-width: 70%;
+    margin: 1.75rem auto;' id='multiplicador' tabindex='-1' role='dialog' aria-labelledby='multiplicador_2'
+        aria-hidden='true'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                        <span style='font-size:3vw;color:white' aria-hidden='true'><i
+                                class='far fa-times-circle'></i></span>
+                    </button>
+                </div>
+                <div class='modal-body'>
+                    <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
+                </div>
+
+                <button style='font-size:2.4vw;background-color:#3c3a3c;border-color: #f2f2f2;' type='button'
+                    class='btn btn-success btn-lg'>Añadir productos</button>
 
             </div>
         </div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <div class="nav nav-tabs" id="grupos"></div>
-        </div>
-        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-            <input type="text" name="caja_busqued" id="caja_busqueda"></input>
-            <div class="col" id="agregados"></div>
-            <div id="prueba"></div>
-        </div>
-    </div> -->
-    <div id="note" style="z-index: -1;"></div>
-    <div class='navbotones'>
-        <p href='#' id='produabajo' style="color: #65eec0;font-weight: bolder; text-align: center;"></p>
-        <a href='#'>Sumar</a>
-        <a href='#'>Multiplicar</a>
-        <a href='#'>Imprimir</a>
-        <a href='#'>Cerrar cuenta</a>
     </div>
+
+
 </body>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 

@@ -2,9 +2,13 @@
 function SetLocalStorage(key, punto) {
     localStorage.setItem(key, punto);
 }
-function algoxd(){
-    document.getElementById("produabajo").innerText=$("input[name='ProductOptions']:checked").val()
+
+//MUESTRA EL PRODUCTO EN LA NAVBAR DE probar.html
+function MostrarProductoNavbar() {
+    document.getElementById("produabajo").innerText = $("input[name='ProductOptions']:checked").val()
 }
+
+
 //Borrardiv al seleccionar
 function ocultardivs2() {
     $("#ocultar").remove();
@@ -18,6 +22,12 @@ function clearLocalStorage() {
 //DELAY
 function FunctionDelay(func, time) {
     setTimeout(() => { func() }, time)
+}
+
+//ALERTA AÑADIR
+function AlertaAñadido() {
+    $('.toast').toast('show')
+    setTimeout(() => { $('.toast').toast('hide') }, 1000)
 }
 
 //SLEEP
@@ -46,7 +56,17 @@ function AgregarClase(id, clase) {
     xd.classList.add(clase);
 }
 
+//CAMBIAR CLASE
+function CambiarClase(id,clase1,clase2){
+    var xd = document.getElementById(id);
+    xd.classList.remove(clase1);
+    xd.classList.add(clase2);
+}
 
+//QUITAR ONCLICK
+function DeleteOnClick(id){
+    var xd = document.getElementById(id);
+}
 
 //BORRA TODAS LAS COOKIES
 function deleteCookies() {
@@ -159,7 +179,7 @@ function Clases() {
         });
 };
 //GET IMAGE FROM API
-function getImage(id, buscar,time) {
+function getImage(id, buscar, time) {
     setTimeout(function () {
         const settings = {
             "async": true,
@@ -183,8 +203,8 @@ function showproduct(nombre) {
     clase = localStorage.getItem('clase');
     grupo = localStorage.getItem('Grupo');
     punto = localStorage.getItem('punto');
-    document.getElementById("arribaregistro").innerText=nombre;
-    document.getElementById("arribaclase").style.color="white"
+    document.getElementById("arribaregistro").innerText = nombre;
+    document.getElementById("arribaclase").style.color = "white"
 
     $.ajax({
         url: '../log/showproduct.php',
@@ -209,16 +229,17 @@ function showproduct(nombre) {
 
 
 //GRUPO DE LOS PRODUCTOS
-function Grupo(clase,nombre) {
-    if(clase=='' && nombre==''){
+function Grupo(clase, nombre) {
+    if (clase == '' && nombre == '') {
         clase = localStorage.getItem('clase');
-        document.getElementById("arribaregistro").innerText="";
-        document.getElementById("arribaclase").style.color="#65eec0"
-    }else{
-    document.getElementById("arribaclase").style.color="#65eec0"
-    document.getElementById("arribaclase").innerText=nombre;
-    document.getElementById("arribaregistro").innerText="";
-    document.getElementById("produabajo").innerText="";
+        document.getElementById("arribaregistro").innerText = "";
+        document.getElementById("arribaclase").style.color = "#65eec0"
+        document.getElementById("produabajo").innerText = "";
+    } else {
+        document.getElementById("arribaclase").style.color = "#65eec0"
+        document.getElementById("arribaclase").innerText = nombre;
+        document.getElementById("arribaregistro").innerText = "";
+        document.getElementById("produabajo").innerText = "";
 
     }
 
@@ -239,21 +260,39 @@ function Grupo(clase,nombre) {
             console.log("Error: Not user found")
         });
 };
+
+
 //ELIMINAR DIVS DE LA CUENTA
 function ocultardivs() {
-    if(document.getElementById('barra0')==null){
-        $("#ocultar").remove();
-        document.getElementById('barra1').id='barra0'
 
-    }else{
-        Select('actualizar','')
-        document.getElementById('barra0').id='barra1'
+    if (document.getElementById('barra0') == null) {
+        setTimeout(function () {
+            $("#ocultar").remove();
+            document.getElementById('barra1').id = 'barra0'
+        }, 400);
+        
+
+    } else {
+        Select('actualizar', '');
+        document.getElementById('barra0').id = 'barra1';
+
+        CambiarClase('sum','enabled','disabled');
+        CambiarClase('mult','enabled','disabled');
+        $('input[name="ProductOptions"]').prop('checked',false);
+        document.getElementById("produabajo").innerText = "";
+        
     }
+
 }
 
 
 //SELECCIONA PRODUCTO PARA AÑADIRLO A LA ORDEN
 function Select(Nproduct, Valor) {
+
+    if(Nproduct == ''){
+        Nproduct = $("input[name='ProductOptions']:checked").val()
+    }
+
     punto = localStorage.getItem('punto');
     mesa = localStorage.getItem('mesa_num');
     $.ajax({
@@ -413,7 +452,7 @@ function ocupado() {
 
 
 
-   
+
 }
 //BORRA UN PRODUCTO
 function Borrar(borrar) {

@@ -30,7 +30,7 @@ while ($fila = $resultado->fetch_assoc()) {
         id='" . $clase . $grupo . $fila['Producto'] . "' 
         value='$a'
         autocomplete='off'
-        onclick=algoxd()
+        onclick=MostrarProductoNavbar(),CambiarClase('sum','disabled','enabled'),CambiarClase('mult','disabled','enabled')
       >
       <label 
         style='min-height:6vw;min-width:25vw;max-width:25vw;max-height:7vw;font-size:1.5vw;text-align: center;' 

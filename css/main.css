@@ -3223,7 +3223,9 @@ input[type=button].btn-block {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-
+.input-group span{
+  font-size:2vw;
+}
 .dropdown-toggle-split {
   padding-right: 0.5625rem;
   padding-left: 0.5625rem;
@@ -5454,7 +5456,7 @@ a.close.disabled {
   flex-direction: column;
   width: 100%;
   pointer-events: auto;
-  background-color: #fff;
+  background-color: rgb(54, 138, 127);
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
@@ -5465,7 +5467,6 @@ a.close.disabled {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1040;
   width: 100vw;
   height: 100vh;
   background-color: #000;
@@ -5526,7 +5527,7 @@ a.close.disabled {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 500px;
+    max-width: 90%;
     margin: 1.75rem auto;
   }
 
