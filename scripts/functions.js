@@ -2,6 +2,9 @@
 function SetLocalStorage(key, punto) {
     localStorage.setItem(key, punto);
 }
+function algoxd(){
+    document.getElementById("produabajo").innerText=$("input[name='ProductOptions']:checked").val()
+}
 //Borrardiv al seleccionar
 function ocultardivs2() {
     $("#ocultar").remove();
@@ -215,6 +218,8 @@ function Grupo(clase,nombre) {
     document.getElementById("arribaclase").style.color="#65eec0"
     document.getElementById("arribaclase").innerText=nombre;
     document.getElementById("arribaregistro").innerText="";
+    document.getElementById("produabajo").innerText="";
+
     }
 
     $.ajax({
