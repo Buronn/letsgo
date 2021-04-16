@@ -14,7 +14,7 @@ while ($fila = $resultado->fetch_assoc()) {
   $salida .= "
     " .
     /* <img style='min-height: 30vw;max-height: 30vw'id=$n src='../icons/cargando.gif' class='card-img-top' alt='...'> */
-    "<div class='form-check form-check-inline col-4' style='min-height: 6vw;
+    "<div class='form-check form-check-inline col-4' style='margin-top:2vw;margin-left:2vw;min-height: 6vw;
     min-width: 25vw;
     max-width: 29vw;
     max-height: 6vw;
