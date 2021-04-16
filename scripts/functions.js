@@ -2,6 +2,10 @@
 function SetLocalStorage(key, punto) {
     localStorage.setItem(key, punto);
 }
+//Borrardiv al seleccionar
+function ocultardivs2() {
+    $("#ocultar").remove();
+}
 
 //BORRAR TODO EL LOCALSTORAGE
 function clearLocalStorage() {
