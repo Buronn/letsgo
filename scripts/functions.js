@@ -53,8 +53,6 @@ function deleteCookies() {
 }
 
 
-
-
 //FUNCION QUE LLAMA EL MAPEO DE MESAS
 function mapa() {
     npunto = localStorage.getItem('npunto');
