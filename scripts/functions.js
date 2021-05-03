@@ -62,7 +62,8 @@ function CambiarClase(id,clase1,clase2){
     xd.classList.remove(clase1);
     xd.classList.add(clase2);
 }
-
+//Inicia tooltip de cerrar sesion
+$('[data-toggle="tooltip"]').tooltip()
 //QUITAR ONCLICK
 function DeleteOnClick(id){
     var xd = document.getElementById(id);
@@ -295,6 +296,9 @@ function Select(Nproduct, Valor) {
 
     punto = localStorage.getItem('punto');
     mesa = localStorage.getItem('mesa_num');
+    clase = localStorage.getItem('clase');
+    Grupo = localStorage.getItem('Grupo');
+
     $.ajax({
         url: '../log/agregarproducto.php',
         type: 'POST',
@@ -303,7 +307,9 @@ function Select(Nproduct, Valor) {
             mesa: mesa,
             punto: punto,
             Valor: Valor,
-            Nproduct: Nproduct
+            Nproduct: Nproduct,
+            clase: clase,
+            Grupo : Grupo
         },
 
     })
