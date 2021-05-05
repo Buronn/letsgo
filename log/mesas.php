@@ -122,10 +122,15 @@ while($fila = $result3->fetch_assoc()){
 }
 
 
+//-----Tooltip para cerrar sesion------
+
+
+
 
 //--------------CERRAR SESION--------------
+
 $salida .=
-    "<a href='../index.html' onclick=deleteCookies(),clearLocalStorage()>
+    "<a data-toggle='tooltip' data-placement='top' title='Cerrar Sesión' href='../index.html' onclick=deleteCookies(),clearLocalStorage()>
 <img class='img-fluid mesitas' style='position: fixed;
 left: " . 89 . "%;
 top: " . -11 . "%;
