@@ -117,7 +117,7 @@ function timezone() {
 
 
 //AGREGA LA MESA A LA TABLA tables
-function tables() {
+function tables(xd) {
     let punto = localStorage.getItem('punto');
     let cubiertos = localStorage.getItem('cubiertos');
     let mesa = localStorage.getItem('mesa_num');
@@ -133,14 +133,15 @@ function tables() {
         type: 'POST',
         dataType: 'html',
         data: {
-            lugar: 5,
+            lugar: punto,
             dia: dia,
             mes: mes,
             year: year,
             hora: hora,
             minutos: minutos,
             mesa: mesa,
-            cubiertos: cubiertos
+            cubiertos: cubiertos,
+            hacer: xd
         },
 
     })
