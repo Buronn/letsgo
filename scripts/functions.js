@@ -62,8 +62,7 @@ function CambiarClase(id,clase1,clase2){
     xd.classList.remove(clase1);
     xd.classList.add(clase2);
 }
-//Inicia tooltip de cerrar sesion
-$('[data-toggle="tooltip"]').tooltip()
+
 //QUITAR ONCLICK
 function DeleteOnClick(id){
     var xd = document.getElementById(id);
@@ -231,7 +230,7 @@ function showproduct(nombre) {
 
 
 //GRUPO DE LOS PRODUCTOS
-function Grupo(clase, nombre) {
+function grupo(clase, nombre) {
     if (clase == '' && nombre == '') {
         clase = localStorage.getItem('clase');
         document.getElementById("arribaregistro").innerText = "";
@@ -280,8 +279,6 @@ function ocultardivs() {
 
         CambiarClase('sum','enabled','disabled');
         CambiarClase('mult','enabled','disabled');
-        $('input[name="ProductOptions"]').prop('checked',false);
-        document.getElementById("produabajo").innerText = "";
         
     }
 
