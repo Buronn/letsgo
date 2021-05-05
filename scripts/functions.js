@@ -386,7 +386,7 @@ function check_login() {
     })
         .done(function (respuesta) {
             if (respuesta == true) {
-                GoTo('../index.html')
+                GoTo('index.html')
             }
         })
         .fail(function () {
