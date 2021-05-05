@@ -59,22 +59,22 @@ if ($nombre == 'actualizar') {
     }
     $salida .= "<span style='font-size:3vw;pointer-events:none;background-color:#646f6b;min-width:100%;border-color: #ffffff;' class='btn btn-info btn-lg'>$$total</span>";
     $salida .= "</div>";
-    $salida .="<script>console.log('$nombre_prod')</script>";
 
     echo $salida;
 } else {
-  $sql = "select NProducto,valor,cantidad from orden where punto='" . $punto . "'and mesa='" . $mesa . "'";
-  $sql = "select * from orden where NProducto='" . $nombre . "'and punto='" . $punto . "'and mesa='" . $mesa . "'";
-  $resultado = $conexion->query($sql);
-  if ($resultado->num_rows > 0) {
-      $sql = "update orden
-      SET cantidad=cantidad+1,valor=valor+" . $valor . "
-      WHERE NProducto='" . $nombre . "'and punto='" . $punto . "'and mesa='" . $mesa . "'";
-      $resultado = $conexion->query($sql);
-  } else {
-      $sql = "insert into orden (NProducto,punto,valor,mesa,cantidad) values('" . $nombre . "','" . $punto . "','" . $valor . "','" . $mesa . "',1)";
-      $resultado = $conexion->query($sql);
-  }
+  /*
+    $sql = "select * from orden where NProducto='" . $nombre . "'and punto='" . $punto . "'and mesa='" . $mesa . "'";
+    $resultado = $conexion->query($sql);
+    if ($resultado->num_rows > 0) {
+        $sql = "update orden
+        SET cantidad=cantidad+1,valor=valor+" . $valor . "
+        WHERE NProducto='" . $nombre . "'and punto='" . $punto . "'and mesa='" . $mesa . "'";
+        $resultado = $conexion->query($sql);
+    } else {
+        $sql = "insert into orden (NProducto,punto,valor,mesa,cantidad) values('" . $nombre . "','" . $punto . "','" . $valor . "','" . $mesa . "',1)";
+        $resultado = $conexion->query($sql);
+    }
+    $sql = "select NProducto,valor,cantidad from orden where punto='" . $punto . "'and mesa='" . $mesa . "'";
     $resultado = $conexion->query($sql);
     $total = 0;
     */
