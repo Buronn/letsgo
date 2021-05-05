@@ -209,7 +209,7 @@ function showproduct(nombre) {
     document.getElementById("arribaclase").style.color = "white"
 
     $.ajax({
-        url: '../PHP/Comanda/showproduct.php',
+        url: '../PHP/Comanda/mostrarproducto.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -246,7 +246,7 @@ function Grupo(clase, nombre) {
     }
 
     $.ajax({
-        url: '../PHP/Comanda/Grupo.php',
+        url: '../PHP/Comanda/grupos.php',
         type: 'POST',
         dataType: 'html',
         data: {

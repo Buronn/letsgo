@@ -61,18 +61,18 @@ while ($fila = $result->fetch_assoc()) {
                 <h3>Cubiertos</h3>";
             
         if ($fila['forma'] != 'REC') {
-            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),tables('xd'),GoTo('probar.html') >1</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),tables('xd'),GoTo('probar.html') >2</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),tables('xd'),GoTo('probar.html') >3</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),tables('xd'),GoTo('probar.html') >4</button>";
+            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),tables('xd'),GoTo('comanda.html') >1</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),tables('xd'),GoTo('comanda.html') >2</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),tables('xd'),GoTo('comanda.html') >3</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),tables('xd'),GoTo('comanda.html') >4</button>";
         }
         if ($fila['forma'] == 'REC') {
-            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),tables('xd'),GoTo('probar.html') >1</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),tables('xd'),GoTo('probar.html') >2</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),tables('xd'),GoTo('probar.html') >3</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),tables('xd'),GoTo('probar.html') >4</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','5'),tables('xd'),GoTo('probar.html') >5</button>
-                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','6'),tables('xd'),GoTo('probar.html') >6</button>";
+            $salida .= "<button class='btn-submit' onclick=SetLocalStorage('cubiertos','1'),tables('xd'),GoTo('comanda.html') >1</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','2'),tables('xd'),GoTo('comanda.html') >2</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','3'),tables('xd'),GoTo('comanda.html') >3</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','4'),tables('xd'),GoTo('comanda.html') >4</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','5'),tables('xd'),GoTo('comanda.html') >5</button>
+                    <button class='btn-submit' onclick=SetLocalStorage('cubiertos','6'),tables('xd'),GoTo('comanda.html') >6</button>";
         }
         $salida .= "
                 <h1><label href='#' id='btn-cerrar-popup$aux' class='btn-cerrar-popup'>x</label></h1>
@@ -93,7 +93,7 @@ while($fila = $result3->fetch_assoc()){
     if($fila['x']!=null and $fila['y']!=null ){
         $salida .= "
     <div class='contenedor'>
-        <a href='./probar.html' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
+        <a href='./comanda.html' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
             <img class='img-fluid mesitas btn-abrir-popup animation'
             style='position: absolute;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
             src='../images_mesas/";
@@ -135,7 +135,7 @@ $salida .=
 left: " . 89 . "%;
 top: " . -11 . "%;
 width: 5%;
-height: 8%;' href='../index.html' src='../icons/logout-red.png'>
+height: 8%;' href='../index.html' src='../iconos/logout-red.png'>
 </a>";
 
 //--------------ACTUALIZAR--------------
@@ -145,7 +145,7 @@ $salida .=
 left: " . 81 . "%;
 top: " . -11 . "%;
 width: 5%;
-height: 8%;' href='../index.html' src='../icons/actualizar.png'>
+height: 8%;' href='../index.html' src='../iconos/actualizar.png'>
 <div style='position: fixed;
 left: " . 94 . "%;
 top: " . 94 . "%;width: 2.5vw; height: 2.5vw;' id='actualizando' class='text-light' role='status'>
