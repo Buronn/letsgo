@@ -405,33 +405,6 @@ function toUTF8Array(str) {
     return new Uint8Array(uintArray);
 }
 
-
-//BORRA TODA LA ORDEN
-function BorrarTodo() {
-    punto1 = localStorage.getItem('punto');
-    mesa1 = localStorage.getItem('mesa_num');
-    $.ajax({
-        url: '../log/borrartodo.php',
-        type: 'POST',
-        dataType: 'html',
-        data: {
-            mesa1: mesa1,
-            punto1: punto1,
-        },
-
-    })
-        .done(function (respuesta) {
-            Select('actualizar', '');
-            GoTo('mapa.html')
-            $("#nose").html(respuesta);
-        })
-        .fail(function () {
-            console.log("Error: Not user found")
-        });
-};
-
-
-
 //
 function ocupado() {
     punto = localStorage.getItem('punto');
@@ -461,25 +434,3 @@ function ocupado() {
 
 
 }
-//BORRA UN PRODUCTO
-function Borrar(borrar) {
-    punto1 = localStorage.getItem('punto');
-    mesa1 = localStorage.getItem('mesa_num');
-    $.ajax({
-        url: '../log/borrarprodu.php',
-        type: 'POST',
-        dataType: 'html',
-        data: {
-            mesa1: mesa1,
-            punto1: punto1,
-            borrar: borrar
-        },
-
-    })
-        .done(function (respuesta) {
-            $("#nose").html(respuesta);
-        })
-        .fail(function () {
-            console.log("Error: Not user found")
-        });
-};
