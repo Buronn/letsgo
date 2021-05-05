@@ -82,7 +82,7 @@ function mapa() {
     npunto = localStorage.getItem('npunto');
     punto = localStorage.getItem('punto');
     $.ajax({
-        url: '../log/mesas.php',
+        url: '../PHP/Mapa/mesas.php',
         type: 'POST',
         dataType: 'html',
         data: { lugar: punto, npunto: npunto },
@@ -130,7 +130,7 @@ function tables(xd) {
     let minutos = hoy.getMinutes();
     console.log(punto, cubiertos, mesa, hoy, dia, mes, year, hora, minutos)
     $.ajax({
-        url: '../log/tables.php',
+        url: '../PHP/Mapa/tables.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -165,7 +165,7 @@ function timbre() {
 //CLASES DE LOS PRODUCTOS
 function Clases() {
     $.ajax({
-        url: '../log/clases.php',
+        url: '../PHP/Comanda/clases.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -209,7 +209,7 @@ function showproduct(nombre) {
     document.getElementById("arribaclase").style.color = "white"
 
     $.ajax({
-        url: '../log/showproduct.php',
+        url: '../PHP/Comanda/showproduct.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -246,7 +246,7 @@ function Grupo(clase, nombre) {
     }
 
     $.ajax({
-        url: '../log/Grupo.php',
+        url: '../PHP/Comanda/Grupo.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -301,7 +301,7 @@ function Select(Nproduct, Valor) {
     Grupo = localStorage.getItem('Grupo');
 
     $.ajax({
-        url: '../log/agregarproducto.php',
+        url: '../PHP/Comanda/agregarproducto.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -328,7 +328,7 @@ function login() {
     var user = document.getElementById("user").value;
     var pass = document.getElementById("pass").value;
     $.ajax({
-        url: '../log/login.php',
+        url: '../PHP/Index/login.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -376,7 +376,7 @@ function check_login() {
             decodedString = decodeURIComponent(escape(atob(encodedString)));
     }
     $.ajax({
-        url: '../log/check_login.php',
+        url: '../PHP/check_login.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -405,32 +405,3 @@ function toUTF8Array(str) {
     return new Uint8Array(uintArray);
 }
 
-//
-function ocupado() {
-    punto = localStorage.getItem('punto');
-    mesa = localStorage.getItem('mesa_num');
-    cubiertos = localStorage.getItem('cubiertos');
-    localStorage.removeItem('cubiertos');
-    $.ajax({
-        url: '../log/ocupado.php',
-        type: 'POST',
-        dataType: 'html',
-        data: {
-            mesa: mesa,
-            punto: punto,
-            cubiertos: cubiertos,
-        },
-
-    })
-        .done(function (respuesta) {
-            $("#prueba").html(respuesta);
-        })
-        .fail(function () {
-            console.log("Error: Not user found")
-        });
-
-
-
-
-
-}
