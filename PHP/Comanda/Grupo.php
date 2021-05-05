@@ -1,5 +1,5 @@
 <?php
-require "conexion.php";
+require "../conexion.php";
 (int)$clase = $_POST['clase'];
 $salida = "";
 $sql = "select * from grupos where Clase='" . intval($clase) . "'";

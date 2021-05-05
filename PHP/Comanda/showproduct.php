@@ -1,5 +1,5 @@
 <?php
-require "conexion.php";
+require "../conexion.php";
 $salida = "";
 (int)$clase = $_POST['clase'];
 $grupo = $_POST['grupo'];

@@ -1,5 +1,5 @@
 <?php
-require "conexion.php";
+require "../conexion.php";
 $salida = "";
 $lugar = $_POST['lugar'];
 $sql="Select * FROM mesas where Mesa NOT IN(Select Mesa from `tables` where `Status`='0') and Punto='" . $lugar . "'";

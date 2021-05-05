@@ -1,6 +1,6 @@
 <?php
 
-require "conexion.php";
+require "../conexion.php";
 $personas = $_POST['cubiertos'];
 $punto = $_POST['punto'];
 $mesa = $_POST['mesa'];

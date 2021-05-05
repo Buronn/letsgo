@@ -1,5 +1,5 @@
 <?php
-require "conexion.php";
+require "../conexion.php";
 $salida = "<nav style='background-color:black'>
             <div style='border-bottom: 0px solid #dee2e6;' class='nav nav-tabs' id='nav-tab' role='tablist'>";
 $sql = "select * from familias";

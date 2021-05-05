@@ -1,5 +1,5 @@
 <?php
-require "conexion.php";
+require "../conexion.php";
 
 $hacer=$_POST['hacer'];
 $punto=$_POST['lugar'];
