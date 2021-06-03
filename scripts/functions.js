@@ -230,7 +230,7 @@ function showproduct(nombre) {
 
 
 //GRUPO DE LOS PRODUCTOS
-function grupo(clase, nombre) {
+function mostrargrupos(clase, nombre) {
     if (clase == '' && nombre == '') {
         clase = localStorage.getItem('clase');
         document.getElementById("arribaregistro").innerText = "";
@@ -286,11 +286,8 @@ function ocultardivs() {
 
 
 //SELECCIONA PRODUCTO PARA AÑADIRLO A LA ORDEN
-function Select(Nproduct, Valor) {
+function Select(codigo) {
 
-    if(Nproduct == ''){
-        Nproduct = $("input[name='ProductOptions']:checked").val()
-    }
 
     punto = localStorage.getItem('punto');
     mesa = localStorage.getItem('mesa_num');
@@ -305,7 +302,7 @@ function Select(Nproduct, Valor) {
             mesa: mesa,
             punto: punto,
             Valor: Valor,
-            Nproduct: Nproduct,
+            product: codigo,
             clase: clase,
             Grupo : Grupo
         },

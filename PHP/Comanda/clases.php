@@ -14,13 +14,13 @@ while ($fila = $resultado->fetch_assoc()) {
     
     if($contador>0){
         $salida .= "<a style='border: 1px solid #b2b2b287;' class='nav-item nav-link' id='nav-clase-tab' data-toggle='tab' href='#nav-'".$fila['Clase']."'' role='tab'
-        aria-controls='nav-home' aria-selected='true' onclick=CambiarClase('sum','enabled','disabled'),CambiarClase('mult','enabled','disabled'),grupo('".$fila['Clase']."','$a'),SetLocalStorage('clase','".$fila['Clase']."')>".$fila['NClase']."</a>"
+        aria-controls='nav-home' aria-selected='true' onclick=CambiarClase('sum','enabled','disabled'),CambiarClase('mult','enabled','disabled'),mostrargrupos('".$fila['Clase']."','$a'),SetLocalStorage('clase','".$fila['Clase']."')>".$fila['NClase']."</a>"
         ;
         
     }else{
         $salida .= "<a style='border: 1px solid #b2b2b287;' class='nav-item nav-link active' id='nav-clase-tab' data-toggle='tab' href='#nav-'".$fila['Clase']."'' role='tab'
-    aria-controls='nav-home' aria-selected='true' onclick=CambiarClase('sum','enabled','disabled'),CambiarClase('mult','enabled','disabled'),grupo('".$fila['Clase']."','$a'),SetLocalStorage('clase','".$fila['Clase']."')>".$fila['NClase']."</a>
-    <script>grupo('".$fila['Clase']."','$a')</script>";
+    aria-controls='nav-home' aria-selected='true' onclick=CambiarClase('sum','enabled','disabled'),CambiarClase('mult','enabled','disabled'),mostrargrupos('".$fila['Clase']."','$a'),SetLocalStorage('clase','".$fila['Clase']."')>".$fila['NClase']."</a>
+    <script>mostrargrupos('".$fila['Clase']."','$a')</script>";
 
     }
     $contador++;

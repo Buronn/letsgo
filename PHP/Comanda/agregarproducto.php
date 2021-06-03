@@ -4,7 +4,7 @@ $salida = "";
 $mesa = $_POST['mesa'];
 $punto = $_POST['punto'];
 $valor = $_POST['Valor'];
-$nombre = $_POST['Nproduct'];
+$producto = $_POST['product'];
 $clase = $_POST['clase'];
 $grupo = $_POST['Grupo'];
 $codigoProducto = null;
@@ -85,15 +85,6 @@ if ($nombre == 'actualizar') {
 
     while($fila =  $codigoFolioLista->fetch_assoc()){
       $codigoFolio = $fila['Folio'];
-    }
-
-    $nombreProductoParaQuery = str_replace(' ',' ',$nombre);
-  
-    $consultaCodigoProducto = "select Producto from productos where NProducto = '". $nombreProductoParaQuery ."'";
-    $codigoProductoLista = $conexion->query($consultaCodigoProducto);
-
-    while($fila = $codigoProductoLista->fetch_assoc()){
-      $codigoProducto = $fila['Producto'];
     }
    
     $sql = "insert into produccion (punto,valor,mesa,cantidad,grupo,producto,status,folio,flag) values('" . $punto . "','" . $valor . "','" . $mesa . "',1 , '" . $clase . "', '" . $grupo . "', '" . $codigoProducto . "' , 0 , '" . $codigoFolio . "', 0 )";
