@@ -2,7 +2,7 @@
 require "../conexion.php";
 $salida = "";
 $lugar = $_POST['lugar'];
-$sql="Select * FROM mesas where Mesa NOT IN(Select Mesa from `tables` where `Status`='0') and Punto='" . $lugar . "'";
+$sql="Select * FROM mesas where Mesa NOT IN(Select Mesa from `tables` where `Status`='0' and Punto='" . $lugar . "') and Punto='" . $lugar . "'";
 $sql2 ="Select  t.Mesa,t.`Status`,t.Cubiertos,t.Cuenta,m.forma,m.x,m.y FROM `tables` as t INNER JOIN mesas  as m on m.Mesa=t.Mesa WHERE t.`Status`='0' and m.Punto='" . $lugar . "' and t.Punto='" . $lugar . "' GROUP BY Mesa";
 $table_puntos = "select * from puntos";
 $result = $conexion->query($sql);

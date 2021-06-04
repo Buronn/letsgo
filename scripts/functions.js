@@ -274,7 +274,7 @@ function ocultardivs() {
         
 
     } else {
-        Select('actualizar', '');
+        Select('actualizar');
         document.getElementById('barra0').id = 'barra1';
 
         CambiarClase('sum','enabled','disabled');
@@ -301,7 +301,6 @@ function Select(codigo) {
         data: {
             mesa: mesa,
             punto: punto,
-            Valor: Valor,
             product: codigo,
             clase: clase,
             Grupo : Grupo

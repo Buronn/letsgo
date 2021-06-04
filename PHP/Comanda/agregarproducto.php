@@ -3,15 +3,14 @@ require "../conexion.php";
 $salida = "";
 $mesa = $_POST['mesa'];
 $punto = $_POST['punto'];
-$valor = $_POST['Valor'];
 $producto = $_POST['product'];
 $clase = $_POST['clase'];
 $grupo = $_POST['Grupo'];
 $codigoProducto = null;
 $codigoFolio = null;
 
-if ($nombre == 'actualizar') {
-    $sql = "select NProducto,valor,cantidad from orden where punto='" . $punto . "'and mesa='" . $mesa . "'";
+if ($producto == 'actualizar') {
+    $sql = "select p.Punto,p.Mesa,pr.NProducto,p.Cantidad,p.Valor from produccion as p INNER JOIN productos as pr on p.Producto=pr.Producto and p.Grupo=pr.Grupo and p.Clase=pr.Clase WHERE p.Mesa='" . $mesa . "' and p.Punto='" . $punto . "'";
     $resultado = $conexion->query($sql);
     $total = 0;
     $salida .= "<div id='ocultar' style='background-color:#454545;padding:2vh;border-radius:2vw'>";
@@ -24,9 +23,9 @@ if ($nombre == 'actualizar') {
         $nombre_prod_arreglado = ucwords($nombre_prod_arreglado);
         $salida .= "<p class='input-group mb-3'>
         
-        <span style='border-color: #ffffff61;pointer-events:none;background-color:rgb(51 51 51)' class='btn btn-primary btn-lg'>x" . $fila['cantidad'] . "</span>
+        <span style='border-color: #ffffff61;pointer-events:none;background-color:rgb(51 51 51)' class='btn btn-primary btn-lg'>x" . $fila['Cantidad'] . "</span>
         <a type='text' style='font-size:2vw;pointer-events:none;' class='form-control'>" . $fila['NProducto'] . "</a>
-        <span style='border-color: #ffffff61;pointer-events:none;background-color:#348242ab'class='btn btn-success btn-lg'>$" . $fila['valor'] . "</span>
+        <span style='border-color: #ffffff61;pointer-events:none;background-color:#348242ab'class='btn btn-success btn-lg'>$" . $fila['Valor'] . "</span>
         <span style='border-color: #ffffff61;' class='btn btn-danger btn-lg' onclick=Borrar('$nombre_prod'),Select('actualizar','')><i class='fas fa-minus'></i></span>
         <span style='border-color: #ffffff61;' class='btn btn-danger btn-lg' onclick=Borrar('$nombre_prod'),Select('actualizar','')><i class='fas fa-trash-alt'></i></i></span>
         <button style='border-color: #ffffff61;' href='.modal-body' class='btn btn-info btn-lg' data-toggle='modal' data-target='#" . $nombre_prod . "1'><i class='fas fa-edit'></i></button>
@@ -55,7 +54,7 @@ if ($nombre == 'actualizar') {
     </div>
   </div>
   <script>document.getElementById('".$nombre_prod."3').value = '$nombre_prod'</script>";
-        $total = $total + $fila['valor'];
+        $total = $total + $fila['Valor'];
     }
     $salida .= "<span style='font-size:3vw;pointer-events:none;background-color:#646f6b;min-width:100%;border-color: #ffffff;' class='btn btn-info btn-lg'>$$total</span>";
     $salida .= "</div>";
