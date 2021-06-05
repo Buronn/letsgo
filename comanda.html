@@ -40,7 +40,7 @@
             <li class="breadcrumb-item"><a style="color: white;font-size: 2.5vw;" href="./mapa.html">Mesas</a></li>
             <li class="breadcrumb-item" style="font-size: 2.5vw;" id="navClase">
                 <a style="color: white;font-size: 2.5vw;" href="#" id="arribaclase"
-                    onclick="mostrargrupos('',''),CambiarClase('sum','enabled','disabled'),CambiarClase('mult','enabled','disabled')">
+                    onclick="mostrargrupos('',''),CambiarClase('mult','enabled','disabled')">
                     Clases
                 </a>
             </li>
@@ -52,10 +52,10 @@
 
         </ol>
         <div class="col-3 m-5" style="text-align: right;color: white;">
-            <h1><i class="fas fa-user"></i><span id="iuser">hola</span>
-                <i class="fas fa-utensils"></i><span id="icubierto">hola</span>
-                <i class="fas fa-map-marker-alt"></i><span id="ipunto">hola</span>
-                <span id="imesa">hola</span>
+            <h1><i class="fas fa-user"></i><span id="iuser"></span>
+                <i class="fas fa-utensils"></i><span id="icubierto"></span>
+                <i class="fas fa-map-marker-alt"></i><span id="ipunto"></span>
+                <span id="imesa"></span>
             </h1>
 
         </div>
@@ -101,7 +101,6 @@
     <div class='navbotones' style="color: #f2f2f2;">
 
         <p id='produabajo' style="color: #65eec0;font-weight: bolder; text-align: center;padding-top: 1vw;"></p>
-        <a class="col-3 disabled" id="sum" onclick="Select('','5'),AlertaAñadido()"><i class="fas fa-plus"></i></a>
         <a class="col-3 disabled" id="mult" data-toggle='modal' data-target='#multiplicador'><i
                 class="fas fa-times"></i></a>
         <a class="col-3 enabled"><i class="far fa-file-alt"></i></a>
