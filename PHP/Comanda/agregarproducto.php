@@ -6,6 +6,13 @@ $punto = $_POST['punto'];
 $producto = $_POST['product'];
 $clase = $_POST['clase'];
 $grupo = $_POST['Grupo'];
+$dia=$_POST['dia'];
+$mes=$_POST['mes'];
+$year=$_POST['year'];
+$minutos=$_POST['minutos'];
+$hora=$_POST['hora'];
+$fecha=$dia."-".$mes."-".$year;
+$hora=$hora.":".$minutos;
 $codigoProducto = null;
 $codigoFolio = null;
 
@@ -63,14 +70,15 @@ if ($producto == 'actualizar') {
 } else {
     /*----------------- CODIGO SEBA 03-05-2021 ------------------- */
 
-    $consultaFolio = "select Folio from tables where Punto = '".$punto."' and  Mesa = '".$mesa."' and status = 0";
+    $consultaFolio = "select t.Folio,ta.Valor from tables as t INNER JOIN tarifas as ta where t.`Status`=0 and t.Punto='" . $mesa . "' and t.Mesa='" . $mesa . "' and ta.Punto='" . $punto . "' and ta.Clase='" . $clase . "' and ta.Producto='" . $codigoProducto . "' and ta.Grupo='" . $grupo . "'";
     $codigoFolioLista = $conexion->query($codigoFolioLista);
 
     while($fila =  $codigoFolioLista->fetch_assoc()){
       $codigoFolio = $fila['Folio'];
+      $valorreal =$fila['Valor'];
     }
    
-    $sql = "insert into produccion (Punto,Mesa,Grupo,Producto,Valor,SW,Status,Folio,Fecha,Clase,Hora) values('" . $punto . "','" . $valor . "','" . $mesa . "',1 , '" . $clase . "', '" . $grupo . "', '" . $codigoProducto . "' , 0 , '" . $codigoFolio . "', 0 )";
+    $sql = "insert into produccion (Punto,Mesa,Grupo,Producto,Valor,SW,Status,Folio,Fecha,Clase,Hora) values('" . $punto . "','" . $mesa . "','" . $grupo . "','" . $codigoProducto . "', '" . $valorreal . "',0,0,'" . $codigoFolio . "','$fecha','" . $clase . "','$hora' )";
     $resultado = $conexion->query($sql);
     /*----------------- CODIGO SEBA 03-05-2021 ------------------- */
 
