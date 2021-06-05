@@ -92,8 +92,9 @@ while($fila = $result3->fetch_assoc()){
     //MESAS OCUPADAS
     if($fila['x']!=null and $fila['y']!=null ){
         $salida .= "
+
     <div class='contenedor'>
-        <a href='./comanda.html' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "')>
+        <a href='./comanda.html' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "'),localStorage.removeItem('cubiertos'),SetLocalStorage('cubiertos','" . $fila['Cubiertos'] . "')>
             <img class='img-fluid mesitas btn-abrir-popup animation'
             style='position: absolute;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
             src='../images_mesas/";
@@ -103,7 +104,7 @@ while($fila = $result3->fetch_assoc()){
                 $salida.="".$fila['forma']."_VERDE_".$fila['Cubiertos']."";
             }
             $salida.=".gif'>
-            <h1 onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "') class='img-fluid mesitas btn-abrir-popup animation' id='btn-abrir-popup$aux' style='position: fixed;
+            <h1 class='img-fluid mesitas btn-abrir-popup animation' id='btn-abrir-popup$aux' style='position: fixed;
             left: " . ($left + 3.5) . "%;
             top: " . ($top + 5) . "%;font-size:2vw'>" . $fila['Mesa'] . "</h1>
         </a><script>setTimeout(() => {},2000);</script>
