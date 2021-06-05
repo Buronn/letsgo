@@ -61,22 +61,6 @@ if ($producto == 'actualizar') {
 
     echo $salida;
 } else {
-  /*
-    $sql = "select * from orden where NProducto='" . $nombre . "'and punto='" . $punto . "'and mesa='" . $mesa . "'";
-    $resultado = $conexion->query($sql);
-    if ($resultado->num_rows > 0) {
-        $sql = "update orden
-        SET cantidad=cantidad+1,valor=valor+" . $valor . "
-        WHERE NProducto='" . $nombre . "'and punto='" . $punto . "'and mesa='" . $mesa . "'";
-        $resultado = $conexion->query($sql);
-    } else {
-        $sql = "insert into orden (NProducto,punto,valor,mesa,cantidad) values('" . $nombre . "','" . $punto . "','" . $valor . "','" . $mesa . "',1)";
-        $resultado = $conexion->query($sql);
-    }
-    $sql = "select NProducto,valor,cantidad from orden where punto='" . $punto . "'and mesa='" . $mesa . "'";
-    $resultado = $conexion->query($sql);
-    $total = 0;
-    */
     /*----------------- CODIGO SEBA 03-05-2021 ------------------- */
 
     $consultaFolio = "select Folio from tables where Punto = '".$punto."' and  Mesa = '".$mesa."' and status = 0";
@@ -86,35 +70,34 @@ if ($producto == 'actualizar') {
       $codigoFolio = $fila['Folio'];
     }
    
-    $sql = "insert into produccion (punto,valor,mesa,cantidad,grupo,producto,status,folio,flag) values('" . $punto . "','" . $valor . "','" . $mesa . "',1 , '" . $clase . "', '" . $grupo . "', '" . $codigoProducto . "' , 0 , '" . $codigoFolio . "', 0 )";
+    $sql = "insert into produccion (Punto,Mesa,Grupo,Producto,Valor,SW,Status,Folio,Fecha,Clase,Hora) values('" . $punto . "','" . $valor . "','" . $mesa . "',1 , '" . $clase . "', '" . $grupo . "', '" . $codigoProducto . "' , 0 , '" . $codigoFolio . "', 0 )";
     $resultado = $conexion->query($sql);
     /*----------------- CODIGO SEBA 03-05-2021 ------------------- */
 
-    $sql = "select NProducto,valor,cantidad from orden where punto='" . $punto . "'and mesa='" . $mesa . "'";
-    $resultado = $conexion->query($sql);
-    $total = 0;
-    while ($fila = $resultado->fetch_assoc()) {
+
+ 
+    // while ($fila = $resultado->fetch_assoc()) {
         
-        $nombre_prod_arreglado = $fila['NProducto'];
-        $nombre_prod_arreglado = str_replace(" ", "&nbsp;", $nombre_prod_arreglado);
-        $nombre_prod = str_replace(" ", "&nbsp;", $fila['NProducto']);
-        $nombre_prod_arreglado = strtolower($nombre_prod_arreglado);
-        $nombre_prod_arreglado = ucwords($nombre_prod_arreglado);
-        $salida .= "<div id='ocultar' style='background-color:#454545;padding:2vh;border-radius:2vw'>";
-        $salida .= "<p class='input-group mb-3'>
-        <span class='btn btn-primary btn-lg' onclick=Borrar('$nombre_prod'),Select('actualizar','')>x" . $fila['cantidad'] . "</span>
-        <a type='text' style='font-size:2vw' class='form-control'>" . $fila['NProducto'] . "</a>
-        <span class='btn btn-success btn-lg' onclick=Borrar('$nombre_prod'),Select('actualizar','')>$" . $fila['valor'] . "</span>
-        <span class='btn btn-danger btn-lg' onclick=Borrar('$nombre_prod'),Select('actualizar','')>-1</span>
-        <span class='btn btn-danger btn-lg' onclick=Borrar('$nombre_prod'),Select('actualizar','')>Delete</span>
-        <span class='btn btn-info btn-lg'>note</span>
-        </p>";
-        $total = $total + $fila['valor'];
-    }
-    $salida .= "<span style='font-size:3vw' class='btn btn-info btn-lg'>Total=$$total</span>";
+    //     $nombre_prod_arreglado = $fila['NProducto'];
+    //     $nombre_prod_arreglado = str_replace(" ", "&nbsp;", $nombre_prod_arreglado);
+    //     $nombre_prod = str_replace(" ", "&nbsp;", $fila['NProducto']);
+    //     $nombre_prod_arreglado = strtolower($nombre_prod_arreglado);
+    //     $nombre_prod_arreglado = ucwords($nombre_prod_arreglado);
+    //     $salida .= "<div id='ocultar' style='background-color:#454545;padding:2vh;border-radius:2vw'>";
+    //     $salida .= "<p class='input-group mb-3'>
+    //     <span class='btn btn-primary btn-lg' onclick=Borrar('$nombre_prod'),Select('actualizar','')>x" . $fila['cantidad'] . "</span>
+    //     <a type='text' style='font-size:2vw' class='form-control'>" . $fila['NProducto'] . "</a>
+    //     <span class='btn btn-success btn-lg' onclick=Borrar('$nombre_prod'),Select('actualizar','')>$" . $fila['valor'] . "</span>
+    //     <span class='btn btn-danger btn-lg' onclick=Borrar('$nombre_prod'),Select('actualizar','')>-1</span>
+    //     <span class='btn btn-danger btn-lg' onclick=Borrar('$nombre_prod'),Select('actualizar','')>Delete</span>
+    //     <span class='btn btn-info btn-lg'>note</span>
+    //     </p>";
+    //     $total = $total + $fila['valor'];
+    // }
+    // $salida .= "<span style='font-size:3vw' class='btn btn-info btn-lg'>Total=$$total</span>";
 
-    $salida .= "</div>";
+    // $salida .= "</div>";
 
 
-    echo $salida;
+    // echo $salida;
 }
