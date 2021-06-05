@@ -180,7 +180,7 @@ function Clases() {
         });
 };
 //GET IMAGE FROM API
-function getImage(id, buscar, time) {
+/* function getImage(id, buscar, time) {
     setTimeout(function () {
         const settings = {
             "async": true,
@@ -198,7 +198,7 @@ function getImage(id, buscar, time) {
     }, time);
 
 
-}
+} */
 //MOSTRAR PRODUCTOS
 function showproduct(nombre) {
     clase = localStorage.getItem('clase');
@@ -268,15 +268,17 @@ function ocultardivs() {
 
     if (document.getElementById('barra0') == null) {
         setTimeout(function () {
-            $("#ocultar").remove();
+            $("#addProd").addClass("hide");
             document.getElementById('barra1').id = 'barra0'
-        }, 700);
+        }, 500);
         
 
     } else {
+        $("#addProd").removeClass("hide");
         Select("actualizar");
         document.getElementById('barra0').id = 'barra1';
         CambiarClase('mult','enabled','disabled');
+        
         
     }
 
