@@ -5,6 +5,7 @@ $salida = "";
 $grupo = $_POST['grupo'];
 $punto = $_POST['punto'];
 $sql = "Select p.Producto,p.NProducto,p.Grupo,p.Clase,t.Valor from productos as p INNER JOIN tarifas as t ON p.Clase=t.Clase and p.Grupo=t.Grupo and p.Producto=t.Codigo where  t.Punto='$punto' and p.Baja=0 and p.Grupo='$grupo' and p.Clase='$clase' ORDER BY p.NProducto ASC;";
+
 $resultado = $conexion->query($sql);
 
 while ($fila = $resultado->fetch_assoc()) {
@@ -25,7 +26,7 @@ while ($fila = $resultado->fetch_assoc()) {
       <div
         style='min-height:6vw;min-width:25vw;max-width:25vw;max-height:7vw;font-size:1.5vw;text-align: center;' 
         href='#'
-        onclick='AlertaAñadido(), Select('".$fila['Producto']."')'
+        onclick=AlertaAñadido(),Select('".$fila['Producto']."')
       >" . $fila['NProducto'] . "</div>
         
       </div>

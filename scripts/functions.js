@@ -270,11 +270,11 @@ function ocultardivs() {
         setTimeout(function () {
             $("#ocultar").remove();
             document.getElementById('barra1').id = 'barra0'
-        }, 400);
+        }, 700);
         
 
     } else {
-        Select('actualizar');
+        Select("actualizar");
         document.getElementById('barra0').id = 'barra1';
         CambiarClase('mult','enabled','disabled');
         
