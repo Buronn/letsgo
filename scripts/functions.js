@@ -277,11 +277,8 @@ function ocultardivs() {
         Select('actualizar');
         document.getElementById('barra0').id = 'barra1';
 
-        CambiarClase('sum','enabled','disabled');
         CambiarClase('mult','enabled','disabled');
-        
     }
-
 }
 
 
