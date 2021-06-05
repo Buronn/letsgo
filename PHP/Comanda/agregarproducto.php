@@ -61,13 +61,13 @@ if ($producto == 'actualizar') {
 
     echo $salida;
 } else {
-    echo "<script>console.log('entro al else')</script>";
+    
 
     /*----------------- CODIGO SEBA 03-05-2021 ------------------- */
 
     $consultaFolio = "select t.Folio,ta.Valor from tables as t INNER JOIN tarifas as ta where t.`Status`=0 and t.Punto='" . $punto . "' and t.Mesa='" . $mesa . "' and ta.Punto='" . $punto . "' and ta.Clase='" . $clase . "' and ta.Codigo='" . $producto. "' and ta.Grupo='" . $grupo . "'";
     $codigoFolioLista = $conexion->query($consultaFolio);
-    echo "<script>console.log('paso la primera query')</script>";
+    
     
     while($fila =  $codigoFolioLista->fetch_assoc()){
       
