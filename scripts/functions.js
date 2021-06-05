@@ -287,11 +287,6 @@ function ocultardivs() {
 
 //SELECCIONA PRODUCTO PARA AÑADIRLO A LA ORDEN
 function Select(codigo) {
-    let dia = hoy.getDate();
-    let mes = hoy.getMonth() + 1;
-    let year = hoy.getFullYear();
-    let hora = hoy.getHours();
-    let minutos = hoy.getMinutes();
 
     punto = localStorage.getItem('punto');
     mesa = localStorage.getItem('mesa_num');
