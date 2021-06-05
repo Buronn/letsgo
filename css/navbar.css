@@ -5,19 +5,9 @@
     list-style: none;
     box-sizing: border-box;
   }
-  body{
-    font-family: montserrat;
-  }
   nav{
     background: #bebebe67;
     width: 100%;
-  }
-  label.logo{
-    color: white;
-    font-size: 35px;
-    line-height: 80px;
-    padding: 0 100px;
-    font-weight: bold;
   }
   nav ul{
     float: top;
@@ -51,15 +41,7 @@
   #check{
     display:none;
   }
-  @media (max-width: 952px){
-    label.logo{
-      font-size: 30px;
-      padding-left: 50px;
-    }
-    nav ul li a{
-      font-size: 16px;
-    }
-  }
+
   
     ul{
       padding: 1%;

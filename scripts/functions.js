@@ -276,9 +276,10 @@ function ocultardivs() {
     } else {
         Select('actualizar');
         document.getElementById('barra0').id = 'barra1';
-
         CambiarClase('mult','enabled','disabled');
+        
     }
+
 }
 
 
