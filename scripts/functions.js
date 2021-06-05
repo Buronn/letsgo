@@ -300,11 +300,7 @@ function Select(codigo) {
             product: codigo,
             clase: clase,
             Grupo : Grupo,
-            dia: dia,
-            mes: mes,
-            year: year,
-            hora: hora,
-            minutos: minutos
+            
         },
 
     })
