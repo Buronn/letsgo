@@ -387,6 +387,14 @@ function check_login() {
 };
 
 
+function uintToString(uintArray) {
+    uintArray = uintArray.split(",");
+    var encodedString = String.fromCharCode.apply(null, uintArray),
+        decodedString = decodeURIComponent(escape(atob(encodedString)));
+    return decodedString;
+}
+
+
 //CONVERTIDOR DE ARRAY
 function toUTF8Array(str) {
     var string = btoa(unescape(encodeURIComponent(str))),

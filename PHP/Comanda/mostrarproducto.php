@@ -22,10 +22,15 @@ while ($fila = $resultado->fetch_assoc()) {
     color: #fff;
     background-color: #343a40;
     border-color: #343a40;'>
+<<<<<<< HEAD
       <div
         style='min-height:6vw;min-width:25vw;max-width:25vw;max-height:7vw;font-size:1.5vw;text-align: center;' 
         href='#'
         onclick='AlertaAñadido(), Select('".$fila['Producto']."')'
+=======
+      <div onclick='AlertaAñadido()'
+        style='min-height:6vw;min-width:25vw;max-width:25vw;max-height:7vw;font-size:1.5vw;text-align: center;' 
+>>>>>>> 382d4dcce97e77628c07ddcff080b631770214d5
       >" . $fila['NProducto'] . "</div>
         
       </div>

@@ -8,7 +8,7 @@ $siguienteLocacion = '../mapa.html';
 $esAdmin = '';
 
 
-$sql = "select Nombre,Password,Admin from usuarios where Nombre='" . $usuario . "' and Password='" . $password . "'";
+$sql = "select Nombre,Password,Admin from usuarios where Nombre='" . $usuario . "' and Password='" . md5($password) . "'";
 
 $resultado = $conexion->query($sql);
 
