@@ -33,6 +33,7 @@
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
             return new bootstrap.Popover(popoverTriggerEl)
         })
+        Select('actualizar');
     </script>
     <div class="row" style="background-color: black;">
         <ol class="breadcrumb navbar-fixed-top col-7 m-5">
@@ -59,7 +60,7 @@
             </h1>
 
         </div>
-        <label for="check" class="checkbtn mt-5" onclick="ocultardivs()">
+        <label for="check" class="checkbtn mt-5" onclick="ocultardivs(),Select('actualizar')">
             <i id="barra0" class="fas fa-clipboard-list" style="position: fixed;font-size: 70px;"></i>
         </label>
         <script>
@@ -76,7 +77,7 @@
 
         <ul>
 
-            <div id="addProd">
+            <div class="hide" id="addProd">
 
 
             </div>

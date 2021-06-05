@@ -45,6 +45,7 @@ if ($producto == 'actualizar') {
         <div class='modal-body'>
         <div class='mb-3'>
         <textarea style='background-color:#ffffffbf;font-size:2vw;color:black' class='form-control' id='" . $nombre_prod . "3' rows='3'></textarea>
+        
       </div>
         </div>
         <div class='modal-footer'>
@@ -53,7 +54,7 @@ if ($producto == 'actualizar') {
       </div>
     </div>
   </div>
-  <script>document.getElementById('".$nombre_prod."3').value = '$nombre_prod'</script>";
+  ";
         $total = $total + $fila['Valor'];
     }
     $salida .= "<span style='font-size:3vw;pointer-events:none;background-color:#646f6b;min-width:100%;border-color: #ffffff;' class='btn btn-info btn-lg'>$$total</span>";

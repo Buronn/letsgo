@@ -103,7 +103,9 @@ input[name="ProductOptions"]:checked:after {
 }
 
 
-
+.hide{
+    display: none;
+  }
 
 
 
