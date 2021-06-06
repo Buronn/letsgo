@@ -57,14 +57,14 @@ function AgregarClase(id, clase) {
 }
 
 //CAMBIAR CLASE
-function CambiarClase(id,clase1,clase2){
+function CambiarClase(id, clase1, clase2) {
     var xd = document.getElementById(id);
     xd.classList.remove(clase1);
     xd.classList.add(clase2);
 }
 
 //QUITAR ONCLICK
-function DeleteOnClick(id){
+function DeleteOnClick(id) {
     var xd = document.getElementById(id);
 }
 
@@ -97,22 +97,6 @@ function mapa() {
 }
 
 
-//API TIEMPO
-function timezone() {
-    $.ajax({
-        url: 'http://worldtimeapi.org/api/timezone/America/Santiago',
-        type: 'GET',
-        dataType: 'json',
-    })
-        .done(function (respuesta) {
-            console.log(respuesta.datetime);
-
-        })
-        .fail(function () {
-            console.log("Error: Not user found")
-        });
-    return respuesta.datatime
-}
 
 
 
@@ -271,15 +255,15 @@ function ocultardivs() {
             $("#addProd").addClass("hide");
             document.getElementById('barra1').id = 'barra0'
         }, 500);
-        
+
 
     } else {
         $("#addProd").removeClass("hide");
         Select("actualizar");
         document.getElementById('barra0').id = 'barra1';
-        CambiarClase('mult','enabled','disabled');
-        
-        
+        CambiarClase('mult', 'enabled', 'disabled');
+
+
     }
 
 }
@@ -292,6 +276,7 @@ function Select(codigo) {
     mesa = localStorage.getItem('mesa_num');
     clase = localStorage.getItem('clase');
     Grupo = localStorage.getItem('Grupo');
+    var currentdate = new Date();
 
     $.ajax({
         url: '../PHP/Comanda/agregarproducto.php',
@@ -302,18 +287,27 @@ function Select(codigo) {
             punto: punto,
             product: codigo,
             clase: clase,
-            Grupo : Grupo,
-            
+            Grupo: Grupo,
+            fecha: new Date().toLocaleDateString(),
+            hora: new Date().toLocaleTimeString('en-US', { hour12: false, 
+                hour: "numeric", 
+                minute: "numeric"}),
+
         },
 
     })
         .done(function (respuesta) {
             $("#addProd").html(respuesta);
+
         })
         .fail(function () {
             console.log("Error: Not user found")
-        });
-};
+        })
+
+}
+
+
+
 
 
 //INICIO DE SESIÓN

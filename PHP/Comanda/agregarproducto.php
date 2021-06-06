@@ -1,4 +1,7 @@
 <?php
+
+
+
 require "../conexion.php";
 $salida = "";
 $mesa = $_POST['mesa'];
@@ -6,6 +9,8 @@ $punto = $_POST['punto'];
 $producto = $_POST['product'];
 $clase = $_POST['clase'];
 $grupo = $_POST['Grupo'];
+$fecha = $_POST['fecha'];
+$hora = $_POST['hora'];
 
 $codigoProducto = null;
 $codigoFolio = null;
@@ -77,7 +82,7 @@ if ($producto == 'actualizar') {
       $valorreal =$fila['Valor'];
     }
     
-    $sql = "insert into produccion (Punto,Mesa,Grupo,Producto,Cantidad,Valor,SW,Status,Folio,Fecha,Clase,Hora) VALUES ('" . $punto . "','" . $mesa . "','" . $grupo . "','" . $producto . "',1, '" . $valorreal . "',0,0,'" . $codigoFolio . "','a','" . $clase . "','a')";
+    $sql = "insert into produccion (Punto,Mesa,Grupo,Producto,Cantidad,Valor,SW,Status,Folio,Fecha,Clase,Hora) VALUES ('" . $punto . "','" . $mesa . "','" . $grupo . "','" . $producto . "',1, '" . $valorreal . "',0,0,'" . $codigoFolio . "','$fecha','" . $clase . "','$hora')";
     
     $resultado = $conexion->query($sql);
     /*----------------- CODIGO SEBA 03-05-2021 ------------------- */
