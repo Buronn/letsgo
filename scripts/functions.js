@@ -276,7 +276,6 @@ function Select(codigo) {
     mesa = localStorage.getItem('mesa_num');
     clase = localStorage.getItem('clase');
     Grupo = localStorage.getItem('Grupo');
-    var currentdate = new Date();
 
     $.ajax({
         url: '../PHP/Comanda/agregarproducto.php',
@@ -288,7 +287,7 @@ function Select(codigo) {
             product: codigo,
             clase: clase,
             Grupo: Grupo,
-            fecha: new Date().toLocaleDateString(),
+            fecha: new Date().toLocaleDateString('en-ES'),
             hora: new Date().toLocaleTimeString('en-US', { hour12: false, 
                 hour: "numeric", 
                 minute: "numeric"}),
