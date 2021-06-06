@@ -76,6 +76,7 @@ if ($producto == 'actualizar') {
       
       $valorreal =$fila['Valor'];
     }
+    $sql=
     
     $sql = "insert into produccion (Punto,Mesa,Grupo,Producto,Cantidad,Valor,SW,Status,Folio,Fecha,Clase,Hora) VALUES ('" . $punto . "','" . $mesa . "','" . $grupo . "','" . $producto . "',1, '" . $valorreal . "',0,0,'" . $codigoFolio . "','a','" . $clase . "','a')";
     

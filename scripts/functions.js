@@ -283,7 +283,34 @@ function ocultardivs() {
     }
 
 }
+function Borrar(codigo) {
 
+    punto = localStorage.getItem('punto');
+    mesa = localStorage.getItem('mesa_num');
+    clase = localStorage.getItem('clase');
+    Grupo = localStorage.getItem('Grupo');
+
+    $.ajax({
+        url: '../PHP/Comanda/Borrar.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            mesa: mesa,
+            punto: punto,
+            product: codigo,
+            clase: clase,
+            Grupo : Grupo,
+            
+        },
+
+    })
+        .done(function (respuesta) {
+            $("#addProd").html(respuesta);
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+};
 
 //SELECCIONA PRODUCTO PARA AÑADIRLO A LA ORDEN
 function Select(codigo) {
