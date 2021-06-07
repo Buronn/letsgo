@@ -276,7 +276,10 @@ function Select(codigo) {
     mesa = localStorage.getItem('mesa_num');
     clase = localStorage.getItem('clase');
     Grupo = localStorage.getItem('Grupo');
-
+    var cantidad = 1;
+    if($('#mult').prop('checked')){
+        cantidad = $('#multinput').val();
+    }
     $.ajax({
         url: '../PHP/Comanda/agregarproducto.php',
         type: 'POST',
@@ -285,6 +288,7 @@ function Select(codigo) {
             mesa: mesa,
             punto: punto,
             product: codigo,
+            cantidad: cantidad,
             clase: clase,
             Grupo: Grupo,
             fecha: new Date().toLocaleDateString('en-ES'),

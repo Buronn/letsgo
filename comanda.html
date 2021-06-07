@@ -40,8 +40,7 @@
 
             <li class="breadcrumb-item"><a style="color: white;font-size: 2.5vw;" href="./mapa.html">Mesas</a></li>
             <li class="breadcrumb-item" style="font-size: 2.5vw;" id="navClase">
-                <a style="color: white;font-size: 2.5vw;" href="#" id="arribaclase"
-                    onclick="mostrargrupos('',''),CambiarClase('mult','enabled','disabled')">
+                <a style="color: white;font-size: 2.5vw;" href="#" id="arribaclase" onclick="mostrargrupos('','')">
                     Clases
                 </a>
             </li>
@@ -73,7 +72,7 @@
     <nav>
 
         <input type="checkbox" id="check">
-        
+
 
         <ul>
 
@@ -102,13 +101,26 @@
     <div class='navbotones' style="color: #f2f2f2;">
 
         <p id='produabajo' style="color: #65eec0;font-weight: bolder; text-align: center;padding-top: 1vw;"></p>
-        <a class="col-4 disabled" id="mult" data-toggle='modal' data-target='#multiplicador'><i
-                class="fas fa-times"></i></a>
+        <input type="checkbox" class="enabled hide" id="mult" data-toggle='modal'
+            data-target='#multiplicador'><label id="multlabel" class="col-4" for="mult"><i
+                class="fas fa-times"></i><input id="multinput" style="width: 4vw; background-color: rgba(59, 59, 59, 0.061); color: white;"  type="number"></label>
+        <script>
+            $('#mult').change(function () {
+                if (this.checked) {
+                        $('#multlabel').css("background-color", "#1F504D");
+                }else{
+                    $('#multlabel').css("background-color", "rgba(255, 255, 255, 0)")
+                }
+            });
+        </script>
         <a class="col-4 enabled"><i class="far fa-file-alt"></i></a>
         <a class="col-4 enabled" onclick="tables('cerrar'),GoTo('mapa.html')"><i class="far fa-credit-card"></i></a>
 
     </div>
-    <div class='modal fade' style='padding-top:20vw;padding-left:35vw;max-width: 70%;
+
+
+
+    <!-- <div class='modal fade' style='padding-top:20vw;padding-left:35vw;max-width: 70%;
     margin: 1.75rem auto;' id='multiplicador' tabindex='-1' role='dialog' aria-labelledby='multiplicador_2'
         aria-hidden='true'>
         <div class='modal-dialog' role='document'>
@@ -129,7 +141,7 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 </body>
