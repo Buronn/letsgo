@@ -11,6 +11,7 @@ $clase = $_POST['clase'];
 $grupo = $_POST['Grupo'];
 $fecha = $_POST['fecha'];
 $hora = $_POST['hora'];
+$cantidad = $_POST['cantidad'];
 
 $codigoProducto = null;
 $codigoFolio = null;
@@ -83,7 +84,7 @@ if ($producto == 'actualizar') {
     }
     $sql=
     
-    $sql = "insert into produccion (Punto,Mesa,Grupo,Producto,Cantidad,Valor,SW,Status,Folio,Fecha,Clase,Hora) VALUES ('" . $punto . "','" . $mesa . "','" . $grupo . "','" . $producto . "',1, '" . $valorreal . "',0,0,'" . $codigoFolio . "','$fecha','" . $clase . "','$hora')";
+    $sql = "insert into produccion (Punto,Mesa,Grupo,Producto,Cantidad,Valor,SW,Status,Folio,Fecha,Clase,Hora) VALUES ('" . $punto . "','" . $mesa . "','" . $grupo . "','" . $producto . "',$cantidad, '" . $valorreal . "',0,0,'" . $codigoFolio . "','$fecha','" . $clase . "','$hora')";
     
     $resultado = $conexion->query($sql);
     /*----------------- CODIGO SEBA 03-05-2021 ------------------- */
