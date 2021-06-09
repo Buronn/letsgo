@@ -26,28 +26,42 @@ function FunctionDelay(func, time) {
 
 //ALERTA AÑADIR
 function AlertaAñadido(name) {
-    if ($('#mult').prop('checked') && $('#multinput').val() == "") {
+    if($('#mult').prop('checked') && $('#multinput').val()==""){
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Campo para multiplicar vacio',
+            
 
-
-        })
-
-    } else {
-        /* Swal.fire({
-            icon: 'success',
-            title: 'Agregado correctamente ' + name,
-            showConfirmButton: false,
-            timer: 1500
-        }) */
-        
-
-        
-        
+          })
+    
+    }else{
+        // Swal.fire({
+        //     icon: 'success',
+        //     title: 'Agregado correctamente '+name,
+        //     showConfirmButton: false,
+        //     timer: 1500
+        //   })
+        swal.fire({
+            title: "An input!",
+            text: "Write something interesting:",
+            type: "input",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            animation: "slide-from-top"
+          },
+          function(inputValue){
+            if (inputValue === false) return false;
+            
+            if (inputValue === "") {
+              swal.showInputError("You need to write something!");
+              return false
+            }
+            
+            swal("Nice!", "You wrote: " + inputValue, "success");
+            }
+            )}
     }
-}
 
 //SLEEP
 function sleep(ms) {
@@ -286,12 +300,12 @@ function ocultardivs() {
     }
 
 }
-function Borrar(codigo, clase, Grupo, div) {
-    $("#" + div).remove()
+function Borrar(codigo,clase,Grupo,div) {
+    $("#"+div).remove()
     punto = localStorage.getItem('punto');
     mesa = localStorage.getItem('mesa_num');
-
-
+    
+    
 
     $.ajax({
         url: '../PHP/Comanda/Borrar.php',
@@ -308,7 +322,7 @@ function Borrar(codigo, clase, Grupo, div) {
 
     })
         .done(function (respuesta) {
-
+            
         })
         .fail(function () {
             console.log("Error: Not user found")
@@ -323,7 +337,7 @@ function Select(codigo) {
     clase = localStorage.getItem('clase');
     Grupo = localStorage.getItem('Grupo');
     var cantidad = 1;
-    if ($('#mult').prop('checked')) {
+    if($('#mult').prop('checked')){
         cantidad = $('#multinput').val();
     }
     $.ajax({
@@ -338,11 +352,9 @@ function Select(codigo) {
             clase: clase,
             Grupo: Grupo,
             fecha: new Date().toLocaleDateString('en-ES'),
-            hora: new Date().toLocaleTimeString('en-US', {
-                hour12: false,
-                hour: "numeric",
-                minute: "numeric"
-            }),
+            hora: new Date().toLocaleTimeString('en-US', { hour12: false, 
+                hour: "numeric", 
+                minute: "numeric"}),
 
         },
 
