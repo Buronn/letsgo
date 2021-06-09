@@ -48,7 +48,7 @@ while ($fila = $result->fetch_assoc()) {
         $salida .= "
     <div class='contenedor'>
         <a class='btn-abrir-popup' id='btn-abrir-popup$aux' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "') >
-            <img class='animation' style='position:fixed;left: " . ($left + 3)  . "%;top: " . ($top + 2) . "%;width: 9.6%;height: 15%;' 
+            <img  class='animation' style='position:fixed;left: " . ($left + 3)  . "%;top: " . ($top + 2) . "%;width: 9.6%;height: 15%;' 
             src='../images_mesas/" . $fila['forma'] . "_BLANCO_0.gif'>
 
             <h1 class='mesitas' style='position: fixed;
