@@ -32,14 +32,16 @@ if ($producto == 'actualizar') {
         <a type='text' style='font-size:2vw;pointer-events:none;' class='form-control'>" . $fila['NProducto'] . "</a>
         <span style='border-color: #ffffff61;pointer-events:none;background-color:#348242ab'class='btn btn-success btn-lg'>$" . $fila['Valor'] . "</span>
         <span style='border-color: #ffffff61;' class='btn btn-danger btn-lg' onclick=Borrar('" . $fila['Producto'] . "','" . $fila['Clase'] . "','" . $fila['Grupo'] . "','" . md5($nombre_prod) . "')><i class='fas fa-trash-alt'></i></i></span>
-        <button style='border-color: #ffffff61;' class='btn btn-info btn-lg' id='#" . md5($nombre_prod) . "1'><i class='fas fa-edit'></i></button>
+        <button style='border-color: #ffffff61;' class='btn btn-info btn-lg' onclick=Funcion" . md5($nombre_prod) . "()><i class='fas fa-edit'></i></button>
         </p>
         <script>
-        $('#" . md5($nombre_prod) . "1').on('click',function(){
+
+          function Funcion" . md5($nombre_prod) . "(){
           (async () => {
           
                       const { value: text } = await Swal.fire({
                         input: 'textarea',
+                        inputValue: '" . ($nombre_prod_arreglado) . "',
                         inputLabel: 'Message',
                         inputPlaceholder: 'Type your message here...',
                         inputAttributes: {
@@ -47,10 +49,11 @@ if ($producto == 'actualizar') {
                         },
                         showCancelButton: true,
                       })
-                      alert(text);
+                      
                       })()
                       
-        })
+        }
+        
         </script>
         ";
 
