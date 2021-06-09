@@ -25,10 +25,37 @@ function FunctionDelay(func, time) {
 }
 
 //ALERTA AÑADIR
-function AlertaAñadido() {
-    $('.toast').toast('show')
-    setTimeout(() => { $('.toast').toast('hide') }, 1000)
-}
+function AlertaAñadido(name) {
+    if($('#mult').prop('checked') && $('#multinput').val()==""){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Campo para multiplicar vacio',
+            
+
+          })
+    
+    }else{
+        // Swal.fire({
+        //     icon: 'success',
+        //     title: 'Agregado correctamente '+name,
+        //     showConfirmButton: false,
+        //     timer: 1500
+        //   })
+        const { value: text } = await Swal.fire({
+            input: 'textarea',
+            inputLabel: 'Message',
+            inputPlaceholder: 'Type your message here...',
+            inputAttributes: {
+              'aria-label': 'Type your message here'
+            },
+            showCancelButton: true
+          })
+          
+          if (text) {
+            Swal.fire(text)
+          }}
+    }
 
 //SLEEP
 function sleep(ms) {
@@ -267,12 +294,12 @@ function ocultardivs() {
     }
 
 }
-function Borrar(codigo) {
-
+function Borrar(codigo,clase,Grupo,div) {
+    $("#"+div).remove()
     punto = localStorage.getItem('punto');
     mesa = localStorage.getItem('mesa_num');
-    clase = localStorage.getItem('clase');
-    Grupo = localStorage.getItem('Grupo');
+    
+    
 
     $.ajax({
         url: '../PHP/Comanda/Borrar.php',
@@ -283,13 +310,13 @@ function Borrar(codigo) {
             punto: punto,
             product: codigo,
             clase: clase,
-            Grupo : Grupo,
-            
+            Grupo: Grupo,
+
         },
 
     })
         .done(function (respuesta) {
-            $("#addProd").html(respuesta);
+            
         })
         .fail(function () {
             console.log("Error: Not user found")

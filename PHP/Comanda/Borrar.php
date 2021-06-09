@@ -1,2 +1,10 @@
 <?php
-$sql="DELETE FROM `merquen`.`produccion` WHERE `Punto` = 'BAR' AND `Mesa` = '02' AND `Grupo` = '03' AND `Producto` = '00015' AND `Cantidad` = '1' AND `Valor` = '1800' AND `SW` = '0' AND `Tipo` IS NULL AND `Docto` IS NULL AND `Status` = '0' AND `Folio` = '61534' AND `Fecha` = 'a' AND `Clase` = '2' AND `Flag` IS NULL AND `IdAnula` IS NULL AND `ID` IS NULL AND `mClase` IS NULL AND `mGrupo` IS NULL AND `mCodigo` IS NULL AND `Indice` IS NULL AND `Subindice` IS NULL AND `Menu` IS NULL AND `Hora` = 'a' AND `Nota` IS NULL AND `ValorUsd` IS NULL AND `FAnula` IS NULL AND `MotivoAnula` IS NULL AND `HAnula` IS NULL LIMIT 1";
+require "../conexion.php";
+$salida = "";
+$mesa = $_POST['mesa'];
+$punto = $_POST['punto'];
+$producto = $_POST['product'];
+$clase = $_POST['clase'];
+$grupo = $_POST['Grupo'];
+$sql="delete from produccion where Mesa='" . $mesa . "' and Grupo='" . $grupo . "' and Producto='" . $producto. "' and Clase='" . $clase . "' and Punto='" . $punto . "'";
+$resultado = $conexion->query($sql);
