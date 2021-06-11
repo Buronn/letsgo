@@ -25,7 +25,7 @@ function FunctionDelay(func, time) {
 }
 
 //ALERTA AÑADIR
-function AlertaAñadido(name) {
+function AlertaAñadido() {
     if ($('#mult').prop('checked') && $('#multinput').val() == "") {
         Swal.fire({
             icon: 'error',
@@ -36,31 +36,13 @@ function AlertaAñadido(name) {
         })
 
     } else {
-        // Swal.fire({
-        //     icon: 'success',
-        //     title: 'Agregado correctamente '+name,
-        //     showConfirmButton: false,
-        //     timer: 1500
-        //   })
-        swal.fire({
-            title: "An input!",
-            text: "Write something interesting:",
-            type: "input",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            animation: "slide-from-top"
-        },
-            function (inputValue) {
-                if (inputValue === false) return false;
+        Swal.fire({
+            icon: 'success',
+            title: 'Agregado correctamente ',
+            showConfirmButton: false,
+            timer: 1000
+        })
 
-                if (inputValue === "") {
-                    swal.showInputError("You need to write something!");
-                    return false
-                }
-
-                swal("Nice!", "You wrote: " + inputValue, "success");
-            }
-        )
     }
 }
 
@@ -151,35 +133,33 @@ function variedades(codigo) {
             respuesta = JSON.parse(respuesta)
             console.log(JSON.parse(respuesta['variedad']))
             if (respuesta['variedad']) {
-               
-               
-                (async () => {
-                const { value: fruit } = await Swal.fire({
-                    title: 'Select field validation',
-                    input: 'select',
-                    inputOptions: respuesta['variedades'],
-                    showCancelButton: true,
-                    
-                        
-                    
-                })
 
-                if (fruit) {
-                    
-                }
+
+                (async () => {
+                    const { value: opcion } = await Swal.fire({
+                        title: 'Escoja una variedad',
+                        input: 'select',
+                        inputOptions: respuesta['variedades'],
+                        showCancelButton: true,
+
+
+
+                    })
+
+                    if (opcion) {
+                        SelectVariedad(respuesta['codigo'], respuesta['variedades'][opcion]);
+                        AlertaAñadido();
+                    }
                 })()
 
-
-
-
-
             } else {
+                AlertaAñadido();
                 Select(respuesta['codigo'])
             }
 
         })
         .fail(function () {
-            console.log("Error: Not user found")
+            console.log("Error: Not Found")
         });
 }
 
@@ -355,9 +335,17 @@ function ocultardivs() {
 
 }
 function Borrar(codigo, clase, Grupo, div) {
+    var valor = ($("#borrar" + div).html());
+    var total = ($("#total").html());
+    total = parseInt(total.replace("$", ""));
+    valor = parseInt(valor.replace("$", ""));
+    total = total - valor;
+    console.log(total);
+    document.getElementById("total").innerHTML = "$" + total;
     $("#" + div).remove()
     punto = localStorage.getItem('punto');
     mesa = localStorage.getItem('mesa_num');
+
 
 
 
@@ -405,6 +393,48 @@ function Select(codigo) {
             cantidad: cantidad,
             clase: clase,
             Grupo: Grupo,
+            fecha: new Date().toLocaleDateString('en-ES'),
+            hora: new Date().toLocaleTimeString('en-US', {
+                hour12: false,
+                hour: "numeric",
+                minute: "numeric"
+            }),
+
+        },
+
+    })
+        .done(function (respuesta) {
+            $("#addProd").html(respuesta);
+
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        })
+
+}
+
+function SelectVariedad(codigo, nota) {
+
+    punto = localStorage.getItem('punto');
+    mesa = localStorage.getItem('mesa_num');
+    clase = localStorage.getItem('clase');
+    Grupo = localStorage.getItem('Grupo');
+    var cantidad = 1;
+    if ($('#mult').prop('checked')) {
+        cantidad = $('#multinput').val();
+    }
+    $.ajax({
+        url: '../PHP/Comanda/agregarproducto.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            mesa: mesa,
+            punto: punto,
+            product: codigo,
+            cantidad: cantidad,
+            clase: clase,
+            Grupo: Grupo,
+            nota: nota,
             fecha: new Date().toLocaleDateString('en-ES'),
             hora: new Date().toLocaleTimeString('en-US', {
                 hour12: false,

@@ -30,13 +30,14 @@
 
     <script>
         check_login()
+        SetLocalStorage('clase',1);
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
             return new bootstrap.Popover(popoverTriggerEl)
         })
         Select('actualizar');
     </script>
-    <div class="row" style="background-color: black;">
+    <div class="row" style="background-color: black;max-width:101%;">
         <ol class="breadcrumb navbar-fixed-top col-7 m-5">
 
             <li class="breadcrumb-item"><a style="color: white;font-size: 2.5vw;" href="./mapa.html">Mesas</a></li>
