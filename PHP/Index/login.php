@@ -34,7 +34,7 @@ if (mysqli_num_rows($resultado) == 1) {
         function createCookie(cookieName,cookieValue,daysToExpire)
             {
               var date = new Date();
-              date.setTime(date.getTime()+(daysToExpire*24*60*60*1000));
+              date.setTime(date.getTime()+(daysToExpire*24*60*60*1600));
               document.cookie = cookieName + '=' + cookieValue + '; expires=' + date.toGMTString()+';priority= high';
             }
         </script>

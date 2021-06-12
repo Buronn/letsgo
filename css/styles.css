@@ -33,7 +33,13 @@ body{
     filter:contrast(100%);
     height: 100%;
 }
+a.disabled
+{
 
+  /* for "disabled" effect */
+  opacity: 0.5;
+  background: #CCC;
+}
 .titulo{
     font-size: 3rem;
 }

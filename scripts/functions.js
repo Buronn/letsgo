@@ -24,6 +24,7 @@ function FunctionDelay(func, time) {
     setTimeout(() => { func() }, time)
 }
 
+
 //ALERTA AÑADIR
 function AlertaAñadido() {
     if ($('#mult').prop('checked') && $('#multinput').val() == "") {
@@ -131,7 +132,6 @@ function variedades(codigo) {
     })
         .done(function (respuesta) {
             respuesta = JSON.parse(respuesta)
-            console.log(JSON.parse(respuesta['variedad']))
             if (respuesta['variedad']) {
 
 
@@ -165,10 +165,44 @@ function variedades(codigo) {
 
 
 
+function enviarOrden(){
+    let punto = localStorage.getItem('punto');
+    let mesa = localStorage.getItem('mesa_num');
+
+    $.ajax({
+        url: '../PHP/Comanda/enviarorden.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            punto: punto,
+            mesa: mesa,
+            fecha: new Date().toLocaleDateString('en-ES'),
+            hora: new Date().toLocaleTimeString('en-US', {
+                hour12: false,
+                hour: "numeric",
+                minute: "numeric"
+            }),
+        },
+
+    })
+        .done(function (respuesta) {
+            window.scrollTo(0, 0);
+            Select('actualizar');
+            Swal.fire({
+                icon: 'success',
+                title: 'Orden enviada!',
+                showConfirmButton: false,
+                timer: 1500
+              })
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+}
 
 
 //AGREGA LA MESA A LA TABLA tables
-function tables(xd) {
+function tables(cambiador) {
     let punto = localStorage.getItem('punto');
     let cubiertos = localStorage.getItem('cubiertos');
     let mesa = localStorage.getItem('mesa_num');
@@ -192,7 +226,7 @@ function tables(xd) {
             minutos: minutos,
             mesa: mesa,
             cubiertos: cubiertos,
-            hacer: xd
+            hacer: cambiador
         },
 
     })
@@ -320,17 +354,14 @@ function ocultardivs() {
     if (document.getElementById('barra0') == null) {
         setTimeout(function () {
             $("#addProd").addClass("hide");
-            document.getElementById('barra1').id = 'barra0'
+            document.getElementById('barra1').id = 'barra0';
+
         }, 500);
-
-
     } else {
         $("#addProd").removeClass("hide");
         Select("actualizar");
         document.getElementById('barra0').id = 'barra1';
         CambiarClase('mult', 'enabled', 'disabled');
-
-
     }
 
 }
