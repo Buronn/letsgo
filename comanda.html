@@ -21,6 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
         </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 </head>
@@ -29,13 +30,14 @@
 
     <script>
         check_login()
+        SetLocalStorage('clase',1);
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
             return new bootstrap.Popover(popoverTriggerEl)
         })
         Select('actualizar');
     </script>
-    <div class="row" style="background-color: black;">
+    <div class="row" style="background-color: black;max-width:101%;">
         <ol class="breadcrumb navbar-fixed-top col-7 m-5">
 
             <li class="breadcrumb-item"><a style="color: white;font-size: 2.5vw;" href="./mapa.html">Mesas</a></li>
@@ -86,14 +88,14 @@
     <script>
         Clases();
     </script>
-    <div style="z-index:5;position:absolute;left:65vw;top:2vw">
+    <!-- <div style="z-index:5;position:absolute;left:65vw;top:2vw">
         <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-body">
                 <h3><i style="font-size: 2vw;color:green;" class="far fa-check-circle"></i> Producto añadido
                     correctamente</h3>
             </div>
         </div>
-    </div>
+    </div> -->
     <div id='clases'></div>
 
     <div id="note" style="z-index: -1;"></div>
@@ -120,28 +122,7 @@
 
 
 
-    <!-- <div class='modal fade' style='padding-top:20vw;padding-left:35vw;max-width: 70%;
-    margin: 1.75rem auto;' id='multiplicador' tabindex='-1' role='dialog' aria-labelledby='multiplicador_2'
-        aria-hidden='true'>
-        <div class='modal-dialog' role='document'>
-            <div class='modal-content'>
-                <div class='modal-header'>
 
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                        <span style='font-size:3vw;color:white' aria-hidden='true'><i
-                                class='far fa-times-circle'></i></span>
-                    </button>
-                </div>
-                <div class='modal-body'>
-                    <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
-                </div>
-
-                <button style='font-size:2.4vw;background-color:#3c3a3c;border-color: #f2f2f2;' type='button'
-                    class='btn btn-success btn-lg'>Añadir productos</button>
-
-            </div>
-        </div>
-    </div> -->
 
 
 </body>

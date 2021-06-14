@@ -24,10 +24,27 @@ function FunctionDelay(func, time) {
     setTimeout(() => { func() }, time)
 }
 
+
 //ALERTA AÑADIR
 function AlertaAñadido() {
-    $('.toast').toast('show')
-    setTimeout(() => { $('.toast').toast('hide') }, 1000)
+    if ($('#mult').prop('checked') && $('#multinput').val() == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Campo para multiplicar vacio',
+
+
+        })
+
+    } else {
+        Swal.fire({
+            icon: 'success',
+            title: 'Agregado correctamente ',
+            showConfirmButton: false,
+            timer: 1000
+        })
+
+    }
 }
 
 //SLEEP
@@ -95,13 +112,97 @@ function mapa() {
             console.log("Error: Not user found")
         });
 }
+function variedades(codigo) {
+    punto = localStorage.getItem('punto');
+    mesa = localStorage.getItem('mesa_num');
+    clase = localStorage.getItem('clase');
+    Grupo = localStorage.getItem('Grupo');
+    $.ajax({
+        url: '../PHP/Comanda/variedades.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            mesa: mesa,
+            punto: punto,
+            product: codigo,
+            clase: clase,
+            Grupo: Grupo,
+        },
+
+    })
+        .done(function (respuesta) {
+            respuesta = JSON.parse(respuesta)
+            if (respuesta['variedad']) {
+
+
+                (async () => {
+                    const { value: opcion } = await Swal.fire({
+                        title: 'Escoja una variedad',
+                        input: 'select',
+                        inputOptions: respuesta['variedades'],
+                        showCancelButton: true,
 
 
 
+                    })
+
+                    if (opcion) {
+                        SelectVariedad(respuesta['codigo'], respuesta['variedades'][opcion]);
+                        AlertaAñadido();
+                    }
+                })()
+
+            } else {
+                AlertaAñadido();
+                Select(respuesta['codigo'])
+            }
+
+        })
+        .fail(function () {
+            console.log("Error: Not Found")
+        });
+}
+
+
+
+function enviarOrden(){
+    let punto = localStorage.getItem('punto');
+    let mesa = localStorage.getItem('mesa_num');
+
+    $.ajax({
+        url: '../PHP/Comanda/enviarorden.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            punto: punto,
+            mesa: mesa,
+            fecha: new Date().toLocaleDateString('en-ES'),
+            hora: new Date().toLocaleTimeString('en-US', {
+                hour12: false,
+                hour: "numeric",
+                minute: "numeric"
+            }),
+        },
+
+    })
+        .done(function (respuesta) {
+            window.scrollTo(0, 0);
+            Select('actualizar');
+            Swal.fire({
+                icon: 'success',
+                title: 'Orden enviada!',
+                showConfirmButton: false,
+                timer: 1500
+              })
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+}
 
 
 //AGREGA LA MESA A LA TABLA tables
-function tables(xd) {
+function tables(cambiador) {
     let punto = localStorage.getItem('punto');
     let cubiertos = localStorage.getItem('cubiertos');
     let mesa = localStorage.getItem('mesa_num');
@@ -125,7 +226,7 @@ function tables(xd) {
             minutos: minutos,
             mesa: mesa,
             cubiertos: cubiertos,
-            hacer: xd
+            hacer: cambiador
         },
 
     })
@@ -253,21 +354,53 @@ function ocultardivs() {
     if (document.getElementById('barra0') == null) {
         setTimeout(function () {
             $("#addProd").addClass("hide");
-            document.getElementById('barra1').id = 'barra0'
+            document.getElementById('barra1').id = 'barra0';
+
         }, 500);
-
-
     } else {
         $("#addProd").removeClass("hide");
         Select("actualizar");
         document.getElementById('barra0').id = 'barra1';
         CambiarClase('mult', 'enabled', 'disabled');
-
-
     }
 
 }
+function Borrar(codigo, clase, Grupo, div) {
+    var valor = ($("#borrar" + div).html());
+    var total = ($("#total").html());
+    total = parseInt(total.replace("$", ""));
+    valor = parseInt(valor.replace("$", ""));
+    total = total - valor;
+    console.log(total);
+    document.getElementById("total").innerHTML = "$" + total;
+    $("#" + div).remove()
+    punto = localStorage.getItem('punto');
+    mesa = localStorage.getItem('mesa_num');
 
+
+
+
+    $.ajax({
+        url: '../PHP/Comanda/Borrar.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            mesa: mesa,
+            punto: punto,
+            product: codigo,
+            clase: clase,
+            Grupo: Grupo,
+
+        },
+
+    })
+        .done(function (respuesta) {
+
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+};
 
 //SELECCIONA PRODUCTO PARA AÑADIRLO A LA ORDEN
 function Select(codigo) {
@@ -277,7 +410,7 @@ function Select(codigo) {
     clase = localStorage.getItem('clase');
     Grupo = localStorage.getItem('Grupo');
     var cantidad = 1;
-    if($('#mult').prop('checked')){
+    if ($('#mult').prop('checked')) {
         cantidad = $('#multinput').val();
     }
     $.ajax({
@@ -292,9 +425,53 @@ function Select(codigo) {
             clase: clase,
             Grupo: Grupo,
             fecha: new Date().toLocaleDateString('en-ES'),
-            hora: new Date().toLocaleTimeString('en-US', { hour12: false, 
-                hour: "numeric", 
-                minute: "numeric"}),
+            hora: new Date().toLocaleTimeString('en-US', {
+                hour12: false,
+                hour: "numeric",
+                minute: "numeric"
+            }),
+
+        },
+
+    })
+        .done(function (respuesta) {
+            $("#addProd").html(respuesta);
+
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        })
+
+}
+
+function SelectVariedad(codigo, nota) {
+
+    punto = localStorage.getItem('punto');
+    mesa = localStorage.getItem('mesa_num');
+    clase = localStorage.getItem('clase');
+    Grupo = localStorage.getItem('Grupo');
+    var cantidad = 1;
+    if ($('#mult').prop('checked')) {
+        cantidad = $('#multinput').val();
+    }
+    $.ajax({
+        url: '../PHP/Comanda/agregarproducto.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            mesa: mesa,
+            punto: punto,
+            product: codigo,
+            cantidad: cantidad,
+            clase: clase,
+            Grupo: Grupo,
+            nota: nota,
+            fecha: new Date().toLocaleDateString('en-ES'),
+            hora: new Date().toLocaleTimeString('en-US', {
+                hour12: false,
+                hour: "numeric",
+                minute: "numeric"
+            }),
 
         },
 

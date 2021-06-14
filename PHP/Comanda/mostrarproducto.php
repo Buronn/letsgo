@@ -26,11 +26,12 @@ while ($fila = $resultado->fetch_assoc()) {
       <div
         style='min-height:6vw;min-width:25vw;max-width:25vw;max-height:7vw;font-size:1.5vw;text-align: center;' 
         href='#'
-        onclick=AlertaAñadido(),Select('".$fila['Producto']."')
+        onclick=variedades('".$fila['Producto']."')
       >" . $fila['NProducto'] . "</div>
         
       </div>
    ";
 }
+// Select('".$fila['Producto']."')
 
 echo $salida;

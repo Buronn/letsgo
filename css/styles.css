@@ -7,6 +7,9 @@ html{
 *, *::before, *::after{
     box-sizing: inherit;
 }
+.swal2-popup {
+    font-size: 1.6rem !important;
+  }
 @font-face{
     font-family: "Bulletto Killa";
     src: url(/css/Bulletto_Killa.ttf);
@@ -30,7 +33,13 @@ body{
     filter:contrast(100%);
     height: 100%;
 }
+a.disabled
+{
 
+  /* for "disabled" effect */
+  opacity: 0.5;
+  background: #CCC;
+}
 .titulo{
     font-size: 3rem;
 }
