@@ -129,17 +129,6 @@ while ($fila = $result->fetch_assoc()) {
             
             
 
-<<<<<<< HEAD
-    $left = ((((float)$fila['x']) * 100) / 80 * 6.8);
-    $top = (((float)$fila['y']) * 110) / 60 * 4.5;
-    //MESAS DESOCUPADAS
-    if($fila['x']!=null and $fila['y']!=null ){
-        $salida .= "
-    <div class='contenedor'>
-        <a class='btn-abrir-popup' id='btn-abrir-popup$aux' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "') >
-            <img  class='animation' style='position:fixed;left: " . ($left + 3)  . "%;top: " . ($top + 2) . "%;width: 9.6%;height: 15%;' 
-            src='../images_mesas/" . $fila['forma'] . "_BLANCO_0.gif'>
-=======
         $salida.="</div>";
             $aux = $aux + 1;
             /* 
@@ -163,7 +152,6 @@ while ($fila = $result->fetch_assoc()) {
         </script> */
         }
     } else {
->>>>>>> de35ecffd8b8b8d586365eac147eb5c6d9e2803a
 
         $left = ((((float)$fila['x']) * 100) / 80 * 6.8);
         $salida .= "<script>console.log('" . (float)$fila['x'] . "')</script>";

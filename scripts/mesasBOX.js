@@ -84,19 +84,14 @@ function crearMesa( tipo ){
     }
 
 
-   totalImagen = '';
-   var imagen = `<img  class='${tipo}${variable} ${mesasBOX}' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
-   var lugar = document.getElementById("fila0-col0");
-   totalImagen += imagen;
-   lugar.innerHTML += totalImagen;
-   cargarBOX();
+    cargaAlgoritmo();
     
 }
 
 function cargarBOX(){
     
-    var box = document.querySelectorAll('mesasBOX')
-    var box1 = document.querySelectorAll('mesasBOX1')
+    var box = document.querySelectorAll('.mesasBOX')
+    var box1 = document.querySelectorAll('.mesasBOX1')
     var box2 = document.querySelectorAll('.mesasBOX2')
     console.log(box)
     console.log(box1)
@@ -188,14 +183,20 @@ function cargaAlgoritmo(){
         totalImagen += imagen;
         lugar.innerHTML += totalImagen;
     }
-    cargarBOX()
+
+    
+    cargarBOX();
     
 
 
 }
+cargaAlgoritmo();
+
+
+   
 
   
-cargaAlgoritmo();
+
 
    
 
