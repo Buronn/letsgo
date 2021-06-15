@@ -105,7 +105,7 @@
         <p id='produabajo' style="color: #65eec0;font-weight: bolder; text-align: center;padding-top: 1vw;"></p>
         <input type="checkbox" class="enabled hide" id="mult" data-toggle='modal'
             data-target='#multiplicador'><label id="multlabel" class="col-4" for="mult"><i
-                class="fas fa-times"></i><input id="multinput" style="width: 4vw; background-color: rgba(59, 59, 59, 0.061); color: white;"  type="number"></label>
+                class="fas fa-times"></i><input id="multinput" min="1" max="100" style="width: 4vw; background-color: rgba(59, 59, 59, 0.061); color: white;"  type="number"></label>
         <script>
             $('#mult').change(function () {
                 if (this.checked) {
