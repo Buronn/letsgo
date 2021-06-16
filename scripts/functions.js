@@ -402,6 +402,38 @@ function Borrar(codigo, clase, Grupo, div) {
         });
 };
 
+function Khipu(){
+    punto = localStorage.getItem('punto');
+    mesa = localStorage.getItem('mesa_num');
+    var titulo = "Pago de mesa " +mesa+" en "+punto;
+    var amount = ($("#total").html());
+    amount = parseInt(amount.replace("$", ""));
+    body = "Merquen POS"
+    $.ajax({
+        url: '../PHP/khipu.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            titulo:titulo,
+            body:body,
+            amount:amount,
+            mesa:mesa,
+            punto:punto,
+        },
+
+    })
+        .done(function (respuesta) {
+            $("#addProd").html(respuesta);
+
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        })
+
+
+}
+
+
 //SELECCIONA PRODUCTO PARA AÑADIRLO A LA ORDEN
 function Select(codigo) {
 

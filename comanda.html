@@ -30,7 +30,8 @@
 
     <script>
         check_login()
-        SetLocalStorage('clase',1);
+
+        SetLocalStorage('clase', 1);
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
             return new bootstrap.Popover(popoverTriggerEl)
@@ -99,24 +100,23 @@
     <div id='clases'></div>
 
     <div id="note" style="z-index: -1;"></div>
-
     <div class='navbotones' style="color: #f2f2f2;">
 
         <p id='produabajo' style="color: #65eec0;font-weight: bolder; text-align: center;padding-top: 1vw;"></p>
-        <input type="checkbox" class="enabled hide" id="mult" data-toggle='modal'
-            data-target='#multiplicador'><label id="multlabel" class="col-4" for="mult"><i
-                class="fas fa-times"></i><input id="multinput" min="1" max="100" style="width: 4vw; background-color: rgba(59, 59, 59, 0.061); color: white;"  type="number"></label>
+        <input type="checkbox" class="enabled hide" id="mult" data-toggle='modal' data-target='#multiplicador'><label
+            id="multlabel" class="col-4" for="mult"><i class="fas fa-times"></i><input id="multinput" min="1" max="100"
+                style="width: 4vw; background-color: rgba(59, 59, 59, 0.061); color: white;" type="number"></label>
         <script>
             $('#mult').change(function () {
                 if (this.checked) {
-                        $('#multlabel').css("background-color", "#1F504D");
-                }else{
+                    $('#multlabel').css("background-color", "#1F504D");
+                } else {
                     $('#multlabel').css("background-color", "rgba(255, 255, 255, 0)")
                 }
             });
         </script>
         <a class="col-4 enabled"><i class="far fa-file-alt"></i></a>
-        <a class="col-4 enabled" onclick="tables('cerrar'),GoTo('mapa.html')"><i class="far fa-credit-card"></i></a>
+        <a class="col-4 enabled" onclick="Khipu()"><i class="far fa-credit-card"></i></a>
 
     </div>
 
@@ -129,5 +129,27 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    setTimeout(function () {
+        var url_string = window.location.href; //window.location.href
+        var url = new URL(url_string);
+        var c = url.searchParams.get("pago");
+        if (c == 0) {
+            Swal.fire({
+
+                icon: 'success',
+                title: 'Pago realizado con éxito!',
+                showConfirmButton: true,
+            })
+        } else if (c == 1) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Pago erróneo o cancelado',
+                showConfirmButton: true,
+
+            })
+        }
+    }, 2000);
+</script>
 
 </html>
