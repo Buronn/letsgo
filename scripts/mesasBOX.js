@@ -20,31 +20,22 @@ for(let i = 0 ; i < 10 ; i++){
 
 
 var mesasCIR = [
-    {
-        X: 0,
-        Y: 1,
-    }
+    
 ]
 
 var mesasCUA = [
-    {
-       
-        X: 5,
-        Y: 8,
-    }
+    
 
 ]
 
 var mesasREC = [
-    {
-        X: 2,
-        Y: 4,
-    }
+   
 
 ]
 
 
 function crearMesa( tipo ){
+    console.log(tipo);
     var variable = ''
     
     var mesasBOX = ''
@@ -84,7 +75,12 @@ function crearMesa( tipo ){
     }
 
 
-    cargaAlgoritmo();
+    totalImagen = '';
+    var imagen = `<img  class='${tipo}${variable} ${mesasBOX}' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
+    var lugar = document.getElementById("fila0-col0");
+    totalImagen += imagen;
+    lugar.innerHTML += totalImagen;
+    cargarBOX();
     
 }
 
@@ -177,7 +173,7 @@ function cargaAlgoritmo(){
         lugar.innerHTML += totalImagen;
     }
     for(let i = 0; i < mesasCUA.length ; i++ ){
-       
+        totalImagen = '';
         var imagen = `<img  class='CUA${i} mesasBOX2' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/CUA_BLANCO_0.gif'></img>`
         var lugar = document.getElementById(`fila${mesasCUA[i].X}-col${mesasCUA[i].Y}`);
         totalImagen += imagen;
@@ -187,10 +183,60 @@ function cargaAlgoritmo(){
     
     cargarBOX();
     
-
-
 }
 cargaAlgoritmo();
+
+function guardarData(){
+    var box = document.querySelectorAll('.mesasBOX')
+    var box1 = document.querySelectorAll('.mesasBOX1')
+    var box2 = document.querySelectorAll('.mesasBOX2')
+
+    data = []
+
+    box.forEach(function(item){
+        var id = item.classList[0];
+        var X = item.style.top;
+        var Y = item.style.left;
+        console.log(X);
+        console.log(Y);
+        var objeto = {
+            ID : id,
+            X : X,
+            Y : Y
+        }
+        data.push(objeto);
+    })
+
+    box1.forEach(function(item){
+        var id = item.classList[0];
+        var X = item.style.top;
+        var Y = item.style.left;
+        console.log(X);
+        console.log(Y);
+        var objeto = {
+            ID : id,
+            X : X,
+            Y : Y
+        }
+        data.push(objeto);
+    })
+
+    box2.forEach(function(item){
+        var id = item.classList[0];
+        var X = item.style.top;
+        var Y = item.style.left;
+        console.log(X);
+        console.log(Y);
+        var objeto = {
+            ID : id,
+            X : X,
+            Y : Y
+        }
+        data.push(objeto);
+    })
+    
+    console.log(data)
+}
 
 
    
