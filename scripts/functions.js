@@ -38,11 +38,19 @@ function AlertaAñadido() {
 
     } else {
         Swal.fire({
+            toast: true,
             icon: 'success',
-            title: 'Agregado correctamente ',
+            title: 'Producto añadido correctamente',
+            animation: false,
+            position: 'top',
             showConfirmButton: false,
-            timer: 1000
-        })
+            timer: 1000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
 
     }
 }
