@@ -1,21 +1,67 @@
 
+var data;
+function obtenerMesas() {
+    var punto  = 'BAR'
+    $.ajax({
+        url: '../PHP/consultaMesas.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            punto: punto,
+        },
+
+    })
+        .done(function (respuesta) {
+            
+            data = JSON.parse(respuesta);
+            console.log(data)
+            pintadoMesas(data);
+        })
+        .fail(function () {
+        });
+
+    
+};
+
+function pintadoMesas( data ){
+    for(let i = 0 ; i < data.length ; i++){
+            var variable = data[i][0];
+            var mesasBOX;
+            var y = data[i][1];
+            var x = data[i][2];
+            var tipo = data[i][3];
+            if(data[i][0][0] == '0'){
+                variable = data[i][0][1]
+            }
+            if(tipo == 'CIR'){
+                mesasBOX = 'mesasBOX'
+            }
+            else if(tipo == 'CUA'){
+                mesasBOX = 'mesasBOX2'
+            }
+            else{
+                mesasBOX = 'mesasBOX1'
+            }
+            var left = (parseFloat((y)) * 100) / 80 * 6.8;
+            var top = (parseFloat((x)) * 110) / 60 * 4.5;
+            console.log('top ' + top);
+            console.log('left ' + left);
+        if(data[i][3] != 'PLANTA'){
+            var imagen = `<img   style='width: 9.6%;height: 15%; position:absolute;   top:${top}%; left:${left}%' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
+            var lugar = document.getElementById('fondoMesasAdmin')
+            console.log(lugar)
+            lugar.innerHTML += imagen;
+        }
+
+    }
+    
+}
+
+
+
 var contenedor = document.getElementById('contenedorIMG');
 
-for(let i = 0 ; i < 10 ; i++){
-    var fila ='';
-    fila +=`<div  class='row'> `
-    for(let j = 0 ; j < 10 ; j++){
-        var col = ''
-        col = `<div style='height: 70px' id='fila${i}-col${j}' class='col'> </div>`
-        fila += col;
 
-        if(j == 9){
-            fila += '</div>'
-        }
-    }
-    contenedor.innerHTML += fila;
-
-}
 
 
 
@@ -36,7 +82,7 @@ var mesasREC = [
 
 function crearMesa( tipo ){
     console.log(tipo);
-    var variable = ''
+    var variable = 0;
     
     var mesasBOX = ''
     switch (tipo) {
@@ -76,7 +122,7 @@ function crearMesa( tipo ){
 
 
     totalImagen = '';
-    var imagen = `<img  class='${tipo}${variable} ${mesasBOX}' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
+    var imagen = `<img  class='${tipo}${(variable + 1)} ${mesasBOX}' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
     var lugar = document.getElementById("fila0-col0");
     totalImagen += imagen;
     lugar.innerHTML += totalImagen;
@@ -159,7 +205,7 @@ function cargaAlgoritmo(){
     
     for(let i = 0; i < mesasCIR.length ; i++ ){
         totalImagen = '';
-        var imagen = `<img class='CIR${i} mesasBOX' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/CIR_BLANCO_0.gif'></img>`
+        var imagen = `<img class='CIR${(i + 1)} mesasBOX' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/CIR_BLANCO_0.gif'></img>`
         var lugar = document.getElementById(`fila${mesasCIR[i].X}-col${mesasCIR[i].Y}`);
         totalImagen += imagen;
         lugar.innerHTML += totalImagen;
@@ -167,14 +213,14 @@ function cargaAlgoritmo(){
 
     for(let i = 0; i < mesasREC.length ; i++ ){
         totalImagen = '';
-        var imagen = `<img class='REC${i} mesasBOX1' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/REC_BLANCO_0.gif'></img>`
+        var imagen = `<img class='REC${(i + 1)} mesasBOX1' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/REC_BLANCO_0.gif'></img>`
         var lugar = document.getElementById(`fila${mesasREC[i].X}-col${mesasREC[i].Y}`);
         totalImagen += imagen;
         lugar.innerHTML += totalImagen;
     }
     for(let i = 0; i < mesasCUA.length ; i++ ){
         totalImagen = '';
-        var imagen = `<img  class='CUA${i} mesasBOX2' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/CUA_BLANCO_0.gif'></img>`
+        var imagen = `<img  class='CUA${(i + 1)} mesasBOX2' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/CUA_BLANCO_0.gif'></img>`
         var lugar = document.getElementById(`fila${mesasCUA[i].X}-col${mesasCUA[i].Y}`);
         totalImagen += imagen;
         lugar.innerHTML += totalImagen;
