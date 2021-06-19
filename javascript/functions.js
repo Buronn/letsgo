@@ -106,7 +106,7 @@ function mapa() {
     npunto = localStorage.getItem('npunto');
     punto = localStorage.getItem('punto');
     $.ajax({
-        url: '../PHP/Mapa/mesas.php',
+        url: './PHP/Mapa/mesas.php',
         type: 'POST',
         dataType: 'html',
         data: { lugar: punto, npunto: npunto },
@@ -126,7 +126,7 @@ function variedades(codigo) {
     clase = localStorage.getItem('clase');
     Grupo = localStorage.getItem('Grupo');
     $.ajax({
-        url: '../PHP/Comanda/variedades.php',
+        url: './PHP/Comanda/variedades.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -178,7 +178,7 @@ function enviarOrden(){
     let mesa = localStorage.getItem('mesa_num');
 
     $.ajax({
-        url: '../PHP/Comanda/enviarorden.php',
+        url: './PHP/Comanda/enviarorden.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -222,7 +222,7 @@ function tables(cambiador) {
     let minutos = hoy.getMinutes();
     console.log(punto, cubiertos, mesa, hoy, dia, mes, year, hora, minutos)
     $.ajax({
-        url: '../PHP/Mapa/tables.php',
+        url: './PHP/Mapa/tables.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -249,7 +249,7 @@ function tables(cambiador) {
 
 //SONIDO DE TIMBRE
 function timbre() {
-    var audio = new Audio('../sounds/bell.mp3');
+    var audio = new Audio('./sounds/bell.mp3');
     audio.play();
 }
 
@@ -257,7 +257,7 @@ function timbre() {
 //CLASES DE LOS PRODUCTOS
 function Clases() {
     $.ajax({
-        url: '../PHP/Comanda/clases.php',
+        url: './PHP/Comanda/clases.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -301,7 +301,7 @@ function showproduct(nombre) {
     document.getElementById("arribaclase").style.color = "white"
 
     $.ajax({
-        url: '../PHP/Comanda/mostrarproducto.php',
+        url: './PHP/Comanda/mostrarproducto.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -338,7 +338,7 @@ function mostrargrupos(clase, nombre) {
     }
 
     $.ajax({
-        url: '../PHP/Comanda/grupos.php',
+        url: './PHP/Comanda/grupos.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -389,7 +389,7 @@ function Borrar(codigo, clase, Grupo, div) {
 
 
     $.ajax({
-        url: '../PHP/Comanda/Borrar.php',
+        url: './PHP/Comanda/Borrar.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -418,7 +418,7 @@ function Khipu(){
     amount = parseInt(amount.replace("$", ""));
     body = "Merquen POS"
     $.ajax({
-        url: '../PHP/khipu.php',
+        url: './PHP/khipu.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -454,7 +454,7 @@ function Select(codigo) {
         cantidad = $('#multinput').val();
     }
     $.ajax({
-        url: '../PHP/Comanda/agregarproducto.php',
+        url: './PHP/Comanda/agregarproducto.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -495,7 +495,7 @@ function SelectVariedad(codigo, nota) {
         cantidad = $('#multinput').val();
     }
     $.ajax({
-        url: '../PHP/Comanda/agregarproducto.php',
+        url: './PHP/Comanda/agregarproducto.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -534,8 +534,9 @@ function SelectVariedad(codigo, nota) {
 function login() {
     var user = document.getElementById("user").value;
     var pass = document.getElementById("pass").value;
+    console.log('cualquier cosa')
     $.ajax({
-        url: '../PHP/Index/login.php',
+        url: './PHP/Index/login.php',
         type: 'POST',
         dataType: 'html',
         data: {
@@ -546,6 +547,8 @@ function login() {
     })
         .done(function (respuesta) {
             $("#alerta").html(respuesta);
+            console.log(respuesta)
+            
         })
         .fail(function () {
             console.log("Error: Not user found")
@@ -583,7 +586,7 @@ function check_login() {
             decodedString = decodeURIComponent(escape(atob(encodedString)));
     }
     $.ajax({
-        url: '../PHP/check_login.php',
+        url: './PHP/check_login.php',
         type: 'POST',
         dataType: 'html',
         data: {

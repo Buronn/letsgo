@@ -1,10 +1,19 @@
 <?php
-require "../conexion.php";
+define("host_bd", "database-merken.ccvzxrt75imq.us-east-1.rds.amazonaws.com");
+define("user_bd", "root");
+define("pass_bd", "merquen1");
+define("name_bd", "merquen");
+$conexion = new mysqli(
+    constant("host_bd"),
+    constant("user_bd"),
+    constant("pass_bd"),
+    constant("name_bd")
+);
 $salida = "";
 $usuario = $_POST['user'];
 $password = $_POST['pass'];
 
-$siguienteLocacion = '../mapa.html';
+$siguienteLocacion = './mapa.html';
 $esAdmin = '';
 
 
@@ -17,7 +26,7 @@ while ($fila = $resultado->fetch_assoc()) {
 }
 
 if ($esAdmin == 'Y') {
-  $siguienteLocacion =  '../Admin.html';
+  $siguienteLocacion =  './Admin.html';
 }
 
 if (mysqli_num_rows($resultado) == 1) {
