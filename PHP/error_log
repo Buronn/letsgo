@@ -1,0 +1,45 @@
+[17-Jun-2021 23:33:06 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/andes242/public_html/merquenmovil/PHP/conexion.php on line 10
+[17-Jun-2021 23:33:06 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 8
+[17-Jun-2021 23:33:06 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 10
+[17-Jun-2021 23:33:06 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 13
+[17-Jun-2021 23:33:18 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/andes242/public_html/merquenmovil/PHP/conexion.php on line 10
+[17-Jun-2021 23:33:18 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 8
+[17-Jun-2021 23:33:18 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 10
+[17-Jun-2021 23:33:18 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 13
+[17-Jun-2021 23:40:43 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/andes242/public_html/merquenmovil/PHP/conexion.php on line 10
+[17-Jun-2021 23:40:43 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 8
+[17-Jun-2021 23:40:43 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 10
+[17-Jun-2021 23:40:43 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 13
+[17-Jun-2021 23:40:50 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/andes242/public_html/merquenmovil/PHP/conexion.php on line 10
+[17-Jun-2021 23:40:50 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 8
+[17-Jun-2021 23:40:50 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 10
+[17-Jun-2021 23:40:50 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 13
+[17-Jun-2021 23:49:49 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/andes242/public_html/merquenmovil/PHP/conexion.php on line 10
+[17-Jun-2021 23:49:49 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 8
+[17-Jun-2021 23:49:49 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 10
+[17-Jun-2021 23:49:49 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 13
+[17-Jun-2021 23:52:21 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/andes242/public_html/merquenmovil/PHP/conexion.php on line 10
+[17-Jun-2021 23:52:21 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 8
+[17-Jun-2021 23:52:21 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 10
+[17-Jun-2021 23:52:21 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 13
+[17-Jun-2021 23:52:36 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/andes242/public_html/merquenmovil/PHP/conexion.php on line 10
+[17-Jun-2021 23:52:36 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 8
+[17-Jun-2021 23:52:36 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 10
+[17-Jun-2021 23:52:36 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 13
+[18-Jun-2021 07:49:05 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/andes242/public_html/merquenmovil/PHP/conexion.php on line 10
+[18-Jun-2021 07:49:05 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 8
+[18-Jun-2021 07:49:05 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 10
+[18-Jun-2021 07:49:05 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/andes242/public_html/merquenmovil/PHP/check_login.php on line 13
+[18-Jun-2021 07:49:10 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/andes242/public_html/merquenmovil/PHP/conexion.php on line 10
+[18-Jun-2021 07:49:10 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/check_admin.php on line 11
+[18-Jun-2021 07:49:10 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on null in /home/andes242/public_html/merquenmovil/PHP/check_admin.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/andes242/public_html/merquenmovil/PHP/check_admin.php on line 13
+[18-Jun-2021 07:49:16 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/andes242/public_html/merquenmovil/PHP/conexion.php on line 10
+[18-Jun-2021 07:49:22 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/andes242/public_html/merquenmovil/PHP/conexion.php on line 10
+[18-Jun-2021 07:49:22 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/consultaMesas.php on line 8
+[18-Jun-2021 07:49:22 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on null in /home/andes242/public_html/merquenmovil/PHP/consultaMesas.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/andes242/public_html/merquenmovil/PHP/consultaMesas.php on line 11
