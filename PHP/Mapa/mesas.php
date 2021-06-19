@@ -32,7 +32,7 @@ $salida .= "
     </ul>
   </div>
 </nav>
-<div class='mapa'><img class='img-fluid' style='border-radius: 5%; max-width=100%' usemap='#workmap' src='../images/Fondo/pisoprueba2.png' >";
+<div class='mapa'><img class='img-fluid' style='width: 1311px; height: 738px; border-radius: 5%; max-width=100%' usemap='#workmap' src='../images/Fondo/pisoprueba2.png' >";
 $salida .= "<map name=\"workmap\">";
 $aux = 0;
 //MESAS
@@ -41,19 +41,19 @@ $aux = 0;
 //-----------------POSICIONAMENTO MESAS------------------
 while ($fila = $result->fetch_assoc()) {
     if ($fila['forma'] != 'PARED' && $fila['forma'] != 'PLANTA' && $fila['forma'] != 'PUERTA') {
-        $left = ((((float)$fila['x']) * 100) / 80 * 6.8);
-        $top = (((float)$fila['y']) * 110) / 60 * 4.5;
+        $left =  (float)$fila['y'] + 21 ;
+        $top = (float)$fila['x']+ 21 ;
         //MESAS DESOCUPADAS
         if ($fila['x'] != null and $fila['y'] != null) {
             $salida .= "
         <div class='contenedor'>
             <a class='btn-abrir-popup' id='mesa$aux' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "'),Mesa$aux() >
-                <img class='animation' style='position:fixed;left: " . ($left + 3)  . "%;top: " . ($top + 2) . "%;width: 9.6%;height: 15%;' 
+                <img class='animation' style='position:fixed;left: " . ($left )  . "px;top: " . ($top ) . "px;width: 125.84px;height: 110.69px;' 
                 src='../images_mesas/" . $fila['forma'] . "_BLANCO_0.gif'>
     
                 <h1 class='mesitas' style='position: fixed;
-                left: " . ($left + 3.5) . "%;
-                top: " . ($top + 5) . "%;font-size:2vw'>" . $fila['Mesa'] . "</h1>
+                left: " . ($left + 7 ) . "px;
+                top: " . ($top + 25) . "px;font-size:2vw'>" . $fila['Mesa'] . "</h1>
             </a>
             <script>
             ";
@@ -152,28 +152,29 @@ while ($fila = $result->fetch_assoc()) {
         </script> */
         }
     } else {
-
-        $left = ((((float)$fila['x']) * 100) / 80 * 6.8);
-        $salida .= "<script>console.log('" . (float)$fila['x'] . "')</script>";
-        $top = (((float)$fila['y']) * 110) / 60 * 4.5;
+        $left =  (float)$fila['y'] ;
+        $top = (float)$fila['x'];
+        
+        
+        
         if ($fila['forma'] == 'PLANTA') {
-            $salida .= "<img style='position:fixed;left: " . ($left + 3)  . "%;top: " . ($top + 2) . "%;width: 6.6%;height: 13%;' 
+            $salida .= "<img style='position:fixed;left: " . ($left )  . "px;top: " . ($top ) . "px;width: 6.6%;height: 13%;' 
         src='../images_mesas/PLANTA.png'>";
         }
         if ($fila['forma'] == 'PARED') {
-            $salida .= "<img style='position:fixed;left: " . ($left + 3)  . "%;top: " . ($top + 2) . "%;width: 20%;height: 5%;' 
+            $salida .= "<img style='position:fixed;left: " . ($left )  . "px;top: " . ($top ) . "px;width: 20%;height: 5%;' 
         src='../images_mesas/PARED.png'>";
         }
         if ($fila['forma'] == 'PUERTA') {
-            $salida .= "<img style='position:fixed;left: " . ($left + 3)  . "%;top: " . ($top + 2) . "%;width: 6.6%;height: 13%;' 
+            $salida .= "<img style='position:fixed;left: " . ($left )  . "px;top: " . ($top ) . "px;width: 6.6%;height: 13%;' 
         src='../images_mesas/PUERTA.png'>";
         }
     }
 }
 
 while ($fila = $result3->fetch_assoc()) {
-    $left = ((((float)$fila['x']) * 100) / 80 * 6.8);
-    $top = (((float)$fila['y']) * 110) / 60 * 4.5;
+    $left =  (float)$fila['y'] - 21;
+     $top = (float)$fila['x'] - 21;
 
     //MESAS OCUPADAS
     if ($fila['x'] != null and $fila['y'] != null) {
@@ -182,7 +183,7 @@ while ($fila = $result3->fetch_assoc()) {
     <div class='contenedor'>
         <a href='./comanda.html' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "'),localStorage.removeItem('cubiertos'),SetLocalStorage('cubiertos','" . $fila['Cubiertos'] . "')>
             <img class='img-fluid mesitas btn-abrir-popup animation'
-            style='position: absolute;left: " . $left  . "%;top: " . $top . "%;width: 9.6%;height: 15%;' 
+            style='position: absolute;left: " . $left  . "px;top: " . $top . "px;width: 125.84px;height: 110.69px;' 
             src='../images_mesas/";
         if ($fila['Cuenta'] == 1) {
             $salida .= "" . $fila['forma'] . "_ROJO_" . $fila['Cubiertos'] . "";
@@ -191,8 +192,8 @@ while ($fila = $result3->fetch_assoc()) {
         }
         $salida .= ".gif'>
             <h1 class='img-fluid mesitas btn-abrir-popup animation' id='btn-abrir-popup$aux' style='position: fixed;
-            left: " . ($left + 3.5) . "%;
-            top: " . ($top + 5) . "%;font-size:2vw'>" . $fila['Mesa'] . "</h1>
+            left: " . ($left + 47) . "px;
+            top: " . ($top + 38) . "px;font-size:2vw'>" . $fila['Mesa'] . "</h1>
         </a><script>setTimeout(() => {},2000);</script>
         
         <div class='overlay' style='z-index:-1' id='overlay$aux'>
