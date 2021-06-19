@@ -178,7 +178,6 @@ function guardarData(){
         .done(function () {
             
             Swal.fire({
-                position: 'bot-end',
                 icon: 'success',
                 title: 'Mesas guardadas correctamente',
                 showConfirmButton: false,
