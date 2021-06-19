@@ -32,7 +32,7 @@ $salida .= "
     </ul>
   </div>
 </nav>
-<div class='mapa'><img class='img-fluid' style='width: 1311px; height: 738px; border-radius: 5%; max-width=100%' usemap='#workmap' src='../images/Fondo/pisoprueba2.png' >";
+<div class='mapa'><img style='margin: 0 auto;width: 1311px; height: 738px; border-radius: 5%; position: relative;' src='../images/Fondo/pisoprueba2.png' >";
 $salida .= "<map name=\"workmap\">";
 $aux = 0;
 //MESAS
@@ -42,17 +42,17 @@ $aux = 0;
 while ($fila = $result->fetch_assoc()) {
     if ($fila['forma'] != 'PARED' && $fila['forma'] != 'PLANTA' && $fila['forma'] != 'PUERTA') {
         $left =  (float)$fila['y'] + 21 ;
-        $top = (float)$fila['x']+ 21 ;
+        $top = (float)$fila['x'];
         //MESAS DESOCUPADAS
         if ($fila['x'] != null and $fila['y'] != null) {
             $salida .= "
-        <div class='contenedor'>
-            <a class='btn-abrir-popup' id='mesa$aux' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "'),Mesa$aux() >
+        <div>
+            <a id='mesa$aux' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "'),Mesa$aux() >
                 <img class='animation' style='position:fixed;left: " . ($left )  . "px;top: " . ($top ) . "px;width: 125.84px;height: 110.69px;' 
                 src='../images_mesas/" . $fila['forma'] . "_BLANCO_0.gif'>
     
                 <h1 class='mesitas' style='position: fixed;
-                left: " . ($left + 7 ) . "px;
+                left: " . ($left + 4 ) . "px;
                 top: " . ($top + 25) . "px;font-size:2vw'>" . $fila['Mesa'] . "</h1>
             </a>
             <script>
@@ -131,28 +131,10 @@ while ($fila = $result->fetch_assoc()) {
 
         $salida.="</div>";
             $aux = $aux + 1;
-            /* 
-            SetLocalStorage('cubiertos','4'),tables('xd'),GoTo('comanda.html')
-            <script>
-        var btnAbrirPopup$aux = document.getElementById('btn-abrir-popup$aux'),
-        overlay$aux = document.getElementById('overlay$aux'),
-        popup$aux = document.getElementById('popup$aux'),
-        btnCerrarPopup$aux = document.getElementById('btn-cerrar-popup$aux');
-    
-    btnAbrirPopup$aux.addEventListener('click', function () {
-        overlay$aux.classList.add('active');
-        popup$aux.classList.add('active');
-    });
-    
-    btnCerrarPopup$aux.addEventListener('click', function (e) {
-        e.preventDefault();
-        overlay$aux.classList.remove('active');
-        popup$aux.classList.remove('active');
-    });
-        </script> */
+            
         }
     } else {
-        $left =  (float)$fila['y'] ;
+        $left =  (float)$fila['y'];
         $top = (float)$fila['x'];
         
         
@@ -173,17 +155,17 @@ while ($fila = $result->fetch_assoc()) {
 }
 
 while ($fila = $result3->fetch_assoc()) {
-    $left =  (float)$fila['y'] - 21;
-     $top = (float)$fila['x'] - 21;
+    $left =  (float)$fila['y'] + 21;
+     $top = (float)$fila['x'] ;
 
     //MESAS OCUPADAS
     if ($fila['x'] != null and $fila['y'] != null) {
         $salida .= "
 
-    <div class='contenedor'>
+    <div>
         <a href='./comanda.html' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "'),localStorage.removeItem('cubiertos'),SetLocalStorage('cubiertos','" . $fila['Cubiertos'] . "')>
-            <img class='img-fluid mesitas btn-abrir-popup animation'
-            style='position: absolute;left: " . $left  . "px;top: " . $top . "px;width: 125.84px;height: 110.69px;' 
+            <img class='animation'
+            style='position:fixed;left: " . ($left )  . "px;top: " . ($top ) . "px;width: 125.84px;height: 110.69px;' 
             src='../images_mesas/";
         if ($fila['Cuenta'] == 1) {
             $salida .= "" . $fila['forma'] . "_ROJO_" . $fila['Cubiertos'] . "";
@@ -191,9 +173,9 @@ while ($fila = $result3->fetch_assoc()) {
             $salida .= "" . $fila['forma'] . "_VERDE_" . $fila['Cubiertos'] . "";
         }
         $salida .= ".gif'>
-            <h1 class='img-fluid mesitas btn-abrir-popup animation' id='btn-abrir-popup$aux' style='position: fixed;
-            left: " . ($left + 47) . "px;
-            top: " . ($top + 38) . "px;font-size:2vw'>" . $fila['Mesa'] . "</h1>
+            <h1 class='mesitas' id='btn-abrir-popup$aux' style='position: fixed;
+            left: " . ($left + 4) . "px;
+            top: " . ($top + 25) . "px;font-size:2vw'>" . $fila['Mesa'] . "</h1>
         </a><script>setTimeout(() => {},2000);</script>
         
         <div class='overlay' style='z-index:-1' id='overlay$aux'>

@@ -47,27 +47,6 @@ function pintadoMesas( data ){
 
 
 
-var contenedor = document.getElementById('contenedorIMG');
-
-
-
-
-
-var mesasCIR = [
-    
-]
-
-var mesasCUA = [
-    
-
-]
-
-var mesasREC = [
-   
-
-]
-
-
 function crearMesa( tipo ){
     console.log(tipo);
     var variable = 0;
@@ -145,7 +124,7 @@ function cargarBOX(){
             var x = parseFloat(box2[i].style.left);
             var y = parseFloat(box2[i].style.top);
             
-            if(x > 1150 || y > 600 || y < 50 || x < 50){
+            if(x > 1185 || y > 635 || y < 10 || x < 10){
             
                 box2[i].style.left = Xinicial[i] + 'px';
                 box2[i].style.top =  Yinicial[i] + 'px';
@@ -196,9 +175,15 @@ function guardarData(){
         }
 
     })
-        .done(function (respuesta) {
+        .done(function () {
             
-               console.log(respuesta)
+            Swal.fire({
+                position: 'bot-end',
+                icon: 'success',
+                title: 'Mesas guardadas correctamente',
+                showConfirmButton: false,
+                timer: 1500
+              })
             
 
         })
