@@ -47,10 +47,10 @@ function AlertaAñadido() {
             timer: 1000,
             timerProgressBar: true,
             didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
-          })
+        })
 
     }
 }
@@ -173,7 +173,7 @@ function variedades(codigo) {
 
 
 
-function enviarOrden(){
+function enviarOrden() {
     let punto = localStorage.getItem('punto');
     let mesa = localStorage.getItem('mesa_num');
 
@@ -201,7 +201,7 @@ function enviarOrden(){
                 title: 'Orden enviada!',
                 showConfirmButton: false,
                 timer: 1500
-              })
+            })
         })
         .fail(function () {
             console.log("Error: Not user found")
@@ -410,10 +410,10 @@ function Borrar(codigo, clase, Grupo, div) {
         });
 };
 
-function Khipu(){
+function Khipu() {
     punto = localStorage.getItem('punto');
     mesa = localStorage.getItem('mesa_num');
-    var titulo = "Pago de mesa " +mesa+" en "+punto;
+    var titulo = "Pago de mesa " + mesa + " en " + punto;
     var amount = ($("#total").html());
     amount = parseInt(amount.replace("$", ""));
     body = "Merquen POS"
@@ -422,17 +422,38 @@ function Khipu(){
         type: 'POST',
         dataType: 'html',
         data: {
-            titulo:titulo,
-            body:body,
-            amount:amount,
-            mesa:mesa,
-            punto:punto,
+            titulo: titulo,
+            body: body,
+            amount: amount,
+            mesa: mesa,
+            punto: punto,
         },
 
     })
         .done(function (respuesta) {
-            $("#addProd").html(respuesta);
-
+            respuesta = JSON.parse(respuesta);
+            data = respuesta['url'];
+            id = respuesta['id'];
+            KhipuAlert();
+            function KhipuAlert() {
+                Swal.fire({
+                    title: 'CODIGO QR',
+                    allowOutsideClick: false,
+                    text: 'Escanea este código para poder pagar.',
+                    imageUrl: "https://api.qrserver.com/v1/create-qr-code/?data=" + data + "&amp;size=1000x1000",
+                    imageWidth: 500,
+                    imageHeight: 500,
+                    imageAlt: 'Custom image',
+                    showConfirmButton: false,
+                    showDenyButton: true,
+                    denyButtonText: "Cancelar",
+                    html: "<button class='swal2-confirm swal2-styled' onclick=VerifyKhipu('" + id + "')>Verificar estado del pago</button><div id='khipuResponse'></div>",
+                }).then((result) => {
+                    if (result.isDenied) {
+                        Swal.fire('Pago cancelado', '', 'info')
+                    }
+                })
+            }
         })
         .fail(function () {
             console.log("Error: Not user found")
@@ -440,7 +461,46 @@ function Khipu(){
 
 
 }
+async function VerifyKhipu(id) {
+    var options = 0;
+    while (options != 3) {
+        if (options == 0) {
+            var spinner = "<div class='lds-ripple'><div>"
+            document.getElementById("khipuResponse").innerHTML = spinner;
+        }
+        $.ajax({
+            url: '../PHP/khipunoti.php',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                id: id,
+            },
+        })
+            .done(function (respuesta) {
+                respuesta = JSON.parse(respuesta);
+                console.log(respuesta['status']);
+                if (respuesta['status'] == "pending") {
+                    document.getElementById("khipuResponse").innerHTML = "<h1>Pago pendiente <i style='color:#9e4b30;' class='far fa-clock'></i></h1>"
+                    options = 1;
+                }
+                else if (respuesta['status'] == "verifying") {
+                    document.getElementById("khipuResponse").innerHTML = "<h1>Verificando...</h1>"
+                    options = 2;
+                }
+                else if (respuesta['status'] == "done") {
+                    document.getElementById("khipuResponse").innerHTML = "<h1>Pago completado <i style='color:#195624;' class='fas fa-check-circle'></i></h1>"
+                    options = 3;
+                    tables('cerrar');
+                    GoTo("/mapa.html");
+                }
 
+            })
+            .fail(function () {
+                console.log("Error: Not user found")
+            });
+        await sleep(5000);
+    }
+}
 
 //SELECCIONA PRODUCTO PARA AÑADIRLO A LA ORDEN
 function Select(codigo) {

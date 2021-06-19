@@ -14,14 +14,14 @@ require_once 'KhipuService.php';
  *
  * Este servicio marca un pago como pagado
  */
-class KhipuServiceSetPayedByReceiver extends KhipuService {
+class KhipuServiceSetPaidByReceiver extends KhipuService {
   /**
    * Iniciamos el servicio
    */
   public function __construct($receiver_id, $secret) {
     parent::__construct($receiver_id, $secret);
     // Asignamos la url del servicio
-    $this->apiUrl = Khipu::getUrlService('SetPayedByReceiver');
+    $this->apiUrl = Khipu::getUrlService('SetPaidByReceiver');
     $this->data = array(
       'payment_id'     => '',
     );

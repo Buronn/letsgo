@@ -1,0 +1,24 @@
+[17-Jun-2021 23:49:49 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/andes242/public_html/merquenmovil/PHP/conexion.php on line 10
+[17-Jun-2021 23:49:49 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php on line 8
+[17-Jun-2021 23:49:49 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php on line 9
+[17-Jun-2021 23:49:49 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php on line 10
+[17-Jun-2021 23:49:49 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on null in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php on line 22
+[17-Jun-2021 23:52:21 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/andes242/public_html/merquenmovil/PHP/conexion.php on line 10
+[17-Jun-2021 23:52:21 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php on line 8
+[17-Jun-2021 23:52:21 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php on line 9
+[17-Jun-2021 23:52:21 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php on line 10
+[17-Jun-2021 23:52:21 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on null in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php on line 22
+[17-Jun-2021 23:52:36 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/andes242/public_html/merquenmovil/PHP/conexion.php on line 10
+[17-Jun-2021 23:52:36 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php on line 8
+[17-Jun-2021 23:52:36 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php on line 9
+[17-Jun-2021 23:52:36 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php on line 10
+[17-Jun-2021 23:52:36 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on null in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/andes242/public_html/merquenmovil/PHP/Mapa/mesas.php on line 22
