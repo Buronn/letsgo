@@ -48,7 +48,7 @@ if (mysqli_num_rows($resultado) == 1) {
             }
         </script>
         
-      <div class=\"spinner-grow\" style=\"width: 3rem; height: 3rem;\" role=\"status\">
+      <div class=\"spinner-grow\" style=\"color:white; width: 3rem; height: 3rem;\" role=\"status\">
         <span class=\"visually-hidden\"></span>
       </div></span>
         </div><script>setTimeout(() => { window.top.location='" . $siguienteLocacion . "';},2000);</script>";
