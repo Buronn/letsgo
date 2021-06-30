@@ -19,7 +19,7 @@ $cantidad = $_POST['cantidad'];
 $codigoProducto = null;
 $codigoFolio = null;
 if ($producto == 'actualizar') {
-  $sql = "select p.Punto,p.Mesa,pr.NProducto,p.Cantidad,p.Valor,p.Producto,p.Grupo,p.Clase,p.Nota,p.Flag from produccion as p INNER JOIN productos as pr on p.Producto=pr.Producto and p.Grupo=pr.Grupo and p.Clase=pr.Clase WHERE p.Mesa='" . $mesa . "' and p.Punto='" . $punto . "'";
+  $sql = "select p.Punto,p.Mesa,pr.NProducto,p.Cantidad,p.Valor,p.Producto,p.Grupo,p.Clase,p.Nota,p.Flag from produccion as p INNER JOIN productos as pr on p.Producto=pr.Producto and p.Grupo=pr.Grupo and p.Clase=pr.Clase WHERE p.Mesa='" . $mesa . "' and p.Punto='" . $punto . "' and p.Pagado='0' ";
   $resultado = $conexion->query($sql);
   $total = 0;
   $salida .= "<div id='ocultar' style='background-color:#454545;padding:2vh;border-radius:2vw'>";
@@ -171,7 +171,7 @@ if ($producto == 'actualizar') {
 
       $valorreal = $fila['Valor'] * $cantidad;
     }
-    $sql = "select * from produccion where Mesa='" . $mesa . "' and Grupo='" . $grupo . "' and Producto='" . $producto . "' and Clase='" . $clase . "' and Punto='" . $punto . "'";
+    $sql = "select * from produccion where Mesa='" . $mesa . "' and Grupo='" . $grupo . "' and Producto='" . $producto . "' and Clase='" . $clase . "' and Punto='" . $punto . "' and Pagado='0' and Flag='0' ";
     $resultado = $conexion->query($sql);
 
     if (mysqli_num_rows($resultado) == 0) {

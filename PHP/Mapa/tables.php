@@ -10,6 +10,10 @@ if($hacer=="cerrar"){
     SET Status='1'
     WHERE Status='0'  and Punto='" . $punto . "'and Mesa='" . $mesa . "'";
     $conexion->query($sql);
+    $sql="update produccion
+    SET Pagado='1'
+    WHERE Punto='" . $punto . "'and Mesa='" . $mesa . "'";
+    $conexion->query($sql);
     
 }else{
 $dia=$_POST['dia'];
