@@ -48,51 +48,27 @@ function pintadoMesas( data ){
 
 
 function crearMesa( tipo ){
-    console.log(tipo);
-    var variable = 0;
     
     var mesasBOX = ''
     switch (tipo) {
         case 'CIR':
-            var largo = mesasCIR.length;
-            variable += largo;
-            var objeto = {
-                X:0,
-                Y:0
-            }
-            mesasBOX = 'mesasBOX'
-            mesasCIR.push(objeto)
+            var largo = mesasCIR.length;  
             break;
     
          case 'CUA':
             var largo = mesasCUA.length;
-            variable += largo;
-            var objeto = {
-               
-                X:0,
-                Y:0
-            }
-            mesasBOX = 'mesasBOX2'
-            mesasCUA.push(objeto)
+
             break;
         case 'REC':
             var largo = mesasREC.length;
-            variable += largo;
-            var objeto = {
-                X:0,
-                Y:0
-            }
-            mesasBOX = 'mesasBOX1'
-            mesasREC.push(objeto)
-            break;
+
     }
 
 
-    totalImagen = '';
-    var imagen = `<img  class='${tipo}${(variable + 1)} ${mesasBOX}' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
-    var lugar = document.getElementById("fila0-col0");
-    totalImagen += imagen;
-    lugar.innerHTML += totalImagen;
+   
+    var imagen = `<img  class='${tipo}${(largo + 1)} mesasBOX' style='width: 9.6%;height: 15%;;position:absolute;  ' left:12px; top:4px' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
+    var lugar = document.getElementById('fondoMesasAdmin')
+    lugar.innerHTML += imagen;
     cargarBOX();
     
 }
