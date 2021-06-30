@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="css/mesasAdmin.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script type="text/javascript" src="javascript/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <title>Document</title>
+    
 </head>
 <img>
     <div style='margin: 0 auto;'>
@@ -43,7 +46,7 @@
 
         <div class='row' >
             
-           <a onclick="guardarData()" class='btn btn-primary ' style='max-width: 200px; margin: 25px auto; font-size: 28px; font-weight: 600;'>
+           <a onclick="guardarData()" class='btn btn-success ' style='max-width: 200px; margin: 25px auto; font-size: 28px; font-weight: 600; border-radius:15px'>
                Guardar
            </a>
             
@@ -51,7 +54,8 @@
     
     </div>
 
-    <script src='javascript/mesasBOX.js'></script>
+    <script src='/javascript/mesasBOX.js'></script>
+    <script>obtenerMesas();</script>
     
 </body>
 </html>

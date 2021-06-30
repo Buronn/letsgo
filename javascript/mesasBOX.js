@@ -1,5 +1,6 @@
 
 var data;
+
 function obtenerMesas() {
     var punto  = 'BAR'
     $.ajax({
@@ -22,62 +23,28 @@ function obtenerMesas() {
 
     
 };
+var imagenSelectorHeight = $('#fondoMesasAdmin').height();
+var imagenSelectorWidth = $('#fondoMesasAdmin').width();
 
 function pintadoMesas( data ){
     for(let i = 0 ; i < data.length ; i++){
             var variable = data[i][0];
-            var mesasBOX;
             var y = data[i][1];
             var x = data[i][2];
             var tipo = data[i][3];
-            if(data[i][0][0] == '0'){
-                variable = data[i][0][1]
-            }
-            if(tipo == 'CIR'){
-                mesasBOX = 'mesasBOX'
-            }
-            else if(tipo == 'CUA'){
-                mesasBOX = 'mesasBOX2'
-            }
-            else{
-                mesasBOX = 'mesasBOX1'
-            }
-            var left = (parseFloat((y)) * 100) / 80 * 6.8;
-            var top = (parseFloat((x)) * 110) / 60 * 4.5;
-            console.log('top ' + top);
-            console.log('left ' + left);
+            
         if(data[i][3] != 'PLANTA'){
-            var imagen = `<img   style='width: 9.6%;height: 15%; position:absolute;   top:${top}%; left:${left}%' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
+            
+            var imagen = `<img id='${tipo}_${variable}' class='mesasBOX'   style='width:9.6%;height: 15%; position:absolute;   left:${x}px; top:${y}px' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
             var lugar = document.getElementById('fondoMesasAdmin')
-            console.log(lugar)
             lugar.innerHTML += imagen;
         }
 
     }
+    cargarBOX();
     
 }
 
-
-
-var contenedor = document.getElementById('contenedorIMG');
-
-
-
-
-
-var mesasCIR = [
-    
-]
-
-var mesasCUA = [
-    
-
-]
-
-var mesasREC = [
-   
-
-]
 
 
 function crearMesa( tipo ){
@@ -132,156 +99,97 @@ function crearMesa( tipo ){
 
 function cargarBOX(){
     
-    var box = document.querySelectorAll('.mesasBOX')
-    var box1 = document.querySelectorAll('.mesasBOX1')
-    var box2 = document.querySelectorAll('.mesasBOX2')
-    console.log(box)
-    console.log(box1)
-    console.log(box2)
-   
-
-    for(let i = 0 ; i < mesasCIR.length  ; i++){
-        box[i].addEventListener('touchmove', function(e) {
-      
-            var touchLocation = e.targetTouches[0];
-            
-            box[i].style.left = touchLocation.pageX - 60 + 'px';
-            box[i].style.top = touchLocation.pageY - 60 + 'px';
-          })
-          
-          
-          
-          box[i].addEventListener('touchend', function(e) {
-          
-            var x = parseInt(box[i].style.left);
-            var y = parseInt(box[i].style.top);
-          })
-
-    }
-    for(let i = 0 ; i < mesasCUA.length  ; i++){
-       
+    var box2 = document.querySelectorAll('.mesasBOX')
+    var Xinicial = [box2.length];
+    var Yinicial = [box2.length];
+    for(let i = 0 ; i < box2.length  ; i++){
+        Xinicial[i] = 0;
+        Yinicial[i] = 0;
+        console.log(box2[i].id);
+        Xinicial[i] = parseFloat((box2[i].style.left).replace('px', ''))
+        Yinicial[i] =  parseFloat((box2[i].style.top).replace('px', '')) 
+        
         box2[i].addEventListener('touchmove', function(e) {
-      
+       
             var touchLocation = e.targetTouches[0];
+            box2[i].style.left = touchLocation.pageX - 90 + 'px';
+            box2[i].style.top = touchLocation.pageY - 80 + 'px';
             
-            box2[i].style.left = touchLocation.pageX - 60 + 'px';
-            box2[i].style.top = touchLocation.pageY - 60 + 'px';
-          })
+        })
           
           
           
           box2[i].addEventListener('touchend', function(e) {
           
-            var x = parseInt(box2[i].style.left);
-            var y = parseInt(box2[i].style.top);
-          })
-
-    }
-    for(let i = 0 ; i < mesasREC.length  ; i++){
-        box1[i].addEventListener('touchmove', function(e) {
-      
-            var touchLocation = e.targetTouches[0];
+            var x = parseFloat(box2[i].style.left);
+            var y = parseFloat(box2[i].style.top);
             
-            box1[i].style.left = touchLocation.pageX - 60 + 'px';
-            box1[i].style.top = touchLocation.pageY - 60 + 'px';
-          })
-          
-          
-          
-          box1[i].addEventListener('touchend', function(e) {
-          
-            var x = parseInt(box1[i].style.left);
-            var y = parseInt(box1[i].style.top);
+            if(x > 1185 || y > 635 || y < 10 || x < 10){
+            
+                box2[i].style.left = Xinicial[i] + 'px';
+                box2[i].style.top =  Yinicial[i] + 'px';
+            }
+            else {
+                Xinicial[i] = parseFloat((box2[i].style.left).replace('px', '')) 
+                Yinicial[i] =  parseFloat((box2[i].style.top).replace('px', '')) 
+            }
+            
           })
 
     }
+   
 
 }
     
-function cargaAlgoritmo(){
-    
-    
-    var totalImagen = '';
-    
-    for(let i = 0; i < mesasCIR.length ; i++ ){
-        totalImagen = '';
-        var imagen = `<img class='CIR${(i + 1)} mesasBOX' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/CIR_BLANCO_0.gif'></img>`
-        var lugar = document.getElementById(`fila${mesasCIR[i].X}-col${mesasCIR[i].Y}`);
-        totalImagen += imagen;
-        lugar.innerHTML += totalImagen;
-    }
-
-    for(let i = 0; i < mesasREC.length ; i++ ){
-        totalImagen = '';
-        var imagen = `<img class='REC${(i + 1)} mesasBOX1' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/REC_BLANCO_0.gif'></img>`
-        var lugar = document.getElementById(`fila${mesasREC[i].X}-col${mesasREC[i].Y}`);
-        totalImagen += imagen;
-        lugar.innerHTML += totalImagen;
-    }
-    for(let i = 0; i < mesasCUA.length ; i++ ){
-        totalImagen = '';
-        var imagen = `<img  class='CUA${(i + 1)} mesasBOX2' style='width: 9.6%;height: 15%;;position:absolute;  ' src='images_mesas/CUA_BLANCO_0.gif'></img>`
-        var lugar = document.getElementById(`fila${mesasCUA[i].X}-col${mesasCUA[i].Y}`);
-        totalImagen += imagen;
-        lugar.innerHTML += totalImagen;
-    }
-
-    
-    cargarBOX();
-    
-}
-cargaAlgoritmo();
 
 function guardarData(){
-    var box = document.querySelectorAll('.mesasBOX')
-    var box1 = document.querySelectorAll('.mesasBOX1')
-    var box2 = document.querySelectorAll('.mesasBOX2')
-
+    var box2 = document.querySelectorAll('.mesasBOX')
     data = []
 
-    box.forEach(function(item){
-        var id = item.classList[0];
-        var X = item.style.top;
-        var Y = item.style.left;
-        console.log(X);
-        console.log(Y);
-        var objeto = {
-            ID : id,
-            X : X,
-            Y : Y
-        }
-        data.push(objeto);
-    })
-
-    box1.forEach(function(item){
-        var id = item.classList[0];
-        var X = item.style.top;
-        var Y = item.style.left;
-        console.log(X);
-        console.log(Y);
-        var objeto = {
-            ID : id,
-            X : X,
-            Y : Y
-        }
-        data.push(objeto);
-    })
-
     box2.forEach(function(item){
-        var id = item.classList[0];
-        var X = item.style.top;
-        var Y = item.style.left;
-        console.log(X);
-        console.log(Y);
+        var id = item.id;
+        var x = item.style.top;
+        var y = item.style.left;
+        
+        y = (y.replace('px',''));
+        x = (x.replace('px',''));
+        var forma =  id.split('_')[0];
+        var Mesa = id.split('_')[1];
+        
         var objeto = {
-            ID : id,
-            X : X,
-            Y : Y
+            forma : forma,
+            x : x,
+            y : y,
+            Mesa : Mesa,
+            Punto: 'BAR'
         }
         data.push(objeto);
     })
-    
-    console.log(data)
+
+    $.ajax({
+        url: './PHP/pushMesas.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            data1 : data
+        }
+
+    })
+        .done(function () {
+            
+            Swal.fire({
+                icon: 'success',
+                title: 'Mesas guardadas correctamente',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            
+
+        })
+        .fail(function () {
+            console.log("Error: Not user found")
+        });
+   
 }
 
 

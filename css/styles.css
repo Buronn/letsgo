@@ -31,7 +31,6 @@ body{
     background-size: 200rem;
     box-shadow: black;
     filter:contrast(100%);
-    height: 100%;
 }
 .fondo1{
     font-family: "Verdana";
@@ -43,7 +42,8 @@ body{
     background-size: 200rem;
     box-shadow: black;
     filter:contrast(100%);
-    height: 100%;
+   
+  
 }
 a.disabled
 {
