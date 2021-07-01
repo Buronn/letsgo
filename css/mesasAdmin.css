@@ -22,6 +22,12 @@ body{
     height: 100%;
 }
 
+/*.swal2-popup.swal2-modal.swal2-show{
+    width:120px;
+    display: grid;
+}
+*/
+
 .fondoMesa{
 
     background-image: url(/images/Fondo/pisoprueba2.png);

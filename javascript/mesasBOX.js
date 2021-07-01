@@ -1,5 +1,6 @@
 
 var data;
+var largoTotal = 0;
 
 function obtenerMesas() {
     var punto  = 'BAR'
@@ -20,8 +21,6 @@ function obtenerMesas() {
         })
         .fail(function () {
         });
-
-    
 };
 var imagenSelectorHeight = $('#fondoMesasAdmin').height();
 var imagenSelectorWidth = $('#fondoMesasAdmin').width();
@@ -29,13 +28,17 @@ var imagenSelectorWidth = $('#fondoMesasAdmin').width();
 function pintadoMesas( data ){
     for(let i = 0 ; i < data.length ; i++){
             var variable = data[i][0];
+            if(parseInt(variable) > largoTotal){
+                largoTotal = variable;
+
+            }
             var y = data[i][1];
             var x = data[i][2];
             var tipo = data[i][3];
             
         if(data[i][3] != 'PLANTA'){
             
-            var imagen = `<img id='${tipo}_${variable}' class='mesasBOX'   style='width:9.6%;height: 15%; position:absolute;   left:${x}px; top:${y}px' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
+            var imagen = `<img id='${tipo}_${variable}' class='mesasBOX' onClick="BorrarMesa(${tipo}_${variable} )"  style='width:9.6%;height: 15%; position:absolute;   left:${x}px; top:${y}px' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
             var lugar = document.getElementById('fondoMesasAdmin')
             lugar.innerHTML += imagen;
         }
@@ -45,30 +48,48 @@ function pintadoMesas( data ){
     
 }
 
+function BorrarMesa( variable ){
+   
+
+    Swal.fire({
+    width: 120,
+    confirmButtonColor: '#d33',
+    confirmButtonText: '<i style="padding: 10px 10px; font-size: 40px" class="fas fa-trash-alt"></i>'
+  }).then((result) => {
+    if (result.isConfirmed) {
+        Swal.fire({
+            title: 'Estás seguro?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si',
+            cancelButtonText : 'Cancelar'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Eliminado',
+                
+
+              )
+              $('#' + variable.id).remove()
+            }
+          })
+    }
+  })
+
+
+}
+
 
 
 function crearMesa( tipo ){
     
-    var mesasBOX = ''
-    switch (tipo) {
-        case 'CIR':
-            var largo = mesasCIR.length;  
-            break;
-    
-         case 'CUA':
-            var largo = mesasCUA.length;
-
-            break;
-        case 'REC':
-            var largo = mesasREC.length;
-
-    }
-
-
-   
-    var imagen = `<img  class='${tipo}${(largo + 1)} mesasBOX' style='width: 9.6%;height: 15%;;position:absolute;  ' left:12px; top:4px' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
+   console.log(parseInt(largoTotal) + 1)
+    var imagen = `<img  id='${tipo}_${(parseInt(largoTotal) + 1)}' class='mesasBOX'  onClick="BorrarMesa(${tipo}_${variable} + "" )"  style='width: 9.6%; height: 15%; ;position:absolute;  left:12px; top:4px' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
     var lugar = document.getElementById('fondoMesasAdmin')
     lugar.innerHTML += imagen;
+    largoTotal = parseInt(largoTotal) + 1;
     cargarBOX();
     
 }
@@ -131,6 +152,7 @@ function guardarData(){
         x = (x.replace('px',''));
         var forma =  id.split('_')[0];
         var Mesa = id.split('_')[1];
+        
         
         var objeto = {
             forma : forma,

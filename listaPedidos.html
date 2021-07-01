@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type= "text/javascript" src='javascript/functions.js'></script>
+    <script type="text/javascript" src="javascript/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/mesasAdmin.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <h2 style='font-size: 40px; margin-top: 100px; color: white; text-align: center;'>Registro de pedidos</h2>
+    
+    <div style='margin: 0 auto; max-width: 1200px; margin-top: 100px; background-color: antiquewhite; padding: 20px;' id='Pedidos' >
+        <table id="tablePedidos" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Punto</th>
+                    <th>Mesa</th>
+                    <th>Nombre Producto</th>
+                    <th>Cantidad</th>
+                    <th>Valor</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Nota</th>
+                
+                </tr>
+            </thead>
+            <tbody id='bodyTablaListados'>
+                
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    <script src='/javascript/listaPedidos.js'></script>
+</body>
+</html>
