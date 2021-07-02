@@ -26,6 +26,8 @@ var imagenSelectorHeight = $('#fondoMesasAdmin').height();
 var imagenSelectorWidth = $('#fondoMesasAdmin').width();
 
 function pintadoMesas( data ){
+    var lugar = document.getElementById('fondoMesasAdmin')
+    lugar.innerHTML = '';
     for(let i = 0 ; i < data.length ; i++){
             var variable = data[i][0];
             if(parseInt(variable) > largoTotal){
@@ -72,7 +74,8 @@ function BorrarMesa( variable ){
                 
 
               )
-              $('#' + variable.id).remove()
+              $('#' + variable.id).addClass('borrado')
+              $('#' + variable.id).css('display', 'none')
             }
           })
     }
@@ -86,7 +89,7 @@ function BorrarMesa( variable ){
 function crearMesa( tipo ){
     
    console.log(parseInt(largoTotal) + 1)
-    var imagen = `<img  id='${tipo}_${(parseInt(largoTotal) + 1)}' class='mesasBOX'  onClick="BorrarMesa(${tipo}_${variable} + "" )"  style='width: 9.6%; height: 15%; ;position:absolute;  left:12px; top:4px' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
+    var imagen = `<img  id='${tipo}_${(parseInt(largoTotal) + 1)}' class='mesasBOX new'  onClick="BorrarMesa(${tipo}_${(parseInt(largoTotal) + 1)} + "" )"  style='width: 9.6%; height: 15%; ;position:absolute;  left:12px; top:4px' src='images_mesas/${tipo}_BLANCO_0.gif'></img>`
     var lugar = document.getElementById('fondoMesasAdmin')
     lugar.innerHTML += imagen;
     largoTotal = parseInt(largoTotal) + 1;
@@ -144,7 +147,17 @@ function guardarData(){
     data = []
 
     box2.forEach(function(item){
+        var NEW = false;
+        var borrado = false;
         var id = item.id;
+
+        if($('#' + id).hasClass('new')){
+            NEW = true;
+        }
+        if($('#' + id).hasClass('borrado')){
+            borrado = true;
+        }
+
         var x = item.style.top;
         var y = item.style.left;
         
@@ -159,7 +172,9 @@ function guardarData(){
             x : x,
             y : y,
             Mesa : Mesa,
-            Punto: 'BAR'
+            Punto: 'BAR',
+            new: NEW,
+            borrado : borrado
         }
         data.push(objeto);
     })
@@ -173,7 +188,7 @@ function guardarData(){
         }
 
     })
-        .done(function () {
+        .done(function (resultado) {
             
             Swal.fire({
                 icon: 'success',
@@ -181,7 +196,7 @@ function guardarData(){
                 showConfirmButton: false,
                 timer: 1500
               })
-            
+            console.log(resultado)
 
         })
         .fail(function () {
