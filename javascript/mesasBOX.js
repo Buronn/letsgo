@@ -2,6 +2,8 @@
 var data;
 var largoTotal = 0;
 var puntoActual = "";
+var puntoActualN = "";
+var guardar = false;
 $.ajax({
     url: '../PHP/getPuntos.php',
     type: 'GET',
@@ -30,14 +32,70 @@ $(document).ready(function () {
     $('#crearMesa3').css('pointer-events', 'none')
     $("#puntos").change(function () {
         largoTotal = 0
-        $('#crearMesa1').css('pointer-events', '')
-        $('#crearMesa2').css('pointer-events', '')
-        $('#crearMesa3').css('pointer-events', '')
-        var val = $(this).find("option:selected").val();
-        console.log(val)
-        puntoActual = val
-        obtenerMesas(val)
+        var a = true;
+        if (guardar) {
+            Swal.fire({
+                title: `Hay cambios sin guardar en ${puntoActual}`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Salir sin guardar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#crearMesa1').css('pointer-events', '')
+                    $('#crearMesa2').css('pointer-events', '')
+                    $('#crearMesa3').css('pointer-events', '')
+                    var val = $(this).find("option:selected").val();
+                    var nombre = $(this).find("option:selected").text();
+                    console.log(val)
+                    puntoActual = val
+                    puntoActualN = nombre
+                    obtenerMesas(val)
+                } else {
+                    a = false;
+                    $(this).val(puntoActual);
+
+                }
+            })
+        }
+        else {
+            $('#crearMesa1').css('pointer-events', '')
+            $('#crearMesa2').css('pointer-events', '')
+            $('#crearMesa3').css('pointer-events', '')
+            var val = $(this).find("option:selected").val();
+            var nombre = $(this).find("option:selected").text();
+            console.log(val)
+            puntoActual = val
+            puntoActualN = nombre
+            obtenerMesas(val)
+        }
+
+
     });
+    $("#salir").click(function () {
+        if (guardar) {
+            Swal.fire({
+                title: 'Hay cambios sin guardar',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Salir sin guardar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/Admin.html";
+                }
+            })
+        } else {
+            window.location.href = "/Admin.html";
+        }
+
+
+    })
+
 })
 
 function obtenerMesas(punto) {
@@ -123,6 +181,7 @@ function BorrarMesa(variable) {
 
 
             )
+            guardar = true;
             $('#' + variable.id).addClass('borrado')
             $('#' + variable.id).css('display', 'none')
             $('#txt' + variable.id).css('display', 'none')
@@ -136,7 +195,7 @@ function BorrarMesa(variable) {
 
 
 function crearMesa(tipo) {
-
+    guardar = true;
     console.log(parseInt(largoTotal) + 1)
     var imagen =
         `<img  
@@ -171,6 +230,7 @@ function cargarBOX() {
         Yinicial[i] = parseFloat((box2[i].style.top).replace('px', ''))
 
         box2[i].addEventListener('touchmove', function (e) {
+            guardar = true;
             var touchLocation = e.targetTouches[0];
             box2[i].style.left = touchLocation.pageX - 90 + 'px';
             box2[i].style.top = touchLocation.pageY - 170 + 'px';
@@ -253,7 +313,7 @@ function guardarData() {
 
     })
         .done(function (resultado) {
-
+            guardar = false;
             Swal.fire({
                 icon: 'success',
                 title: 'Mesas guardadas correctamente',
