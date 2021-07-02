@@ -44,7 +44,7 @@ while ($fila = $result->fetch_assoc()) {
         $left =  (float)$fila['y'] + 21 ;
         $top = (float)$fila['x'];
         //MESAS DESOCUPADAS
-        if ($fila['x'] != null and $fila['y'] != null) {
+        if ($fila['x'] != null and $fila['y'] != null and $fila['forma']!=null) {
             $salida .= "
         <div>
             <a id='mesa$aux' onclick=SetLocalStorage('mesa_num','" . $fila['Mesa'] . "'),Mesa$aux() >

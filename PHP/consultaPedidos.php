@@ -9,7 +9,7 @@ $resultado = $conexion->query($sql);
 
 $array = array();
 while($fila = $resultado->fetch_assoc()){
-    $arrayDos = array($fila['Punto'] , $fila['NProducto'], $fila['Clase'], $fila['Cantidad'], $fila['Valor'], $fila['Fecha'], $fila['Hora'], $fila['Nota'] );
+    $arrayDos = array($fila['Punto'] ,$fila['Mesa'], $fila['NProducto'],  $fila['Cantidad'], $fila['Valor'], $fila['Fecha'], $fila['Hora'], $fila['Nota'] );
     array_push($array , $arrayDos);
 }
 

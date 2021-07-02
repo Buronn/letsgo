@@ -9,7 +9,6 @@ $punto = $_POST['punto'];
 $Khipu = new Khipu();
 $Khipu->authenticate("389471", "54d0a1d56de1e67cbe65171f78fdf1780be84912");
 $khipu_service = $Khipu->loadService('CreatePaymentURL');
-$payer_email = 'cliente@gmail.com';
 $data = array(
     'subject' => $titulo,
     'body' => $body,
