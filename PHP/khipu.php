@@ -13,7 +13,6 @@ $data = array(
     'subject' => $titulo,
     'body' => $body,
     'amount' => $amount,
-    'payer_email' => $payer_email,
     'custom' => 'Custom Variable',
     'transaction_id' => 1,
     'payer_email' => 'cliente@gmail.com',

@@ -12,7 +12,7 @@ $.ajax({
     .done(function (respuesta) {
 
         respuesta = JSON.parse(respuesta);
-        console.log(respuesta)
+        /* console.log(respuesta) */
         $(document).ready(function () {
 
             var lugar = document.getElementById('puntos')
@@ -35,7 +35,7 @@ $(document).ready(function () {
         var a = true;
         if (guardar) {
             Swal.fire({
-                title: `Hay cambios sin guardar en ${puntoActual}`,
+                title: `Hay cambios sin guardar en ${puntoActualN}`,
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -44,12 +44,13 @@ $(document).ready(function () {
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
+                    guardar = false
                     $('#crearMesa1').css('pointer-events', '')
                     $('#crearMesa2').css('pointer-events', '')
                     $('#crearMesa3').css('pointer-events', '')
                     var val = $(this).find("option:selected").val();
                     var nombre = $(this).find("option:selected").text();
-                    console.log(val)
+                    /* console.log(val) */
                     puntoActual = val
                     puntoActualN = nombre
                     obtenerMesas(val)
@@ -66,7 +67,7 @@ $(document).ready(function () {
             $('#crearMesa3').css('pointer-events', '')
             var val = $(this).find("option:selected").val();
             var nombre = $(this).find("option:selected").text();
-            console.log(val)
+            /* console.log(val) */
             puntoActual = val
             puntoActualN = nombre
             obtenerMesas(val)
@@ -119,7 +120,7 @@ function obtenerMesas(punto) {
         .done(function (respuesta) {
 
             data = JSON.parse(respuesta);
-            console.log(data)
+            /* console.log(data) */
             pintadoMesas(data);
         })
         .fail(function () {
@@ -168,24 +169,32 @@ function pintadoMesas(data) {
 
 function BorrarMesa(variable) {
 
-
+    
     Swal.fire({
         width: 120,
         confirmButtonColor: '#d33',
         confirmButtonText: '<i style="padding: 10px 10px; font-size: 40px" class="fas fa-trash-alt"></i>'
     }).then((result) => {
         if (result.isConfirmed) {
-
             Swal.fire(
                 'Eliminado',
 
 
             )
-            guardar = true;
-            $('#' + variable.id).addClass('borrado')
-            $('#' + variable.id).css('display', 'none')
-            $('#txt' + variable.id).css('display', 'none')
+            if($('#'+variable.id).hasClass('new')){
+                guardar = true;
+                $('#' + variable.id).remove();
 
+
+            }else{
+                
+                guardar = true;
+                $('#' + variable.id).addClass('borrado')
+                $('#' + variable.id).css('display', 'none')
+                $('#txt' + variable.id).css('display', 'none')
+    
+            }
+            
         }
     })
 
@@ -196,12 +205,12 @@ function BorrarMesa(variable) {
 
 function crearMesa(tipo) {
     guardar = true;
-    console.log(parseInt(largoTotal) + 1)
+    /* console.log(tipo) */
     var imagen =
         `<img  
         id='${tipo}_${(parseInt(largoTotal) + 1)}' 
         class='mesasBOX new'  
-        onClick="BorrarMesa(${tipo}_${(parseInt(largoTotal) + 1)} + "" )"  
+        onClick="BorrarMesa(${tipo}_${(parseInt(largoTotal) + 1)})"  
         style='width: 9.6%; height: 15%; ;position:absolute;  left:12px; top:4px' 
         src='images_mesas/${tipo}_BLANCO_0.gif'>
         <h1 
@@ -225,7 +234,7 @@ function cargarBOX() {
     for (let i = 0; i < box2.length; i++) {
         Xinicial[i] = 0;
         Yinicial[i] = 0;
-        console.log(box2[i].id);
+        /* console.log(box2[i].id); */
         Xinicial[i] = parseFloat((box2[i].style.left).replace('px', ''))
         Yinicial[i] = parseFloat((box2[i].style.top).replace('px', ''))
 
@@ -320,11 +329,11 @@ function guardarData() {
                 showConfirmButton: false,
                 timer: 1500
             })
-            console.log(resultado)
+            /* console.log(resultado) */
 
         })
         .fail(function () {
-            console.log("Error: Not user found")
+            /* console.log("Error: Not user found") */
         });
 
 }
