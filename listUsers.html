@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <link rel="shortcut icon" href="iconos/logo-x.png" />
     <script type="text/javascript" src='javascript/functions.js'></script>
     <script type="text/javascript" src="javascript/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8"
@@ -20,13 +21,11 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <style>
-    
-  .col {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 100%;
+    body {
+        background-image: url(../images/Fondo/fondo-prueba1.png);
+        color: white;
     }
+
     table.dataTable td {
         font-size: 1.3em;
     }
@@ -49,53 +48,73 @@
         font-size: 1em;
     }
 
-    #tableUser_info {
+    #dataTable_info {
         font-size: 1.3em;
         color: rgb(255, 255, 255);
     }
 
-    div#tableUser_paginate {
+    div#dataTable_paginate {
         margin-top: 10px;
-        background-color: rgba(255, 255, 255, 0.376);
+        background-color: rgba(246, 246, 246, 0.726);
         border-radius: 10px;
         font-size: 1.1em;
+        color: white;
+    }
+
+    .paging_simple_numbers {
+        color: white;
     }
 </style>
 <!-- <script>
     check_login();
 </script> -->
+
 <body class="fondo1">
     <div class='row'>
         <div class='col'>
             <a href='/Admin.html'>
                 <i style='font-size: 90px; color: white; margin: 20px 30px;' class="fas fa-arrow-left"></i>
-                  
+
                 </img>
-             </a>
-    
+            </a>
+
+
+        </div>
+
+    </div>
+    <div
+        style="background-color: rgba(255, 255, 255, 0.329);border-radius: 10px;margin-left:auto;margin-right:auto;max-width: 200px">
+        <h2 style='font-size: 40px; margin-top: 10px; color: white; text-align: center;'>Usuarios</h2>
+    </div>
+    <div class="row">
+        <div class='col' style='text-align: end;'>
+            <a href='formAddUsers.html'>
+                <i style='font-size: 40px; color: white;margin-right: 30px;' class="fas fa-user-plus"></i>
+            </a>
         </div>
     </div>
-    <div style='border-radius: 10px; margin: 0 auto; max-width: 95%; margin-top: 100px; background-color: rgba(250, 235, 215, 0.349); padding: 20px;'
+    <div style='border-radius: 10px; margin: 0 auto; max-width: 95%; margin-top: 10px; background-color: rgba(250, 235, 215, 0.349); padding: 20px;'
         id='Usuarios'>
         <table id="tableUser" class="display" style="width:100%">
-                    <table class="table my-0" id="dataTable">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Numero Garzon</th>
-                                <th>Admin</th>
-                                <th> </th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody id="tableID">                                        
-                            
-                        </tbody>
-                        
-                    </table>
-                </div>
-      
+            <table class="table my-0" id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Numero Garzon</th>
+                        <th>Admin</th>
+                        <th> </th>
+
+                    </tr>
+                </thead>
+                <tbody id="tableID">
+
+                </tbody>
+
+            </table>
+    </div>
+
 
 </body>
 <script type="text/javascript" src="/javascript/listUsers.js"></script>
+
 </html>
