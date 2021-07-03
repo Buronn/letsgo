@@ -11,20 +11,22 @@
     <script type="text/javascript" charset="utf8"
         src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-    <link rel="stylesheet" href="css/mesasAdmin.css">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <script type="text/javascript" charset="utf8"
         src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <title>Document</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <style>
-    body {
-        background-image: url(../images/Fondo/fondo-prueba1.png);
+    
+  .col {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
     }
-
     table.dataTable td {
         font-size: 1.3em;
     }
@@ -47,56 +49,53 @@
         font-size: 1em;
     }
 
-    #tablePedidos_info {
+    #tableUser_info {
         font-size: 1.3em;
         color: rgb(255, 255, 255);
     }
 
-    div#tablePedidos_paginate {
+    div#tableUser_paginate {
         margin-top: 10px;
         background-color: rgba(255, 255, 255, 0.376);
         border-radius: 10px;
         font-size: 1.1em;
     }
 </style>
-
+<!-- <script>
+    check_login();
+</script> -->
 <body class="fondo1">
-    <a href='/Admin.html'>
-        <i style='font-size: 90px; color: white; margin: 20px 30px;' class="fas fa-arrow-left"></i>
-
-        </img>
-    </a>
-    <div style="background-color: rgba(255, 255, 255, 0.329);border-radius: 10px;margin-left:auto;margin-right:auto;max-width: 400px">
-        <h2 style='font-size: 40px; margin-top: 10px; color: white; text-align: center;'>Registro de pedidos</h2>
+    <div class='row'>
+        <div class='col'>
+            <a href='/Admin.html'>
+                <i style='font-size: 90px; color: white; margin: 20px 30px;' class="fas fa-arrow-left"></i>
+                  
+                </img>
+             </a>
+    
+        </div>
     </div>
-
-
     <div style='border-radius: 10px; margin: 0 auto; max-width: 95%; margin-top: 100px; background-color: rgba(250, 235, 215, 0.349); padding: 20px;'
-        id='Pedidos'>
-        <table id="tablePedidos" class="display" style="width:100%">
-            <thead>
-                <tr>
-                    <th>Punto</th>
-                    <th>Mesa</th>
-                    <th>Nombre Producto</th>
-                    <th>Cantidad</th>
-                    <th>Valor</th>
-                    <th>Fecha</th>
-                    <th>Hora</th>
-                    <th>Nota</th>
+        id='Usuarios'>
+        <table id="tableUser" class="display" style="width:100%">
+                    <table class="table my-0" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Numero Garzon</th>
+                                <th>Admin</th>
+                                <th> </th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody id="tableID">                                        
+                            
+                        </tbody>
+                        
+                    </table>
+                </div>
+      
 
-                </tr>
-            </thead>
-            <tbody id='bodyTablaListados'>
-
-            </tbody>
-        </table>
-    </div>
-
-
-
-
-    <script src='/javascript/listaPedidos.js'></script>
 </body>
-
+<script type="text/javascript" src="/javascript/listUsers.js"></script>
 </html>
